@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "colored_stone_bricks",
+  "version": "${version}",
+
+  "name": "Colored Stone Bricks",
+  "description": "This mod adds 15 color variants of stone bricks",
+  "authors": [
+    "MrLocalhost"
+  ],
+  "contact": {
+    "homepage": "Unlisted",
+    "sources": "Unpublished"
+  },
+
+  "license": "MIT License",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.mrlocalhost.coloredstonebricks.ColoredStoneBricks"
+    ],
+    "client": [
+      "com.mrlocalhost.coloredstonebricks.ColoredStoneBricksClient"
+    ]
+  },
+  "mixins": [
+    "coloredstonebricks.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.11",
+    "fabric-api": "*",
+    "minecraft": "~1.19.3",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
