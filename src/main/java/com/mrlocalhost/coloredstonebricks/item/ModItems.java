@@ -9,9 +9,6 @@ import net.minecraft.util.Identifier;
 
 
 public class ModItems {
-    //public static final Item RED_STONE_BRICKS = registerItem("red_stone_bricks", new Item(new FabricItemSettings()));
-    public static final Item RED_STONE_BRICKS = registerItem("red_stone_bricks", new Item(new Item.Settings()));
-    //public static final Item CLEANING_CLOTH = registerItem("cleaning_cloth", new Item(new FabricItemSettings()));
     public static final Item CLEANING_CLOTH = registerItem("cleaning_cloth", new Item(new Item.Settings()));
 
     private static Item registerItem(String name, Item item) {

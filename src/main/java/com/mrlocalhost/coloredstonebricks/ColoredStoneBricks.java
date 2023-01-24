@@ -1,5 +1,6 @@
 package com.mrlocalhost.coloredstonebricks;
 
+import com.mrlocalhost.coloredstonebricks.block.ModBlocks;
 import com.mrlocalhost.coloredstonebricks.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ public class ColoredStoneBricks implements ModInitializer {
 	public void onInitialize() {
 
 		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 
 	}
 }

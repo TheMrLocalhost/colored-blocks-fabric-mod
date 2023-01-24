@@ -6,7 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "ExampleMixin"
+    "ColoredStoneBricksMixin"
   ],
   "injectors": {
     "defaultRequire": 1

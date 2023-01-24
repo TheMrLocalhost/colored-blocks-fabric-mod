@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "colored_stone_bricks:item/red_stone_bricks"
+  }
+}
