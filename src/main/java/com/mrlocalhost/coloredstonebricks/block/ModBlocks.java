@@ -16,6 +16,8 @@ public class ModBlocks {
 
     public static final Block RED_STONE_BRICKS = registerBlock("red_stone_bricks",
             new Block(FabricBlockSettings.of(Material.STONE).strength(1f).requiresTool()));
+    public static final Block ORANGE_STONE_BRICKS = registerBlock("orange_stone_bricks",
+            new Block(FabricBlockSettings.of(Material.STONE).strength(1f).requiresTool()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
