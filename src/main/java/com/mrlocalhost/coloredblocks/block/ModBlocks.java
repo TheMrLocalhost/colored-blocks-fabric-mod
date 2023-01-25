@@ -37,7 +37,7 @@ public class ModBlocks {
     }
 
     public static void registerModBlocks() {
-        ColoredBlocks.LOGGER.debug("Registering ModBlocks for " + ColoredBlocks.MOD_ID);
+        //ColoredBlocks.LOGGER.debug("Registering ModBlocks for " + ColoredBlocks.MOD_ID);
     }
 
 }

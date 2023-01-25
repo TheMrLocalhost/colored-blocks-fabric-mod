@@ -1,6 +1,7 @@
 package com.mrlocalhost.coloredblocks.item;
 
 import com.mrlocalhost.coloredblocks.ColoredBlocks;
+import com.mrlocalhost.coloredblocks.item.custom.ArtistPaletteItem;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -9,6 +10,10 @@ import net.minecraft.util.Identifier;
 
 @SuppressWarnings("unused")
 public class ModItems {
+
+    public static final Item ARTIST_PALETTE = registerItem("artist_palette", new ArtistPaletteItem(new Item.Settings()
+            .maxCount(1)
+            .maxDamage(15)));
     public static final Item CLEANING_CLOTH = registerItem("cleaning_cloth", new Item(new Item.Settings()));
 
     private static Item registerItem(String name, Item item) {
@@ -17,7 +22,6 @@ public class ModItems {
     }
 
     public static void registerModItems() {
-        ColoredBlocks.LOGGER.debug("Registering Mod Items for " + ColoredBlocks.MOD_ID);
+        //ColoredBlocks.LOGGER.debug("Registering Mod Items for " + ColoredBlocks.MOD_ID);
     }
-
 }
