@@ -14,12 +14,18 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
 
-    public static final Block RED_STONE_BRICKS = registerBlock("red_stone_bricks",
-            new Block(FabricBlockSettings.of(Material.STONE).strength(1f).requiresTool()));
-    public static final Block ORANGE_STONE_BRICKS = registerBlock("orange_stone_bricks",
-            new Block(FabricBlockSettings.of(Material.STONE).strength(1f).requiresTool()));
+    public static final Block RED_STONE_BRICKS = registerBlock("red_stone_bricks");
+    public static final Block ORANGE_STONE_BRICKS = registerBlock("orange_stone_bricks");
+    public static final Block YELLOW_STONE_BRICKS = registerBlock("yellow_stone_bricks");
+    public static final Block LIME_STONE_BRICKS = registerBlock("lime_stone_bricks");
 
-    private static Block registerBlock(String name, Block block) {
+    private static Block registerBlock(String name) {
+        Block block = new Block(FabricBlockSettings
+                .of(Material.STONE)
+                .drops(new Identifier(ColoredStoneBricks.MOD_ID, name))
+                .requiresTool()
+                .strength(1.5F)
+                .resistance(6.0F));
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, new Identifier(ColoredStoneBricks.MOD_ID, name), block);
     }
