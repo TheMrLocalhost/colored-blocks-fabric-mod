@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {"item": "colored_blocks:cleaning_cloth"},
+    {"tag": "colored_blocks:colored_blocks"},
+    {"tag": "colored_blocks:colored_blocks"},
+    {"tag": "colored_blocks:colored_blocks"},
+    {"tag": "colored_blocks:colored_blocks"}
+  ],
+  "result": {
+    "item": "minecraft:stone_bricks",
+    "count": 4
+  }
+}

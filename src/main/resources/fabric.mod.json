@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "id": "colored_stone_bricks",
+  "id": "colored_blocks",
   "version": "${version}",
 
-  "name": "Colored Stone Bricks",
-  "description": "This mod adds 15 color variants of stone bricks",
+  "name": "Colored Blocks",
+  "description": "This mod adds color variants of different blocks",
   "authors": [
     "MrLocalhost"
   ],
   "contact": {
     "homepage": "https://github.com/TheMrLocalhost/",
-    "sources": "https://github.com/TheMrLocalhost/colored-stone-bricks-fabric-mod"
+    "sources": "https://github.com/TheMrLocalhost/colored-blocks-fabric-mod"
   },
 
   "license": "MIT License",
@@ -19,14 +19,14 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.mrlocalhost.coloredstonebricks.ColoredStoneBricks"
+      "com.mrlocalhost.coloredblocks.ColoredBlocks"
     ],
     "client": [
-      "com.mrlocalhost.coloredstonebricks.ColoredStoneBricksClient"
+      "com.mrlocalhost.coloredblocks.ColoredBlocksClient"
     ]
   },
   "mixins": [
-    "coloredstonebricks.mixins.json"
+    "coloredblocks.mixins.json"
   ],
 
   "depends": {
