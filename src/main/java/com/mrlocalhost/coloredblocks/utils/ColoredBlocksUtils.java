@@ -12,5 +12,8 @@ public class ColoredBlocksUtils {
     public static void sendMessage(PlayerEntity player, String message) {
         player.sendMessage(Text.literal(message));
     }
+    public static String getColorName(int value) {
+        return ColoredBlocksConstants.COLOR_NAMES[value];
+    }
 
 }

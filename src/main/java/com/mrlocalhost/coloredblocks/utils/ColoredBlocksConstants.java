@@ -1,6 +1,8 @@
 package com.mrlocalhost.coloredblocks.utils;
 
 public class ColoredBlocksConstants {
+    public static final int minColorValue = 0;
+    public static final int maxColorValue = 3;
     public static final int COLOR_RED = 0;
     public static final int COLOR_ORANGE = 1;
     public static final int COLOR_YELLOW = 2;
@@ -17,4 +19,22 @@ public class ColoredBlocksConstants {
     public static final int COLOR_LIGHT_GRAY = 13;
     public static final int COLOR_GRAY = 14;
     public static final int COLOR_BLACK = 15;
+    public static final String[] COLOR_NAMES = new String[]{
+            "Red",
+            "Orange",
+            "Yellow",
+            "Lime",
+            "Green",
+            "Cyan",
+            "Light Blue",
+            "Blue",
+            "Purple",
+            "Magenta",
+            "Pink",
+            "Brown",
+            "White",
+            "Light Gray",
+            "Gray",
+            "Black",
+    };
 }

@@ -3,6 +3,7 @@ package com.mrlocalhost.coloredblocks.item.custom;
 import com.mrlocalhost.coloredblocks.block.custom.ColoredBlock;
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import com.mrlocalhost.coloredblocks.item.ModItems;
+import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -34,7 +35,7 @@ public class ArtistPaletteItem extends Item {
             tooltip.add(ColoredBlocksUtils.stringToText("Shift right click to access color GUI!",Formatting.GREEN));
         } else {
             int damageRemaining = this.getMaxDamage()-stack.getDamage();
-            tooltip.add(ColoredBlocksUtils.stringToText("Color: "+getPaletteColor(stack),Formatting.WHITE));
+            tooltip.add(ColoredBlocksUtils.stringToText("Color: "+ColoredBlocksUtils.getColorName(getPaletteColor(stack)),Formatting.WHITE));
             tooltip.add(ColoredBlocksUtils.stringToText(damageRemaining+"/"+(this.getMaxDamage()+" uses remaining"),Formatting.DARK_PURPLE));
             tooltip.add(ColoredBlocksUtils.stringToText("Press shift for more info",Formatting.YELLOW));
         }
@@ -64,11 +65,11 @@ public class ArtistPaletteItem extends Item {
                 if (palette.getDamage() >= palette.getMaxDamage()) {
                     ColoredBlocksUtils.sendMessage(player, "Please add more dye to your palette.");
                 } else {
+                    //Can be colored and isn't already the same color
                     if (blockState.isIn(CustomBlockTags.COLORED_BLOCKS)
-                            && blockState.get(ColoredBlock.COLOR) != getPaletteColor(mainHandStack)) { // block is colorable and isn't already color
-
+                            && blockState.get(ColoredBlock.COLOR) != getPaletteColor(mainHandStack)) {
                         int paletteColor = getPaletteColor(mainHandStack);
-                        world.setBlockState(blockPos, (BlockState)blockState.with(ColoredBlock.COLOR, paletteColor));
+                        world.setBlockState(blockPos, blockState.with(ColoredBlock.COLOR, paletteColor));
                         palette.setDamage(palette.getDamage() + 1);
                         ColoredBlocksUtils.sendMessage(player, "Palette damage: " + palette.getDamage());
                         ColoredBlocksUtils.sendMessage(player, "Painted " + block.getName() + " at " + blockPos.toShortString());
@@ -100,16 +101,11 @@ public class ArtistPaletteItem extends Item {
         if (!world.isClient() && hand == Hand.MAIN_HAND && Screen.hasShiftDown()) {
             ItemStack mainHandStack = user.getMainHandStack();
             int currentColor = getPaletteColor(mainHandStack);
-            int nextColor = (currentColor != ColoredBlock.maxColorValue) ? currentColor + 1 : ColoredBlock.minColorValue;
+            int nextColor = (currentColor != ColoredBlocksConstants.maxColorValue) ? currentColor + 1 : ColoredBlocksConstants.minColorValue;
             changePaletteColor(mainHandStack, nextColor);
-            ColoredBlocksUtils.sendMessage(user, "New color: "+nextColor);
+            ColoredBlocksUtils.sendMessage(user, "New color: "+ColoredBlocksUtils.getColorName(getPaletteColor(mainHandStack)));
         }
         return TypedActionResult.pass(user.getStackInHand(hand));
-    }
-
-    @Override
-    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-        return ingredient.isIn(CustomItemTags.DYES);
     }
 
     @Override
