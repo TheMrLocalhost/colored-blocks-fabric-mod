@@ -1,5 +1,8 @@
 {
   "variants": {
-    "": { "model":  "colored_blocks:block/lime_stone_bricks" }
+    "color=0": { "model":  "colored_blocks:block/red_stone_bricks" },
+    "color=1": { "model":  "colored_blocks:block/orange_stone_bricks" },
+    "color=2": { "model":  "colored_blocks:block/yellow_stone_bricks" },
+    "color=3": { "model":  "colored_blocks:block/lime_stone_bricks" }
   }
 }

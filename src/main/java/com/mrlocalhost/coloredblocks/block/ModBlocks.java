@@ -1,7 +1,9 @@
 package com.mrlocalhost.coloredblocks.block;
 
 import com.mrlocalhost.coloredblocks.ColoredBlocks;
+import com.mrlocalhost.coloredblocks.block.custom.ColoredBlock;
 import com.mrlocalhost.coloredblocks.item.ModItemGroup;
+import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -15,18 +17,23 @@ import net.minecraft.util.Identifier;
 @SuppressWarnings("unused")
 public class ModBlocks {
 
-    public static final Block RED_STONE_BRICKS = registerBlock("red_stone_bricks");
-    public static final Block ORANGE_STONE_BRICKS = registerBlock("orange_stone_bricks");
-    public static final Block YELLOW_STONE_BRICKS = registerBlock("yellow_stone_bricks");
-    public static final Block LIME_STONE_BRICKS = registerBlock("lime_stone_bricks");
+    //public static final Block RED_STONE_BRICKS = registerBlock("red_stone_bricks");
+    //public static final Block ORANGE_STONE_BRICKS = registerBlock("orange_stone_bricks");
+    //public static final Block YELLOW_STONE_BRICKS = registerBlock("yellow_stone_bricks");
+    //public static final Block LIME_STONE_BRICKS = registerBlock("lime_stone_bricks");
+    public static final Block RED_STONE_BRICKS = registerBlock("red_stone_bricks", ColoredBlocksConstants.COLOR_RED);
+    public static final Block ORANGE_STONE_BRICKS = registerBlock("orange_stone_bricks", ColoredBlocksConstants.COLOR_ORANGE);
+    public static final Block YELLOW_STONE_BRICKS = registerBlock("yellow_stone_bricks", ColoredBlocksConstants.COLOR_YELLOW);
+    public static final Block LIME_STONE_BRICKS = registerBlock("lime_stone_bricks", ColoredBlocksConstants.COLOR_LIME);
 
-    private static Block registerBlock(String name) {
-        Block block = new Block(FabricBlockSettings
+    private static Block registerBlock(String name, int defaultState) {
+        Block block = new ColoredBlock(FabricBlockSettings
                 .of(Material.STONE)
                 .drops(new Identifier(ColoredBlocks.MOD_ID, name))
                 .requiresTool()
                 .strength(1.5F)
-                .resistance(6.0F));
+                .resistance(6.0F),
+                defaultState);
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, new Identifier(ColoredBlocks.MOD_ID, name), block);
     }

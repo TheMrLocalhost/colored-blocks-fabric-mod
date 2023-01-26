@@ -13,9 +13,9 @@ public class ModItems {
 
     public static final Item ARTIST_PALETTE = registerItem("artist_palette", new ArtistPaletteItem(new Item.Settings()
             .maxCount(1)
-            .maxDamage(15)));
+            .maxDamage(16)));
 
-    public static final Item PAINTBRUSH = registerItem("paintbrush", new Item(new Item.Settings()));
+    public static final Item PAINTBRUSH = registerItem("paintbrush", new Item(new Item.Settings().maxCount(1)));
 
     public static final Item CLEANING_CLOTH = registerItem("cleaning_cloth", new Item(new Item.Settings()));
 
