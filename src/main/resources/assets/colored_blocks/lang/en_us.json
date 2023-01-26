@@ -1,8 +1,9 @@
 {
   "itemGroup.colored_blocks.colored_blocks_group": "Colored Blocks",
 
-  "item.colored_blocks.cleaning_cloth": "Cleaning Cloth",
   "item.colored_blocks.artist_palette": "Artist Palette",
+  "item.colored_blocks.paintbrush": "Paintbrush",
+  "item.colored_blocks.cleaning_cloth": "Cleaning Cloth",
 
   "block.colored_blocks.red_stone_bricks": "Red Stone Bricks",
   "block.colored_blocks.orange_stone_bricks": "Orange Stone Bricks",

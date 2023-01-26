@@ -25,17 +25,15 @@ public class ArtistPaletteItem extends Item {
         PlayerEntity player = context.getPlayer();
         if (!world.isClient()) { //Server
 
-            Item mainHand = player.getMainHandStack().getItem();
-            Item offHand = player.getOffHandStack().getItem();
+            ItemStack offHandStack = player.getOffHandStack();
+            if (offHandStack == null) {
+                return ActionResult.PASS;
+            }
             BlockPos blockPos = context.getBlockPos();
             BlockState blockState = world.getBlockState(blockPos);
             Block block = blockState.getBlock();
-            //player.sendMessage(Text.literal("mainHand: " + mainHand.getName()));
-            //player.sendMessage(Text.literal("offHand: " + offHand.getName()));
-            //player.sendMessage(Text.literal("blockPos: " + blockPos.toShortString()));
-            //player.sendMessage(Text.literal("block: " + b.getName()));
 
-            if (mainHand == ModItems.ARTIST_PALETTE && offHand == Items.STICK) {
+            if (offHandStack.getItem() == ModItems.PAINTBRUSH) {
                 ItemStack palette = player.getMainHandStack();
                 if (palette.getDamage() >= palette.getMaxDamage()) {
                     player.sendMessage(Text.literal("Please add more dye to your palette."));
@@ -44,9 +42,9 @@ public class ArtistPaletteItem extends Item {
                     player.sendMessage(Text.literal("Palette damage: " + palette.getDamage()));
                     player.sendMessage(Text.literal("Painted " + block.getName() + " at " + blockPos.toShortString()));
                 }
+            } else { // else if (offHand != ModItems.PAINTBRUSH) {
+                player.sendMessage(Text.literal("Please hold a paintbrush in your off-hand."));
             }
-
-
         }
 
         return ActionResult.PASS;
