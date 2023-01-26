@@ -27,7 +27,6 @@ public class ArtistPaletteItem extends Item {
     public ArtistPaletteItem(Settings settings) {
         super(settings);
     }
-
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if (Screen.hasShiftDown()) {
@@ -41,60 +40,60 @@ public class ArtistPaletteItem extends Item {
         }
         super.appendTooltip(stack, world, tooltip, context);
     }
-
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
-        // TODO add right click "use durability" and recolor targeted block
-
         World world = context.getWorld();
         PlayerEntity player = context.getPlayer();
-        if (!world.isClient() && context.getHand() == Hand.MAIN_HAND && !Screen.hasShiftDown()) { //Server side and mainHand only
-
-            ItemStack mainHandStack = player.getMainHandStack();
-            ItemStack offHandStack = player.getOffHandStack();
-            if (mainHandStack == null || offHandStack == null) {
-                return ActionResult.PASS;
-            }
-            Item offHandItem = offHandStack.getItem();
-            BlockPos blockPos = context.getBlockPos();
-            BlockState blockState = world.getBlockState(blockPos);
-            Block block = blockState.getBlock();
-
-            if (offHandItem == ModItems.PAINTBRUSH) {
-                ItemStack palette = player.getMainHandStack();
-                if (palette.getDamage() >= palette.getMaxDamage()) {
-                    ColoredBlocksUtils.sendMessage(player, "Please add more dye to your palette.");
-                } else {
-                    //Can be colored and isn't already the same color
-                    if (blockState.isIn(CustomBlockTags.COLORED_BLOCKS)
-                            && blockState.get(ColoredBlock.COLOR) != getPaletteColor(mainHandStack)) {
-                        int paletteColor = getPaletteColor(mainHandStack);
-                        world.setBlockState(blockPos, blockState.with(ColoredBlock.COLOR, paletteColor));
-                        palette.setDamage(palette.getDamage() + 1);
-                        ColoredBlocksUtils.sendMessage(player, "Palette damage: " + palette.getDamage());
-                        ColoredBlocksUtils.sendMessage(player, "Painted " + block.getName() + " at " + blockPos.toShortString());
-                    } else {
-                        ColoredBlocksUtils.sendMessage(player, "Tried coloring an invalid block");
-                    }
-                }
-            } else { // else if (offHand != ModItems.PAINTBRUSH) {
-                ColoredBlocksUtils.sendMessage(player, "Please hold a paintbrush in your off-hand.");
-            }
+        //If not server, holding shift, or use called with offHand
+        if(Screen.hasShiftDown() || world.isClient() || context.getHand() != Hand.MAIN_HAND) {
+            return ActionResult.PASS;
         }
-
+        ItemStack mainHandStack = player.getMainHandStack();
+        ItemStack offHandStack = player.getOffHandStack();
+        //If one of the hand stacks gets nulled
+        if (mainHandStack == null || offHandStack == null) {
+            return ActionResult.PASS;
+        }
+        Item offHandItem = offHandStack.getItem();
+        BlockPos blockPos = context.getBlockPos();
+        BlockState blockState = world.getBlockState(blockPos);
+        Block block = blockState.getBlock();
+        //If not holding paintbrush in offHand
+        if (offHandItem != ModItems.PAINTBRUSH) {
+            ColoredBlocksUtils.sendMessage(player, "Please hold a paintbrush in your off-hand.");
+            return ActionResult.PASS;
+        }
+        ItemStack palette = player.getMainHandStack();
+        //If out of dye
+        if (palette.getDamage() >= palette.getMaxDamage()) {
+            ColoredBlocksUtils.sendMessage(player, "Please add more dye to your palette.");
+            return ActionResult.PASS;
+        }
+        //Can't be colored
+        if (!blockState.isIn(CustomBlockTags.COLORED_BLOCKS)) {
+            return ActionResult.PASS;
+        }
+        //Is already the color desired
+        if (blockState.get(ColoredBlock.COLOR) == getPaletteColor(mainHandStack)) {
+            ColoredBlocksUtils.sendMessage(player, "This block is already "+ColoredBlocksUtils.getColorName(getPaletteColor(mainHandStack)));
+            return ActionResult.PASS;
+        }
+        //Do coloring
+        int paletteColor = getPaletteColor(mainHandStack);
+        world.setBlockState(blockPos, blockState.with(ColoredBlock.COLOR, paletteColor));
+        palette.setDamage(palette.getDamage() + 1);
+        ColoredBlocksUtils.sendMessage(player, "Palette damage: " + palette.getDamage());
+        ColoredBlocksUtils.sendMessage(player, "Painted " + block.getName() + " at " + blockPos.toShortString());
         return ActionResult.PASS;
     }
-
     private int getPaletteColor(ItemStack stack) {
         NbtCompound nbtCompound = stack.getOrCreateNbt();
         return nbtCompound.getInt("color");
-
     }
     private void changePaletteColor(ItemStack stack, int color) {
         NbtCompound nbtCompound = stack.getOrCreateNbt();
         nbtCompound.putInt("color", color);
     }
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         // TODO add shift right click to open a GUI to select dye color
