@@ -5,7 +5,9 @@ import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import com.mrlocalhost.coloredblocks.item.ModItems;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,7 +26,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class PaintbrushItem extends Item {
-    public PaintbrushItem(Settings settings) {super(settings);}
+    public PaintbrushItem(Settings settings) {
+        super(settings);
+        NbtCompound nbtCompound = this.getDefaultStack().getOrCreateNbt();
+        nbtCompound.putInt("color", ColoredBlocksConstants.MIN_COLOR_VALUE);
+    }
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if (Screen.hasShiftDown()) {
@@ -41,7 +47,7 @@ public class PaintbrushItem extends Item {
         World world = context.getWorld();
         PlayerEntity player = context.getPlayer();
         //If not server, holding shift, or use called with offHand
-        if(Screen.hasShiftDown() || world.isClient() || context.getHand() != Hand.MAIN_HAND) {
+        if (Screen.hasShiftDown() || world.isClient() || context.getHand() != Hand.MAIN_HAND) {
             return ActionResult.PASS;
         }
         ItemStack paintBrushStack = player.getMainHandStack();
@@ -56,7 +62,7 @@ public class PaintbrushItem extends Item {
             return ActionResult.PASS;
         }
         //If out of dye
-        if (paletteStack.getDamage() >= paletteStack.getMaxDamage()) {
+        if (paletteStack.getDamage() >= paletteStack.getMaxDamage() && !player.isCreative()) {
             ColoredBlocksUtils.sendMessage(player, "Please add more dye to your palette.");
             return ActionResult.PASS;
         }
@@ -65,16 +71,16 @@ public class PaintbrushItem extends Item {
         BlockPos blockLocation = context.getBlockPos();
         BlockState blockState = world.getBlockState(blockLocation);
         //Can't be colored
-        if (!blockState.isIn(CustomBlockTags.COLORED_BLOCKS)) {
+        if (!blockState.isIn(CustomBlockTags.COLORED_BLOCKS) && !blockState.isOf(Blocks.STONE_BRICKS)) {
             return ActionResult.PASS;
         }
-        //Is already the color desired
-        if (blockState.get(ColoredBlock.COLOR) == paintbrushColor) {
+        //If colored block and same color as desired
+        if (blockState.isIn(CustomBlockTags.COLORED_BLOCKS) && blockState.get(ColoredBlock.COLOR) == paintbrushColor) {
             ColoredBlocksUtils.sendMessage(player, "This block is already "+paintColorName);
             return ActionResult.PASS;
         }
         //Do coloring
-        doPaintAction(world, blockLocation, blockState, paintbrushColor);
+        doPaintAction(world, blockLocation, ColoredBlocksConstants.COLORED_STONE_BRICKS[paintbrushColor], paintbrushColor);
         //Do palette damage if not creative
         if (!player.isCreative()) {
             doDamagePaletteAction(paletteStack);
@@ -83,11 +89,10 @@ public class PaintbrushItem extends Item {
     }
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        //TODO add nbt data for tracking color for tip of paintbrush
         if (!world.isClient() && hand == Hand.MAIN_HAND && Screen.hasShiftDown()) {
             ItemStack mainHandStack = user.getMainHandStack();
             int currentColor = getPaintbrushColor(mainHandStack);
-            int nextColor = (currentColor != ColoredBlocksConstants.maxColorValue) ? currentColor + 1 : ColoredBlocksConstants.minColorValue;
+            int nextColor = (currentColor != ColoredBlocksConstants.MAX_COLOR_VALUE) ? currentColor + 1 : ColoredBlocksConstants.MIN_COLOR_VALUE;
             changePaintbrushColor(mainHandStack, nextColor);
             ColoredBlocksUtils.sendMessage(user, "New color: "+ColoredBlocksUtils.getColorName(getPaintbrushColor(mainHandStack)));
         }
@@ -105,10 +110,12 @@ public class PaintbrushItem extends Item {
         NbtCompound nbtCompound = stack.getOrCreateNbt();
         nbtCompound.putInt("color", color);
     }
-    private void doPaintAction(World world, BlockPos location, BlockState blockState, int color) {
-        world.setBlockState(location, blockState.with(ColoredBlock.COLOR, color));
-    }
     private void doDamagePaletteAction(ItemStack palette) {
         palette.setDamage(palette.getDamage() + 1);
+    }
+    private void doPaintAction(World world, BlockPos pos, Block newBlock, int color) {
+        BlockState newBlockState = newBlock.getDefaultState().with(ColoredBlock.COLOR, color);
+        world.removeBlock(pos, false);
+        world.setBlockState(pos, newBlockState);
     }
 }

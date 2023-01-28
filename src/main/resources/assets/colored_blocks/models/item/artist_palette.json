@@ -4,13 +4,15 @@
     "layer0": "colored_blocks:item/artist_palette/artist_palette_100"
   },
   "overrides": [
-    {"predicate": {"damage": 0.25},
+    {"predicate": {"damage": 0.00000},
+      "model": "colored_blocks:item/artist_palette/artist_palette_100"},
+    {"predicate": {"damage": 0.25000},
       "model": "colored_blocks:item/artist_palette/artist_palette_75"},
-    {"predicate": {"damage": 0.50},
+    {"predicate": {"damage": 0.50000},
       "model": "colored_blocks:item/artist_palette/artist_palette_50"},
-    {"predicate": {"damage": 0.75},
+    {"predicate": {"damage": 0.75000},
       "model": "colored_blocks:item/artist_palette/artist_palette_25"},
-    {"predicate": {"damage": 1.00},
+    {"predicate": {"damage": 1.00000},
       "model": "colored_blocks:item/artist_palette/artist_palette_0"}
   ]
 }

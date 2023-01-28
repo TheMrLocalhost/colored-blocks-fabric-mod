@@ -4,8 +4,10 @@ import com.mrlocalhost.coloredblocks.block.ModBlocks;
 import net.minecraft.block.Block;
 
 public class ColoredBlocksConstants {
-    public static final int minColorValue = 0;
-    public static final int maxColorValue = 3;
+    public static final int DYE_REPAIR_VALUE = 8;
+    public static final  int MAX_PALETTE_DAMAGE = 512;
+    public static final int MIN_COLOR_VALUE = 0;
+    public static final int MAX_COLOR_VALUE = 3;
     public static final int COLOR_RED = 0;
     public static final int COLOR_ORANGE = 1;
     public static final int COLOR_YELLOW = 2;

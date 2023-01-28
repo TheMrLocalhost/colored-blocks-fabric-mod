@@ -1,6 +1,16 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "colored_blocks:item/paintbrush"
-  }
+    "layer0": "colored_blocks:item/paintbrush/paintbrush_red"
+  },
+  "overrides": [
+    {"predicate": {"color": 0.00},
+      "model": "colored_blocks:item/paintbrush/paintbrush_red"},
+    {"predicate": {"color": 0.25},
+      "model": "colored_blocks:item/paintbrush/paintbrush_orange"},
+    {"predicate": {"color": 0.50},
+      "model": "colored_blocks:item/paintbrush/paintbrush_yellow"},
+    {"predicate": {"color": 0.75},
+      "model": "colored_blocks:item/paintbrush/paintbrush_lime"}
+  ]
 }

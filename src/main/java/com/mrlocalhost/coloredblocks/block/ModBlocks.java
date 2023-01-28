@@ -16,6 +16,7 @@ import net.minecraft.util.Identifier;
 
 @SuppressWarnings("unused")
 public class ModBlocks {
+    //TODO reduce literal blocks registered to one
     public static final Block RED_STONE_BRICKS = registerBlock("red_stone_bricks", ColoredBlocksConstants.COLOR_RED);
     public static final Block ORANGE_STONE_BRICKS = registerBlock("orange_stone_bricks", ColoredBlocksConstants.COLOR_ORANGE);
     public static final Block YELLOW_STONE_BRICKS = registerBlock("yellow_stone_bricks", ColoredBlocksConstants.COLOR_YELLOW);
@@ -32,6 +33,7 @@ public class ModBlocks {
         return Registry.register(Registries.BLOCK, new Identifier(ColoredBlocks.MOD_ID, name), block);
     }
     private static void registerBlockItem(String name, Block block) {
+        //TODO add blocks with nbt specific data
         ItemGroupEvents.modifyEntriesEvent(ModItemGroup.COLORED_BLOCKS_GROUP).register(entries -> entries.add(block));
         Registry.register(Registries.ITEM, new Identifier(ColoredBlocks.MOD_ID, name), new BlockItem(block, new Item.Settings()));
     }
