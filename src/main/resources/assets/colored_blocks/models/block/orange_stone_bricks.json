@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "colored_blocks:item/orange_stone_bricks"
+    "all": "colored_blocks:block/stone_bricks/orange_stone_bricks"
   }
 }

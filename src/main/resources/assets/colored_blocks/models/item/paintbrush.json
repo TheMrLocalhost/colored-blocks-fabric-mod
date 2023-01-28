@@ -4,13 +4,21 @@
     "layer0": "colored_blocks:item/paintbrush/paintbrush_red"
   },
   "overrides": [
-    {"predicate": {"color": 0.00},
-      "model": "colored_blocks:item/paintbrush/paintbrush_red"},
-    {"predicate": {"color": 0.25},
-      "model": "colored_blocks:item/paintbrush/paintbrush_orange"},
-    {"predicate": {"color": 0.50},
-      "model": "colored_blocks:item/paintbrush/paintbrush_yellow"},
-    {"predicate": {"color": 0.75},
-      "model": "colored_blocks:item/paintbrush/paintbrush_lime"}
+    {"predicate": {"color": 0.00000},"model": "colored_blocks:item/paintbrush/paintbrush_red"},
+    {"predicate": {"color": 0.06250},"model": "colored_blocks:item/paintbrush/paintbrush_orange"},
+    {"predicate": {"color": 0.12500},"model": "colored_blocks:item/paintbrush/paintbrush_yellow"},
+    {"predicate": {"color": 0.18750},"model": "colored_blocks:item/paintbrush/paintbrush_lime"},
+    {"predicate": {"color": 0.25000},"model": "colored_blocks:item/paintbrush/paintbrush_green"},
+    {"predicate": {"color": 0.31250},"model": "colored_blocks:item/paintbrush/paintbrush_cyan"},
+    {"predicate": {"color": 0.37500},"model": "colored_blocks:item/paintbrush/paintbrush_light_blue"},
+    {"predicate": {"color": 0.43750},"model": "colored_blocks:item/paintbrush/paintbrush_blue"},
+    {"predicate": {"color": 0.50000},"model": "colored_blocks:item/paintbrush/paintbrush_purple"},
+    {"predicate": {"color": 0.56250},"model": "colored_blocks:item/paintbrush/paintbrush_magenta"},
+    {"predicate": {"color": 0.62500},"model": "colored_blocks:item/paintbrush/paintbrush_pink"},
+    {"predicate": {"color": 0.68750},"model": "colored_blocks:item/paintbrush/paintbrush_brown"},
+    {"predicate": {"color": 0.75000},"model": "colored_blocks:item/paintbrush/paintbrush_white"},
+    {"predicate": {"color": 0.81250},"model": "colored_blocks:item/paintbrush/paintbrush_light_gray"},
+    {"predicate": {"color": 0.87500},"model": "colored_blocks:item/paintbrush/paintbrush_gray"},
+    {"predicate": {"color": 0.93750},"model": "colored_blocks:item/paintbrush/paintbrush_black"}
   ]
 }
