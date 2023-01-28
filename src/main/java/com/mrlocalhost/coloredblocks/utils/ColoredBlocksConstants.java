@@ -1,5 +1,8 @@
 package com.mrlocalhost.coloredblocks.utils;
 
+import com.mrlocalhost.coloredblocks.block.ModBlocks;
+import net.minecraft.block.Block;
+
 public class ColoredBlocksConstants {
     public static final int minColorValue = 0;
     public static final int maxColorValue = 3;
@@ -36,5 +39,11 @@ public class ColoredBlocksConstants {
             "Light Gray",
             "Gray",
             "Black",
+    };
+    public static final Block[] COLORED_STONE_BRICKS = new Block[]{
+            ModBlocks.RED_STONE_BRICKS,
+            ModBlocks.ORANGE_STONE_BRICKS,
+            ModBlocks.YELLOW_STONE_BRICKS,
+            ModBlocks.LIME_STONE_BRICKS
     };
 }

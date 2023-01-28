@@ -15,5 +15,4 @@ public class ColoredBlocksUtils {
     public static String getColorName(int value) {
         return ColoredBlocksConstants.COLOR_NAMES[value];
     }
-
 }
