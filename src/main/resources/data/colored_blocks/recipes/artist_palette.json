@@ -2,16 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "X": {
-      "tag": "minecraft:wooden_pressure_plates"
-    },
     "#": {
-      "tag": "minecraft:dyes"
+      "tag": "minecraft:wooden_pressure_plates"
     }
   },
   "pattern": [
     "###",
-    "#X#",
+    "###",
     "###"
   ],
   "result": {
