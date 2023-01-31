@@ -11,7 +11,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-@SuppressWarnings("unused")
 public class ModItems {
     public static final Item ARTIST_PALETTE = registerItem("artist_palette", new ArtistPaletteItem(new Item.Settings()
             .maxCount(1)

@@ -1,11 +1,9 @@
 package com.mrlocalhost.coloredblocks.item.custom;
 
-import com.mrlocalhost.coloredblocks.block.custom.ColoredBlock;
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import com.mrlocalhost.coloredblocks.item.ModItems;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
@@ -75,12 +73,12 @@ public class PaintbrushItem extends Item {
             return ActionResult.PASS;
         }
         //If colored block and same color as desired
-        if (blockState.isIn(CustomBlockTags.COLORED_BLOCKS) && blockState.get(ColoredBlock.COLOR) == paintbrushColor) {
+        if (blockState.isIn(CustomBlockTags.COLORED_BLOCKS) && ColoredBlocksUtils.getColorOfBlock(blockState) == paintbrushColor) {
             ColoredBlocksUtils.sendMessage(player, "This block is already "+paintColorName);
             return ActionResult.PASS;
         }
         //Do coloring
-        doPaintAction(world, blockLocation, ColoredBlocksConstants.COLORED_STONE_BRICKS[paintbrushColor], paintbrushColor);
+        doPaintAction(world, blockLocation, paintbrushColor);
         //Do palette damage if not creative
         if (!player.isCreative()) {
             doDamagePaletteAction(paletteStack);
@@ -113,8 +111,8 @@ public class PaintbrushItem extends Item {
     private void doDamagePaletteAction(ItemStack palette) {
         palette.setDamage(palette.getDamage() + 1);
     }
-    private void doPaintAction(World world, BlockPos pos, Block newBlock, int color) {
-        BlockState newBlockState = newBlock.getDefaultState().with(ColoredBlock.COLOR, color);
+    private void doPaintAction(World world, BlockPos pos, int color) {
+        BlockState newBlockState = ColoredBlocksConstants.COLORED_STONE_BRICKS[color].getDefaultState();
         world.removeBlock(pos, false);
         world.setBlockState(pos, newBlockState);
     }
