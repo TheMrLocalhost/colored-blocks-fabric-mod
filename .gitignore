@@ -4,6 +4,7 @@
 build/
 out/
 classes/
+src/main/generated/.cache/
 
 # eclipse
 
@@ -31,7 +32,7 @@ bin/
 # fabric
 
 run/
-.**/
+
 
 # java
 
