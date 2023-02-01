@@ -23,6 +23,9 @@
     ],
     "client": [
       "com.mrlocalhost.coloredblocks.ColoredBlocksClient"
+    ],
+    "fabric-datagen": [
+      "com.mrlocalhost.coloredblocks.datagen.ModDataGeneration"
     ]
   },
   "mixins": [

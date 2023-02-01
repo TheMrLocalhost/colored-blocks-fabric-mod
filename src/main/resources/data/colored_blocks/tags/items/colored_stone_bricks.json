@@ -1,0 +1,21 @@
+{
+  "values": [
+    "minecraft:stone_bricks",
+    "colored_blocks:red_stone_bricks",
+    "colored_blocks:orange_stone_bricks",
+    "colored_blocks:yellow_stone_bricks",
+    "colored_blocks:lime_stone_bricks",
+    "colored_blocks:green_stone_bricks",
+    "colored_blocks:cyan_stone_bricks",
+    "colored_blocks:light_blue_stone_bricks",
+    "colored_blocks:blue_stone_bricks",
+    "colored_blocks:purple_stone_bricks",
+    "colored_blocks:magenta_stone_bricks",
+    "colored_blocks:pink_stone_bricks",
+    "colored_blocks:brown_stone_bricks",
+    "colored_blocks:white_stone_bricks",
+    "colored_blocks:light_gray_stone_bricks",
+    "colored_blocks:gray_stone_bricks",
+    "colored_blocks:black_stone_bricks"
+  ]
+}

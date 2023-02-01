@@ -1,3 +1,6 @@
+# generated cache
+src/main/generated/.cache
+
 # gradle
 
 .gradle/
