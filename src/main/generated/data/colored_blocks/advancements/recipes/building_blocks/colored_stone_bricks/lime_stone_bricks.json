@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "colored_blocks:colored_stone_bricks"
+            "tag": "colored_blocks:colorable_stone_bricks"
           }
         ]
       },
@@ -15,7 +15,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "minecraft:dyes"
+            "tag": "colored_blocks:dyes"
           }
         ]
       },

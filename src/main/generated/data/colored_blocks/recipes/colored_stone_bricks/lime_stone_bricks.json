@@ -6,7 +6,7 @@
       "item": "minecraft:lime_dye"
     },
     "T": {
-      "tag": "colored_blocks:colored_stone_bricks"
+      "tag": "colored_blocks:colorable_stone_bricks"
     }
   },
   "pattern": [

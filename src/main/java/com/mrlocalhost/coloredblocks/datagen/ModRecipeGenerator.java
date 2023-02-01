@@ -28,7 +28,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
     }
     private void generateCleanedBlocks(Consumer<RecipeJsonProvider> exporter, Block output, String suffix, TagKey<Item> tag) {
         for (int i=1; i<10; i++) {
-            ShapelessRecipeJsonBuilder builder = new ShapelessRecipeJsonBuilder(RecipeCategory.BUILDING_BLOCKS, output, i);
+            ShapelessRecipeJsonBuilder builder = new ShapelessRecipeJsonBuilder(RecipeCategory.MISC, output, i);
             for (int j=1;j<=i;j++) {builder.input(tag);}
             builder.criterion("cleaned"+suffix+"/cleaned"+suffix+"_"+i,conditionsFromTag(tag));
             builder.offerTo(exporter, new Identifier(ColoredBlocks.MOD_ID+":cleaned"+suffix+"/cleaned"+suffix+"_"+i));
@@ -47,7 +47,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
     }
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
-        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_STONE_BRICKS, "_stone_bricks", CustomItemTags.COLORED_STONE_BRICKS);
+        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_STONE_BRICKS, "_stone_bricks", CustomItemTags.COLORABLE_STONE_BRICKS);
         generateCleanedBlocks(exporter, Blocks.STONE_BRICKS, "_stone_bricks", CustomItemTags.COLORED_STONE_BRICKS);
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLEANING_CLOTH, 1)
                 .pattern("TTT").pattern("TWT").pattern("TTT")

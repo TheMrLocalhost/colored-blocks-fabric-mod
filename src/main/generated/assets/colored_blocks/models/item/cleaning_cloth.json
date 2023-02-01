@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "colored_blocks:item/cleaning_cloth"
+  }
+}
