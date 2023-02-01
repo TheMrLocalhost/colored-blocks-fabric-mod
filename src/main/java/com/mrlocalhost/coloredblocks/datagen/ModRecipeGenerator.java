@@ -55,12 +55,12 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion("has_paper_for_cleaning_cloth",conditionsFromItem(Items.PAPER))
                 .criterion("has_any_wool_for_cleaning_cloth",conditionsFromTag(ItemTags.WOOL))
                 .offerTo(exporter, new Identifier(ColoredBlocks.MOD_ID+":cleaning_cloth"));
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLEANING_CLOTH, 1)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ARTIST_PALETTE, 1)
                 .pattern("TTT").pattern("TTT").pattern("TTT")
                 .input('T', ItemTags.WOODEN_PRESSURE_PLATES)
                 .criterion("has_any_pressure_plate_for_artist_palette",conditionsFromTag(ItemTags.WOODEN_PRESSURE_PLATES))
                 .offerTo(exporter, new Identifier(ColoredBlocks.MOD_ID+":artist_palette"));
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLEANING_CLOTH, 1)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PAINTBRUSH, 1)
                 .pattern("  X").pattern(" # ").pattern("#  ")
                 .input('X', ItemTags.WOOL).input('#', Items.STICK)
                 .criterion("has_stick_for_paintbrush",conditionsFromItem(Items.STICK))
