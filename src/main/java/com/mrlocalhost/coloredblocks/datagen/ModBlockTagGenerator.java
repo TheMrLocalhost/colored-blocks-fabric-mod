@@ -15,10 +15,13 @@ import java.util.concurrent.CompletableFuture;
 public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 
     private static final TagKey<Block> COLORED_STONE_BRICKS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_bricks"));
-    private static final TagKey<Block> COLORED_WOOD_PLANKS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_planks"));
-
     private static final TagKey<Block> COLORABLE_STONE_BRICKS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_bricks"));
+
+    private static final TagKey<Block> COLORED_WOOD_PLANKS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_planks"));
     private static final TagKey<Block> COLORABLE_WOOD_PLANKS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_planks"));
+
+    private static final TagKey<Block> COLORED_WOOL_BLOCKS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_wool_blocks"));
+    private static final TagKey<Block> COLORABLE_WOOL_BLOCKS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_wool_blocks"));
 
     private static final TagKey<Block> MINEABLE_BLOCKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:mineable/pickaxe"));
     private static final TagKey<Block> AXEABLE_BLOCKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:mineable/axe"));
@@ -36,11 +39,17 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
             getOrCreateTagBuilder(COLORED_WOOD_PLANKS_BLOCK).add(block);
             getOrCreateTagBuilder(AXEABLE_BLOCKS).add(block);
         }
+        for (Block block : ColoredBlocksConstants.COLORED_WOOL_BLOCKS) {
+            getOrCreateTagBuilder(COLORED_WOOL_BLOCKS_BLOCK).add(block);
+        }
         getOrCreateTagBuilder(COLORABLE_STONE_BRICKS_ITEM)
                 .add(Blocks.STONE_BRICKS)
                 .addTag(COLORED_STONE_BRICKS_BLOCK);
         getOrCreateTagBuilder(COLORABLE_WOOD_PLANKS_ITEM)
                 .add(Blocks.BIRCH_PLANKS)
                 .addTag(COLORED_WOOD_PLANKS_BLOCK);
+        getOrCreateTagBuilder(COLORABLE_WOOL_BLOCKS_ITEM)
+                .add(Blocks.WHITE_WOOL)
+                .addTag(COLORED_WOOL_BLOCKS_BLOCK);
     }
 }

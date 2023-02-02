@@ -68,12 +68,11 @@ public class PaintbrushItem extends Item {
         BlockPos blockLocation = context.getBlockPos();
         BlockState blockState = world.getBlockState(blockLocation);
         //Can't be colored
-        //if (!ColoredBlocksConstants.COLORABLE_BLOCKS.contains(blockState.getBlock()) && !blockState.isOf(Blocks.STONE_BRICKS)) {
-        if (!blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS) && !blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANKS)) {
+        if (!ColoredBlocksUtils.isColorable(blockState)) {
             return ActionResult.PASS;
         }
         //If colored block and same color as desired
-        if (ColoredBlocksConstants.COLORABLE_BLOCKS.contains(blockState.getBlock()) && ColoredBlocksUtils.getColorOfBlock(blockState) == paintbrushColor) {
+        if (ColoredBlocksUtils.isColorable(blockState) && ColoredBlocksUtils.isSameColor(blockState, paintbrushColor)) {
             ColoredBlocksUtils.sendMessage(player, "This block is already "+paintColorName);
             return ActionResult.PASS;
         }
@@ -112,11 +111,14 @@ public class PaintbrushItem extends Item {
         palette.setDamage(palette.getDamage() + 1);
     }
     private boolean doPaintAction(World world, BlockPos pos, BlockState blockState, int color) {
+        //TODO add support for terracotta, concrete, concrete powder, glazed terracotta, carpet
         BlockState newBlockState;
         if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS)) {
             newBlockState = ColoredBlocksConstants.COLORED_STONE_BRICKS[color].getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANKS)) {
             newBlockState = ColoredBlocksConstants.COLORED_WOOD_PLANKS[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOL_BLOCKS)) {
+            newBlockState = ColoredBlocksConstants.COLORED_WOOL_BLOCKS[color].getDefaultState();
         } else {
             return false;
         }

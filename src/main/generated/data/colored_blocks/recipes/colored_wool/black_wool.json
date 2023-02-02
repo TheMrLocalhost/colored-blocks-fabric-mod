@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "D": {
+      "item": "minecraft:black_dye"
+    },
+    "T": {
+      "tag": "colored_blocks:colorable_wool_blocks"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "TDT",
+    "TTT"
+  ],
+  "result": {
+    "count": 8,
+    "item": "minecraft:black_wool"
+  }
+}

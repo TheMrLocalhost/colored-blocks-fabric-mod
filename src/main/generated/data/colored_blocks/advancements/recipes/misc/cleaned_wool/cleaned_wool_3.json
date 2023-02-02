@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "cleaned_wool/cleaned_wool_3": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:colored_wool_blocks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "colored_blocks:cleaned_wool/cleaned_wool_3"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "cleaned_wool/cleaned_wool_3",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "colored_blocks:cleaned_wool/cleaned_wool_3"
+    ]
+  }
+}

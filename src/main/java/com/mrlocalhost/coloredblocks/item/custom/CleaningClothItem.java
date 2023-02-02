@@ -43,6 +43,8 @@ public class CleaningClothItem extends Item {
             doCleaningAction(world, blockLocation, Blocks.STONE_BRICKS);
         } else if (blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANKS)) {
             doCleaningAction(world, blockLocation, Blocks.BIRCH_PLANKS);
+        } else if (blockState.isIn(CustomBlockTags.COLORED_WOOL_BLOCKS)) {
+            doCleaningAction(world, blockLocation, Blocks.WHITE_WOOL);
         }
 
         return ActionResult.PASS;

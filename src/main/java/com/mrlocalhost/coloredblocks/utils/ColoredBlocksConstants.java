@@ -2,6 +2,7 @@ package com.mrlocalhost.coloredblocks.utils;
 
 import com.mrlocalhost.coloredblocks.block.ModBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import java.util.ArrayList;
@@ -54,6 +55,24 @@ public class ColoredBlocksConstants {
         ModBlocks.GRAY_WOOD_PLANKS,
         ModBlocks.BLACK_WOOD_PLANKS
     };
+    public static final Block[] COLORED_WOOL_BLOCKS = new Block[]{
+        Blocks.RED_WOOL,
+        Blocks.ORANGE_WOOL,
+        Blocks.YELLOW_WOOL,
+        Blocks.LIME_WOOL,
+        Blocks.GREEN_WOOL,
+        Blocks.CYAN_WOOL,
+        Blocks.LIGHT_BLUE_WOOL,
+        Blocks.BLUE_WOOL,
+        Blocks.PURPLE_WOOL,
+        Blocks.MAGENTA_WOOL,
+        Blocks.PINK_WOOL,
+        Blocks.BROWN_WOOL,
+        Blocks.WHITE_WOOL,
+        Blocks.LIGHT_GRAY_WOOL,
+        Blocks.GRAY_WOOL,
+        Blocks.BLACK_WOOL,
+    };
     public static final List<String> COLOR_MAP = new ArrayList<>(){{
         add("red");
         add("orange");
@@ -75,11 +94,13 @@ public class ColoredBlocksConstants {
     public static final List<String> BLOCK_SUFFIXES = new ArrayList<>(){{
         add("_stone_bricks");
         add("_wood_planks");
+        add("_wool");
     }};
     public static final List<Block> COLORABLE_BLOCKS = new ArrayList<>(){{
         for (int i = 0; i<16; i++) {
             add(COLORED_STONE_BRICKS[i]);
             add(COLORED_WOOD_PLANKS[i]);
+            add(COLORED_WOOL_BLOCKS[i]);
         }
     }};
     public static final Item[] DYE_ITEMS = new Item[]{

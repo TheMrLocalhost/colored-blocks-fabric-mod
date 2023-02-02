@@ -1,5 +1,6 @@
 package com.mrlocalhost.coloredblocks.utils;
 
+import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -32,5 +33,15 @@ public class ColoredBlocksUtils {
             strippedName = strippedName.replace(suffix, "");
         }
         return strippedName;
+    }
+    public static boolean isColorable(BlockState blockState) {
+        return (
+               blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS)
+            || blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANKS)
+            || blockState.isIn(CustomBlockTags.COLORABLE_WOOL_BLOCKS)
+        );
+    }
+    public static boolean isSameColor(BlockState blockState, int color) {
+        return (getColorOfBlock(blockState) == color);
     }
 }

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:white_wool",
+    "#colored_blocks:colored_wool_blocks"
+  ]
+}
