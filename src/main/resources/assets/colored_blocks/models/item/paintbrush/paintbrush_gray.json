@@ -1,5 +1,5 @@
 {
-  "parent": "item/generated",
+  "parent": "item/handheld",
   "textures": {
     "layer0": "colored_blocks:item/paintbrush/paintbrush_gray"
   }
