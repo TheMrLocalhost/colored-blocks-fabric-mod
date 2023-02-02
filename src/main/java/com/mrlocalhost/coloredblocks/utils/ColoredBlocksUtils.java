@@ -29,7 +29,7 @@ public class ColoredBlocksUtils {
     private static String stripColorOffName(String name) {
         String strippedName = name;
         for (String suffix: ColoredBlocksConstants.BLOCK_SUFFIXES) {
-            strippedName = name.replace(suffix, "");
+            strippedName = strippedName.replace(suffix, "");
         }
         return strippedName;
     }

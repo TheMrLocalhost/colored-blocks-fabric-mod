@@ -48,4 +48,21 @@ public class ModBlocks {
     public static final Block LIGHT_GRAY_STONE_BRICKS = registerBlock("light_gray_stone_bricks");
     public static final Block GRAY_STONE_BRICKS = registerBlock("gray_stone_bricks");
     public static final Block BLACK_STONE_BRICKS = registerBlock("black_stone_bricks");
+
+    public static final Block RED_WOOD_PLANKS = registerBlock("red_wood_planks");
+    public static final Block ORANGE_WOOD_PLANKS = registerBlock("orange_wood_planks");
+    public static final Block YELLOW_WOOD_PLANKS = registerBlock("yellow_wood_planks");
+    public static final Block LIME_WOOD_PLANKS = registerBlock("lime_wood_planks");
+    public static final Block GREEN_WOOD_PLANKS = registerBlock("green_wood_planks");
+    public static final Block CYAN_WOOD_PLANKS = registerBlock("cyan_wood_planks");
+    public static final Block LIGHT_BLUE_WOOD_PLANKS = registerBlock("light_blue_wood_planks");
+    public static final Block BLUE_WOOD_PLANKS = registerBlock("blue_wood_planks");
+    public static final Block PURPLE_WOOD_PLANKS = registerBlock("purple_wood_planks");
+    public static final Block MAGENTA_WOOD_PLANKS = registerBlock("magenta_wood_planks");
+    public static final Block PINK_WOOD_PLANKS = registerBlock("pink_wood_planks");
+    public static final Block BROWN_WOOD_PLANKS = registerBlock("brown_wood_planks");
+    public static final Block WHITE_WOOD_PLANKS = registerBlock("white_wood_planks");
+    public static final Block LIGHT_GRAY_WOOD_PLANKS = registerBlock("light_gray_wood_planks");
+    public static final Block GRAY_WOOD_PLANKS = registerBlock("gray_wood_planks");
+    public static final Block BLACK_WOOD_PLANKS = registerBlock("black_wood_planks");
 }

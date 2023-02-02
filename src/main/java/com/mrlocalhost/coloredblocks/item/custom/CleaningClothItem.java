@@ -1,6 +1,7 @@
 package com.mrlocalhost.coloredblocks.item.custom;
 
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
+import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -34,11 +35,16 @@ public class CleaningClothItem extends Item {
         BlockPos blockLocation = context.getBlockPos();
         BlockState blockState = world.getBlockState(blockLocation);
         //if colored block
-        if (!blockState.isIn(CustomBlockTags.COLORED_BLOCKS)) {
+        if (!ColoredBlocksConstants.COLORABLE_BLOCKS.contains(blockState.getBlock())) {
             return ActionResult.PASS;
         }
         //do cleaning
-        doCleaningAction(world, blockLocation, Blocks.STONE_BRICKS);
+        if (blockState.isIn(CustomBlockTags.COLORED_STONE_BRICKS)) {
+            doCleaningAction(world, blockLocation, Blocks.STONE_BRICKS);
+        } else if (blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANKS)) {
+            doCleaningAction(world, blockLocation, Blocks.BIRCH_PLANKS);
+        }
+
         return ActionResult.PASS;
     }
     private void doCleaningAction(World world, BlockPos pos, Block newBlock) {

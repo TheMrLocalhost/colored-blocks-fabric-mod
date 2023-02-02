@@ -1,13 +1,14 @@
 package com.mrlocalhost.coloredblocks.datagen;
 
 import com.mrlocalhost.coloredblocks.item.ModItems;
-import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.block.Block;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
+
+import static com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants.COLORED_STONE_BRICKS;
+import static com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants.COLORED_WOOD_PLANKS;
 
 public class ModModelGenerator extends FabricModelProvider {
     public ModModelGenerator(FabricDataOutput output) {
@@ -15,8 +16,9 @@ public class ModModelGenerator extends FabricModelProvider {
     }
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        for (Block block : ColoredBlocksConstants.COLORED_STONE_BRICKS) {
-            blockStateModelGenerator.registerCubeAllModelTexturePool(block);
+        for (int i = 0; i<16; i++) {
+            blockStateModelGenerator.registerCubeAllModelTexturePool(COLORED_STONE_BRICKS[i]);
+            blockStateModelGenerator.registerCubeAllModelTexturePool(COLORED_WOOD_PLANKS[i]);
         }
     }
     @Override

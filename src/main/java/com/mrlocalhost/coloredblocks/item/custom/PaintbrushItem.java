@@ -5,7 +5,6 @@ import com.mrlocalhost.coloredblocks.item.ModItems;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -69,18 +68,19 @@ public class PaintbrushItem extends Item {
         BlockPos blockLocation = context.getBlockPos();
         BlockState blockState = world.getBlockState(blockLocation);
         //Can't be colored
-        if (!blockState.isIn(CustomBlockTags.COLORED_BLOCKS) && !blockState.isOf(Blocks.STONE_BRICKS)) {
+        //if (!ColoredBlocksConstants.COLORABLE_BLOCKS.contains(blockState.getBlock()) && !blockState.isOf(Blocks.STONE_BRICKS)) {
+        if (!blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS) && !blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANKS)) {
             return ActionResult.PASS;
         }
         //If colored block and same color as desired
-        if (blockState.isIn(CustomBlockTags.COLORED_BLOCKS) && ColoredBlocksUtils.getColorOfBlock(blockState) == paintbrushColor) {
+        if (ColoredBlocksConstants.COLORABLE_BLOCKS.contains(blockState.getBlock()) && ColoredBlocksUtils.getColorOfBlock(blockState) == paintbrushColor) {
             ColoredBlocksUtils.sendMessage(player, "This block is already "+paintColorName);
             return ActionResult.PASS;
         }
         //Do coloring
-        doPaintAction(world, blockLocation, paintbrushColor);
+        boolean didPaint = doPaintAction(world, blockLocation, blockState, paintbrushColor);
         //Do palette damage if not creative
-        if (!player.isCreative()) {
+        if (didPaint && !player.isCreative()) {
             doDamagePaletteAction(paletteStack);
         }
         return ActionResult.PASS;
@@ -111,9 +111,17 @@ public class PaintbrushItem extends Item {
     private void doDamagePaletteAction(ItemStack palette) {
         palette.setDamage(palette.getDamage() + 1);
     }
-    private void doPaintAction(World world, BlockPos pos, int color) {
-        BlockState newBlockState = ColoredBlocksConstants.COLORED_STONE_BRICKS[color].getDefaultState();
+    private boolean doPaintAction(World world, BlockPos pos, BlockState blockState, int color) {
+        BlockState newBlockState;
+        if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS)) {
+            newBlockState = ColoredBlocksConstants.COLORED_STONE_BRICKS[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANKS)) {
+            newBlockState = ColoredBlocksConstants.COLORED_WOOD_PLANKS[color].getDefaultState();
+        } else {
+            return false;
+        }
         world.removeBlock(pos, false);
         world.setBlockState(pos, newBlockState);
+        return true;
     }
 }

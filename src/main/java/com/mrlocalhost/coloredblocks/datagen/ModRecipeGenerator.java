@@ -19,7 +19,7 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import java.util.function.Consumer;
 import static com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants.COLOR_MAP;
-import static com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants.DYE_MAP;
+import static com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants.DYE_ITEMS;
 import static com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils.getColorOfBlock;
 
 public class ModRecipeGenerator extends FabricRecipeProvider {
@@ -35,11 +35,11 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         }
     }
     private void generateColoredBlocks(Consumer<RecipeJsonProvider> exporter, Block[] blocks, String suffix, TagKey<Item> tag) {
-        for (Block block : blocks) {
-            String blockName = COLOR_MAP.get(getColorOfBlock(block))+suffix;
-            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, block, 8)
+        for (int i = 0; i<16; i++) {
+            String blockName = COLOR_MAP.get(getColorOfBlock(blocks[i]))+suffix;
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, blocks[i], 8)
                     .pattern("TTT").pattern("TDT").pattern("TTT")
-                    .input('T', tag).input('D', DYE_MAP.get(block))
+                    .input('T', tag).input('D', DYE_ITEMS[i])
                     .criterion("dye_for_"+blockName,conditionsFromTag(CustomItemTags.DYES))
                     .criterion("colored"+suffix+"/"+blockName,conditionsFromTag(tag))
                     .offerTo(exporter, new Identifier(ColoredBlocks.MOD_ID+":colored"+suffix+"/"+blockName));
@@ -49,6 +49,10 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_STONE_BRICKS, "_stone_bricks", CustomItemTags.COLORABLE_STONE_BRICKS);
         generateCleanedBlocks(exporter, Blocks.STONE_BRICKS, "_stone_bricks", CustomItemTags.COLORED_STONE_BRICKS);
+
+        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_WOOD_PLANKS, "_wood_planks", CustomItemTags.COLORABLE_WOOD_PLANKS);
+        generateCleanedBlocks(exporter, Blocks.BIRCH_PLANKS, "_wood_planks", CustomItemTags.COLORED_WOOD_PLANKS);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLEANING_CLOTH, 1)
                 .pattern("TTT").pattern("TWT").pattern("TTT")
                 .input('T', Items.PAPER).input('W', ItemTags.WOOL)

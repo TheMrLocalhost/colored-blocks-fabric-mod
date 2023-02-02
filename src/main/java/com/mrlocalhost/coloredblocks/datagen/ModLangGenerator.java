@@ -37,5 +37,21 @@ public class ModLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.GRAY_STONE_BRICKS,"Gray Stone Bricks");
         translationBuilder.add(ModBlocks.BLACK_STONE_BRICKS,"Black Stone Bricks");
 
+        translationBuilder.add(ModBlocks.RED_WOOD_PLANKS,"Red Wood Planks");
+        translationBuilder.add(ModBlocks.ORANGE_WOOD_PLANKS,"Orange Wood Planks");
+        translationBuilder.add(ModBlocks.YELLOW_WOOD_PLANKS,"Yellow Wood Planks");
+        translationBuilder.add(ModBlocks.LIME_WOOD_PLANKS,"Lime Wood Planks");
+        translationBuilder.add(ModBlocks.GREEN_WOOD_PLANKS,"Green Wood Planks");
+        translationBuilder.add(ModBlocks.CYAN_WOOD_PLANKS,"Cyan Wood Planks");
+        translationBuilder.add(ModBlocks.LIGHT_BLUE_WOOD_PLANKS,"Light Blue Wood Planks");
+        translationBuilder.add(ModBlocks.BLUE_WOOD_PLANKS,"Blue Wood Planks");
+        translationBuilder.add(ModBlocks.PURPLE_WOOD_PLANKS,"Purple Wood Planks");
+        translationBuilder.add(ModBlocks.MAGENTA_WOOD_PLANKS,"Magenta Wood Planks");
+        translationBuilder.add(ModBlocks.PINK_WOOD_PLANKS,"Pink Wood Planks");
+        translationBuilder.add(ModBlocks.BROWN_WOOD_PLANKS,"Brown Wood Planks");
+        translationBuilder.add(ModBlocks.WHITE_WOOD_PLANKS,"White Wood Planks");
+        translationBuilder.add(ModBlocks.LIGHT_GRAY_WOOD_PLANKS,"Light Gray Wood Planks");
+        translationBuilder.add(ModBlocks.GRAY_WOOD_PLANKS,"Gray Wood Planks");
+        translationBuilder.add(ModBlocks.BLACK_WOOD_PLANKS,"Black Wood Planks");
     }
 }

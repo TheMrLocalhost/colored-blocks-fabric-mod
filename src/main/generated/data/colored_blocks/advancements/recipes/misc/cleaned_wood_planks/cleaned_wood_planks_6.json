@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "cleaned_wood_planks/cleaned_wood_planks_6": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:colored_wood_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "colored_blocks:cleaned_wood_planks/cleaned_wood_planks_6"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "cleaned_wood_planks/cleaned_wood_planks_6",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "colored_blocks:cleaned_wood_planks/cleaned_wood_planks_6"
+    ]
+  }
+}
