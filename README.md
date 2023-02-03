@@ -1,4 +1,7 @@
 # Colored Blocks Minecraft Mod for Fabric
+
+![0.0.2 screenshot](/showcase/0.0.2_blocks_preview.jpg)
+
 This mod adds custom blocks with 16 color choices.
 
 Makes stone bricks and birch planks colorable and adds the ability to color various other blocks that already have color variations.
