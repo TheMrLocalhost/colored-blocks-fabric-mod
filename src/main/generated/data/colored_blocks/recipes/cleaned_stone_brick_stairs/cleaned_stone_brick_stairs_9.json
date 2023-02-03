@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "colored_blocks:colored_stone_brick_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_stone_brick_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_stone_brick_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_stone_brick_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_stone_brick_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_stone_brick_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_stone_brick_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_stone_brick_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_stone_brick_stairs"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "minecraft:stone_brick_stairs"
+  }
+}

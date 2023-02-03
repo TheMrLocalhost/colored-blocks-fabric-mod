@@ -10,33 +10,31 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import java.util.concurrent.CompletableFuture;
-
 import static com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants.*;
 
 public class ModItemTagGenerator extends FabricTagProvider<Item> {
+    //Regular Blocks
     private static final TagKey<Item> COLORED_STONE_BRICKS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_bricks"));
     private static final TagKey<Item> COLORABLE_STONE_BRICKS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_bricks"));
-
     private static final TagKey<Item> COLORED_WOOD_PLANKS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_planks"));
     private static final TagKey<Item> COLORABLE_WOOD_PLANKS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_planks"));
-
     private static final TagKey<Item> COLORED_WOOL_BLOCKS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_wool_blocks"));
     private static final TagKey<Item> COLORABLE_WOOL_BLOCKS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_wool_blocks"));
-
     private static final TagKey<Item> COLORED_TERRACOTTA_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_terracotta"));
     private static final TagKey<Item> COLORABLE_TERRACOTTA_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_terracotta"));
-
     private static final TagKey<Item> COLORED_GLAZED_TERRACOTTA_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_glazed_terracotta"));
     private static final TagKey<Item> COLORABLE_GLAZED_TERRACOTTA_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_glazed_terracotta"));
-
     private static final TagKey<Item> COLORED_CONCRETE_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_concrete"));
     private static final TagKey<Item> COLORABLE_CONCRETE_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_concrete"));
-
     private static final TagKey<Item> COLORED_STAINED_GLASS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_stained_glass"));
     private static final TagKey<Item> COLORABLE_STAINED_GLASS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_stained_glass"));
-
     private static final TagKey<Item> COLORED_CARPET_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_carpet"));
     private static final TagKey<Item> COLORABLE_CARPET_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_carpet"));
+    //Stair Blocks
+    private static final TagKey<Item> COLORED_STONE_BRICK_STAIRS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_brick_stairs"));
+    private static final TagKey<Item> COLORABLE_STONE_BRICK_STAIRS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_brick_stairs"));
+    private static final TagKey<Item> COLORED_WOOD_PLANK_STAIRS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_plank_stairs"));
+    private static final TagKey<Item> COLORABLE_WOOD_PLANK_STAIRS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_plank_stairs"));
 
     private static final TagKey<Item> DYES = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":dyes"));
     public ModItemTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookupFuture) {
@@ -53,6 +51,8 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
             getOrCreateTagBuilder(COLORED_CONCRETE_ITEM).add(COLORED_CONCRETE[i].asItem());
             getOrCreateTagBuilder(COLORED_STAINED_GLASS_ITEM).add(COLORED_STAINED_GLASS[i].asItem());
             getOrCreateTagBuilder(COLORED_CARPET_ITEM).add(COLORED_CARPET[i].asItem());
+            getOrCreateTagBuilder(COLORED_STONE_BRICK_STAIRS_ITEM).add(COLORED_STONE_BRICK_STAIRS[i].asItem());
+            getOrCreateTagBuilder(COLORED_WOOD_PLANK_STAIRS_ITEM).add(COLORED_WOOD_PLANK_STAIRS[i].asItem());
             getOrCreateTagBuilder(DYES).add(DYE_ITEMS[i]);
         }
         getOrCreateTagBuilder(COLORABLE_STONE_BRICKS_ITEM)
@@ -79,5 +79,11 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(COLORABLE_CARPET_ITEM)
                 .add(Items.WHITE_CARPET)
                 .addTag(COLORED_CARPET_ITEM);
+        getOrCreateTagBuilder(COLORABLE_STONE_BRICK_STAIRS_ITEM)
+                .add(Items.STONE_BRICK_STAIRS)
+                .addTag(COLORED_STONE_BRICK_STAIRS_ITEM);
+        getOrCreateTagBuilder(COLORABLE_WOOD_PLANK_STAIRS_ITEM)
+                .add(Items.BIRCH_STAIRS)
+                .addTag(COLORED_WOOD_PLANK_STAIRS_ITEM);
     }
 }

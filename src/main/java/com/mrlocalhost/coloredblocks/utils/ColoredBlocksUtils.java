@@ -3,6 +3,7 @@ package com.mrlocalhost.coloredblocks.utils;
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.StairsBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
@@ -29,10 +30,8 @@ public class ColoredBlocksUtils {
     }
     private static String stripColorOffName(String name) {
         String strippedName = name;
-        System.out.println("Original name: "+strippedName);
         for (String suffix: ColoredBlocksConstants.BLOCK_SUFFIXES) {
             strippedName = strippedName.replace(suffix, "");
-            System.out.println("Stripped off '"+suffix+"': "+strippedName);
         }
         return strippedName;
     }
@@ -46,9 +45,18 @@ public class ColoredBlocksUtils {
             || blockState.isIn(CustomBlockTags.COLORABLE_CONCRETE)
             || blockState.isIn(CustomBlockTags.COLORABLE_STAINED_GLASS)
             || blockState.isIn(CustomBlockTags.COLORABLE_CARPET)
+            || blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_STAIRS)
+            || blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_STAIRS)
         );
     }
     public static boolean isSameColor(BlockState blockState, int color) {
         return (getColorOfBlock(blockState) == color);
+    }
+    public static BlockState cloneStairBlockStateProperties(BlockState sourceBlockState, BlockState newBlockState) {
+        return newBlockState
+                .with(StairsBlock.FACING, sourceBlockState.get(StairsBlock.FACING))
+                .with(StairsBlock.HALF, sourceBlockState.get(StairsBlock.HALF))
+                .with(StairsBlock.SHAPE, sourceBlockState.get(StairsBlock.SHAPE))
+                .with(StairsBlock.WATERLOGGED, sourceBlockState.get(StairsBlock.WATERLOGGED));
     }
 }

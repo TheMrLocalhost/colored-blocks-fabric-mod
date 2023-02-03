@@ -2,7 +2,7 @@ package com.mrlocalhost.coloredblocks.item.custom;
 
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
-import net.minecraft.block.Block;
+import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
@@ -39,29 +39,34 @@ public class CleaningClothItem extends Item {
             return ActionResult.PASS;
         }
         //do cleaning
+        BlockState newBlockState;
         if (blockState.isIn(CustomBlockTags.COLORED_STONE_BRICKS)) {
-            doCleaningAction(world, blockLocation, Blocks.STONE_BRICKS);
+            newBlockState = Blocks.STONE_BRICKS.getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANKS)) {
-            doCleaningAction(world, blockLocation, Blocks.BIRCH_PLANKS);
+            newBlockState = Blocks.BIRCH_PLANKS.getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORED_WOOL_BLOCKS)) {
-            doCleaningAction(world, blockLocation, Blocks.WHITE_WOOL);
+            newBlockState = Blocks.WHITE_WOOL.getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORED_TERRACOTTA)) {
-            doCleaningAction(world, blockLocation, Blocks.TERRACOTTA);
+            newBlockState = Blocks.TERRACOTTA.getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORED_GLAZED_TERRACOTTA)) {
-            doCleaningAction(world, blockLocation, Blocks.WHITE_GLAZED_TERRACOTTA);
+            newBlockState = Blocks.WHITE_GLAZED_TERRACOTTA.getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORED_CONCRETE)) {
-            doCleaningAction(world, blockLocation, Blocks.WHITE_CONCRETE);
+            newBlockState = Blocks.WHITE_CONCRETE.getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORED_STAINED_GLASS)) {
-            doCleaningAction(world, blockLocation, Blocks.GLASS);
+            newBlockState = Blocks.GLASS.getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORED_CARPET)) {
-            doCleaningAction(world, blockLocation, Blocks.WHITE_CARPET);
+            newBlockState = Blocks.WHITE_CARPET.getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORED_STONE_BRICK_STAIRS)) {
+            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
+                Blocks.STONE_BRICK_STAIRS.getDefaultState());
+        } else if (blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANK_STAIRS)) {
+            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
+                Blocks.BIRCH_STAIRS.getDefaultState());
+        } else {
+            return ActionResult.PASS;
         }
-
+        world.removeBlock(blockLocation, false);
+        world.setBlockState(blockLocation, newBlockState);
         return ActionResult.PASS;
-    }
-    private void doCleaningAction(World world, BlockPos pos, Block newBlock) {
-        BlockState newBlockState = newBlock.getDefaultState();
-        world.removeBlock(pos, false);
-        world.setBlockState(pos, newBlockState);
     }
 }

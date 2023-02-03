@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "colored_blocks:colored_wood_plank_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_stairs"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_stairs"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "minecraft:birch_stairs"
+  }
+}

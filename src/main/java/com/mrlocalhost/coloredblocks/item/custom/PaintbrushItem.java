@@ -128,6 +128,12 @@ public class PaintbrushItem extends Item {
             newBlockState = ColoredBlocksConstants.COLORED_STAINED_GLASS[color].getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORABLE_CARPET)) {
             newBlockState = ColoredBlocksConstants.COLORED_CARPET[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_STAIRS)) {
+            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
+                ColoredBlocksConstants.COLORED_STONE_BRICK_STAIRS[color].getDefaultState());
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_STAIRS)) {
+            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
+                ColoredBlocksConstants.COLORED_WOOD_PLANK_STAIRS[color].getDefaultState());
         } else {
             return false;
         }

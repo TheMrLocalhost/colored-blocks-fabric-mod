@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "cleaned_stone_brick_stairs/cleaned_stone_brick_stairs_1": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:colored_stone_brick_stairs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "colored_blocks:cleaned_stone_brick_stairs/cleaned_stone_brick_stairs_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "cleaned_stone_brick_stairs/cleaned_stone_brick_stairs_1",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "colored_blocks:cleaned_stone_brick_stairs/cleaned_stone_brick_stairs_1"
+    ]
+  }
+}

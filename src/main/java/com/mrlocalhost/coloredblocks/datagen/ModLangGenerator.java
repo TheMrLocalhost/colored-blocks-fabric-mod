@@ -53,5 +53,39 @@ public class ModLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.LIGHT_GRAY_WOOD_PLANKS,"Light Gray Wood Planks");
         translationBuilder.add(ModBlocks.GRAY_WOOD_PLANKS,"Gray Wood Planks");
         translationBuilder.add(ModBlocks.BLACK_WOOD_PLANKS,"Black Wood Planks");
+
+        translationBuilder.add(ModBlocks.RED_STONE_BRICK_STAIRS,"Red Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.ORANGE_STONE_BRICK_STAIRS,"Orange Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.YELLOW_STONE_BRICK_STAIRS,"Yellow Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.LIME_STONE_BRICK_STAIRS,"Lime Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.GREEN_STONE_BRICK_STAIRS,"Green Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.CYAN_STONE_BRICK_STAIRS,"Cyan Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.LIGHT_BLUE_STONE_BRICK_STAIRS,"Light Blue Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.BLUE_STONE_BRICK_STAIRS,"Blue Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.PURPLE_STONE_BRICK_STAIRS,"Purple Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.MAGENTA_STONE_BRICK_STAIRS,"Magenta Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.PINK_STONE_BRICK_STAIRS,"Pink Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.BROWN_STONE_BRICK_STAIRS,"Brown Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.WHITE_STONE_BRICK_STAIRS,"White Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.LIGHT_GRAY_STONE_BRICK_STAIRS,"Light Gray Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.GRAY_STONE_BRICK_STAIRS,"Gray Stone Brick Stairs");
+        translationBuilder.add(ModBlocks.BLACK_STONE_BRICK_STAIRS,"Black Stone Brick Stairs");
+
+        translationBuilder.add(ModBlocks.RED_WOOD_PLANK_STAIRS,"Red Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.ORANGE_WOOD_PLANK_STAIRS,"Orange Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.YELLOW_WOOD_PLANK_STAIRS,"Yellow Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.LIME_WOOD_PLANK_STAIRS,"Lime Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.GREEN_WOOD_PLANK_STAIRS,"Green Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.CYAN_WOOD_PLANK_STAIRS,"Cyan Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.LIGHT_BLUE_WOOD_PLANK_STAIRS,"Light Blue Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.BLUE_WOOD_PLANK_STAIRS,"Blue Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.PURPLE_WOOD_PLANK_STAIRS,"Purple Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.MAGENTA_WOOD_PLANK_STAIRS,"Magenta Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.PINK_WOOD_PLANK_STAIRS,"Pink Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.BROWN_WOOD_PLANK_STAIRS,"Brown Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.WHITE_WOOD_PLANK_STAIRS,"White Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.LIGHT_GRAY_WOOD_PLANK_STAIRS,"Light Gray Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.GRAY_WOOD_PLANK_STAIRS,"Gray Wood Plank Stairs");
+        translationBuilder.add(ModBlocks.BLACK_WOOD_PLANK_STAIRS,"Black Wood Plank Stairs");
     }
 }
