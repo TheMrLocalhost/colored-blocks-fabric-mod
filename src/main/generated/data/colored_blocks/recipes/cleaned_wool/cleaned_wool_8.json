@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "colored_blocks:colored_wool_blocks"
+    },
+    {
+      "tag": "colored_blocks:colored_wool_blocks"
+    },
+    {
+      "tag": "colored_blocks:colored_wool_blocks"
+    },
+    {
+      "tag": "colored_blocks:colored_wool_blocks"
+    },
+    {
+      "tag": "colored_blocks:colored_wool_blocks"
+    },
+    {
+      "tag": "colored_blocks:colored_wool_blocks"
+    },
+    {
+      "tag": "colored_blocks:colored_wool_blocks"
+    },
+    {
+      "tag": "colored_blocks:colored_wool_blocks"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "item": "minecraft:white_wool"
+  }
+}

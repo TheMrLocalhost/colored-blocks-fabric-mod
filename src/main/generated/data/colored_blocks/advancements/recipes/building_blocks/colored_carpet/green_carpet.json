@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "colored_carpet/green_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:colorable_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dye_for_green_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:dyes"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "colored_blocks:colored_carpet/green_carpet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "dye_for_green_carpet",
+      "colored_carpet/green_carpet",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "colored_blocks:colored_carpet/green_carpet"
+    ]
+  }
+}

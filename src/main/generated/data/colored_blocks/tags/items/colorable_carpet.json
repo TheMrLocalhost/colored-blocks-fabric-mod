@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:white_carpet",
+    "#colored_blocks:colored_carpet"
+  ]
+}

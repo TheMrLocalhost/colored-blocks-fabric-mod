@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "colored_blocks:colored_carpet"
+    },
+    {
+      "tag": "colored_blocks:colored_carpet"
+    },
+    {
+      "tag": "colored_blocks:colored_carpet"
+    },
+    {
+      "tag": "colored_blocks:colored_carpet"
+    },
+    {
+      "tag": "colored_blocks:colored_carpet"
+    },
+    {
+      "tag": "colored_blocks:colored_carpet"
+    },
+    {
+      "tag": "colored_blocks:colored_carpet"
+    },
+    {
+      "tag": "colored_blocks:colored_carpet"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "item": "minecraft:white_carpet"
+  }
+}

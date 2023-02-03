@@ -1,13 +1,10 @@
 package com.mrlocalhost.coloredblocks.item.custom;
 
-import com.mrlocalhost.coloredblocks.block.custom.ColoredBlock;
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import com.mrlocalhost.coloredblocks.item.ModItems;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -71,18 +68,18 @@ public class PaintbrushItem extends Item {
         BlockPos blockLocation = context.getBlockPos();
         BlockState blockState = world.getBlockState(blockLocation);
         //Can't be colored
-        if (!blockState.isIn(CustomBlockTags.COLORED_BLOCKS) && !blockState.isOf(Blocks.STONE_BRICKS)) {
+        if (!ColoredBlocksUtils.isColorable(blockState)) {
             return ActionResult.PASS;
         }
         //If colored block and same color as desired
-        if (blockState.isIn(CustomBlockTags.COLORED_BLOCKS) && blockState.get(ColoredBlock.COLOR) == paintbrushColor) {
+        if (ColoredBlocksUtils.isColorable(blockState) && ColoredBlocksUtils.isSameColor(blockState, paintbrushColor)) {
             ColoredBlocksUtils.sendMessage(player, "This block is already "+paintColorName);
             return ActionResult.PASS;
         }
         //Do coloring
-        doPaintAction(world, blockLocation, ColoredBlocksConstants.COLORED_STONE_BRICKS[paintbrushColor], paintbrushColor);
+        boolean didPaint = doPaintAction(world, blockLocation, blockState, paintbrushColor);
         //Do palette damage if not creative
-        if (!player.isCreative()) {
+        if (didPaint && !player.isCreative()) {
             doDamagePaletteAction(paletteStack);
         }
         return ActionResult.PASS;
@@ -113,9 +110,30 @@ public class PaintbrushItem extends Item {
     private void doDamagePaletteAction(ItemStack palette) {
         palette.setDamage(palette.getDamage() + 1);
     }
-    private void doPaintAction(World world, BlockPos pos, Block newBlock, int color) {
-        BlockState newBlockState = newBlock.getDefaultState().with(ColoredBlock.COLOR, color);
+    private boolean doPaintAction(World world, BlockPos pos, BlockState blockState, int color) {
+        //TODO add support for terracotta, concrete, concrete powder, glazed terracotta, carpet
+        BlockState newBlockState;
+        if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS)) {
+            newBlockState = ColoredBlocksConstants.COLORED_STONE_BRICKS[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANKS)) {
+            newBlockState = ColoredBlocksConstants.COLORED_WOOD_PLANKS[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOL_BLOCKS)) {
+            newBlockState = ColoredBlocksConstants.COLORED_WOOL_BLOCKS[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_TERRACOTTA)) {
+            newBlockState = ColoredBlocksConstants.COLORED_TERRACOTTA[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_GLAZED_TERRACOTTA)) {
+            newBlockState = ColoredBlocksConstants.COLORED_GLAZED_TERRACOTTA[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_CONCRETE)) {
+            newBlockState = ColoredBlocksConstants.COLORED_CONCRETE[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STAINED_GLASS)) {
+            newBlockState = ColoredBlocksConstants.COLORED_STAINED_GLASS[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_CARPET)) {
+            newBlockState = ColoredBlocksConstants.COLORED_CARPET[color].getDefaultState();
+        } else {
+            return false;
+        }
         world.removeBlock(pos, false);
         world.setBlockState(pos, newBlockState);
+        return true;
     }
 }

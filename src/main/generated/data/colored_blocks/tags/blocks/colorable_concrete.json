@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:white_concrete",
+    "#colored_blocks:colored_concrete"
+  ]
+}

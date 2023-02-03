@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:terracotta",
+    "#colored_blocks:colored_terracotta"
+  ]
+}
