@@ -111,7 +111,6 @@ public class PaintbrushItem extends Item {
         palette.setDamage(palette.getDamage() + 1);
     }
     private boolean doPaintAction(World world, BlockPos pos, BlockState blockState, int color) {
-        //TODO add support for terracotta, concrete, concrete powder, glazed terracotta, carpet
         BlockState newBlockState;
         if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS)) {
             newBlockState = ColoredBlocksConstants.COLORED_STONE_BRICKS[color].getDefaultState();
