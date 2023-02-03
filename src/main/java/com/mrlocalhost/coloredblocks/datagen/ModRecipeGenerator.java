@@ -35,6 +35,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         }
     }
     private void generateColoredBlocks(Consumer<RecipeJsonProvider> exporter, Block[] blocks, String suffix, TagKey<Item> tag) {
+
         for (int i = 0; i<16; i++) {
             String blockName = COLOR_MAP.get(getColorOfBlock(blocks[i]))+suffix;
             ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, blocks[i], 8)
@@ -55,6 +56,21 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
 
         generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_WOOL_BLOCKS, "_wool", CustomItemTags.COLORABLE_WOOL_BLOCKS);
         generateCleanedBlocks(exporter, Blocks.WHITE_WOOL, "_wool", CustomItemTags.COLORED_WOOL_BLOCKS);
+
+        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_TERRACOTTA, "_terracotta", CustomItemTags.COLORABLE_TERRACOTTA);
+        generateCleanedBlocks(exporter, Blocks.TERRACOTTA, "_terracotta", CustomItemTags.COLORED_TERRACOTTA);
+
+        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_GLAZED_TERRACOTTA, "_glazed_terracotta", CustomItemTags.COLORABLE_GLAZED_TERRACOTTA);
+        generateCleanedBlocks(exporter, Blocks.WHITE_GLAZED_TERRACOTTA, "_glazed_terracotta", CustomItemTags.COLORED_GLAZED_TERRACOTTA);
+
+        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_CONCRETE, "_concrete", CustomItemTags.COLORABLE_CONCRETE);
+        generateCleanedBlocks(exporter, Blocks.WHITE_CONCRETE, "_concrete", CustomItemTags.COLORED_CONCRETE);
+
+        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_STAINED_GLASS, "_stained_glass", CustomItemTags.COLORABLE_STAINED_GLASS);
+        generateCleanedBlocks(exporter, Blocks.GLASS, "_stained_glass", CustomItemTags.COLORED_STAINED_GLASS);
+
+        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_CARPET, "_carpet", CustomItemTags.COLORABLE_CARPET);
+        generateCleanedBlocks(exporter, Blocks.WHITE_CARPET, "_carpet", CustomItemTags.COLORED_CARPET);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLEANING_CLOTH, 1)
                 .pattern("TTT").pattern("TWT").pattern("TTT")

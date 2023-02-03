@@ -71,7 +71,96 @@ public class ColoredBlocksConstants {
         Blocks.WHITE_WOOL,
         Blocks.LIGHT_GRAY_WOOL,
         Blocks.GRAY_WOOL,
-        Blocks.BLACK_WOOL,
+        Blocks.BLACK_WOOL
+    };
+    public static final Block[] COLORED_TERRACOTTA = new Block[]{
+        Blocks.RED_TERRACOTTA,
+        Blocks.ORANGE_TERRACOTTA,
+        Blocks.YELLOW_TERRACOTTA,
+        Blocks.LIME_TERRACOTTA,
+        Blocks.GREEN_TERRACOTTA,
+        Blocks.CYAN_TERRACOTTA,
+        Blocks.LIGHT_BLUE_TERRACOTTA,
+        Blocks.BLUE_TERRACOTTA,
+        Blocks.PURPLE_TERRACOTTA,
+        Blocks.MAGENTA_TERRACOTTA,
+        Blocks.PINK_TERRACOTTA,
+        Blocks.BROWN_TERRACOTTA,
+        Blocks.WHITE_TERRACOTTA,
+        Blocks.LIGHT_GRAY_TERRACOTTA,
+        Blocks.GRAY_TERRACOTTA,
+        Blocks.BLACK_TERRACOTTA
+    };
+    public static final Block[] COLORED_GLAZED_TERRACOTTA = new Block[]{
+        Blocks.RED_GLAZED_TERRACOTTA,
+        Blocks.ORANGE_GLAZED_TERRACOTTA,
+        Blocks.YELLOW_GLAZED_TERRACOTTA,
+        Blocks.LIME_GLAZED_TERRACOTTA,
+        Blocks.GREEN_GLAZED_TERRACOTTA,
+        Blocks.CYAN_GLAZED_TERRACOTTA,
+        Blocks.LIGHT_BLUE_GLAZED_TERRACOTTA,
+        Blocks.BLUE_GLAZED_TERRACOTTA,
+        Blocks.PURPLE_GLAZED_TERRACOTTA,
+        Blocks.MAGENTA_GLAZED_TERRACOTTA,
+        Blocks.PINK_GLAZED_TERRACOTTA,
+        Blocks.BROWN_GLAZED_TERRACOTTA,
+        Blocks.WHITE_GLAZED_TERRACOTTA,
+        Blocks.LIGHT_GRAY_GLAZED_TERRACOTTA,
+        Blocks.GRAY_GLAZED_TERRACOTTA,
+        Blocks.BLACK_GLAZED_TERRACOTTA
+    };
+    public static final Block[] COLORED_CONCRETE = new Block[]{
+        Blocks.RED_CONCRETE,
+        Blocks.ORANGE_CONCRETE,
+        Blocks.YELLOW_CONCRETE,
+        Blocks.LIME_CONCRETE,
+        Blocks.GREEN_CONCRETE,
+        Blocks.CYAN_CONCRETE,
+        Blocks.LIGHT_BLUE_CONCRETE,
+        Blocks.BLUE_CONCRETE,
+        Blocks.PURPLE_CONCRETE,
+        Blocks.MAGENTA_CONCRETE,
+        Blocks.PINK_CONCRETE,
+        Blocks.BROWN_CONCRETE,
+        Blocks.WHITE_CONCRETE,
+        Blocks.LIGHT_GRAY_CONCRETE,
+        Blocks.GRAY_CONCRETE,
+        Blocks.BLACK_CONCRETE
+    };
+    public static final Block[] COLORED_STAINED_GLASS = new Block[]{
+        Blocks.RED_STAINED_GLASS,
+        Blocks.ORANGE_STAINED_GLASS,
+        Blocks.YELLOW_STAINED_GLASS,
+        Blocks.LIME_STAINED_GLASS,
+        Blocks.GREEN_STAINED_GLASS,
+        Blocks.CYAN_STAINED_GLASS,
+        Blocks.LIGHT_BLUE_STAINED_GLASS,
+        Blocks.BLUE_STAINED_GLASS,
+        Blocks.PURPLE_STAINED_GLASS,
+        Blocks.MAGENTA_STAINED_GLASS,
+        Blocks.PINK_STAINED_GLASS,
+        Blocks.BROWN_STAINED_GLASS,
+        Blocks.WHITE_STAINED_GLASS,
+        Blocks.LIGHT_GRAY_STAINED_GLASS,
+        Blocks.GRAY_STAINED_GLASS,
+        Blocks.BLACK_STAINED_GLASS
+    };public static final Block[] COLORED_CARPET = new Block[]{
+        Blocks.RED_CARPET,
+        Blocks.ORANGE_CARPET,
+        Blocks.YELLOW_CARPET,
+        Blocks.LIME_CARPET,
+        Blocks.GREEN_CARPET,
+        Blocks.CYAN_CARPET,
+        Blocks.LIGHT_BLUE_CARPET,
+        Blocks.BLUE_CARPET,
+        Blocks.PURPLE_CARPET,
+        Blocks.MAGENTA_CARPET,
+        Blocks.PINK_CARPET,
+        Blocks.BROWN_CARPET,
+        Blocks.WHITE_CARPET,
+        Blocks.LIGHT_GRAY_CARPET,
+        Blocks.GRAY_CARPET,
+        Blocks.BLACK_CARPET
     };
     public static final List<String> COLOR_MAP = new ArrayList<>(){{
         add("red");
@@ -95,12 +184,22 @@ public class ColoredBlocksConstants {
         add("_stone_bricks");
         add("_wood_planks");
         add("_wool");
+        add("_glazed_terracotta"); //must be first to prevent "_terracotta" from leaving "_glazed"
+        add("_terracotta");
+        add("_concrete");
+        add("_stained_glass");
+        add("_carpet");
     }};
     public static final List<Block> COLORABLE_BLOCKS = new ArrayList<>(){{
         for (int i = 0; i<16; i++) {
             add(COLORED_STONE_BRICKS[i]);
             add(COLORED_WOOD_PLANKS[i]);
             add(COLORED_WOOL_BLOCKS[i]);
+            add(COLORED_TERRACOTTA[i]);
+            add(COLORED_GLAZED_TERRACOTTA[i]);
+            add(COLORED_CONCRETE[i]);
+            add(COLORED_STAINED_GLASS[i]);
+            add(COLORED_CARPET[i]);
         }
     }};
     public static final Item[] DYE_ITEMS = new Item[]{

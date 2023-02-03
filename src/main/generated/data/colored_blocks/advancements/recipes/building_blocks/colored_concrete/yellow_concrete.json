@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "colored_concrete/yellow_concrete": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:colorable_concrete"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dye_for_yellow_concrete": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:dyes"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "colored_blocks:colored_concrete/yellow_concrete"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "dye_for_yellow_concrete",
+      "colored_concrete/yellow_concrete",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "colored_blocks:colored_concrete/yellow_concrete"
+    ]
+  }
+}

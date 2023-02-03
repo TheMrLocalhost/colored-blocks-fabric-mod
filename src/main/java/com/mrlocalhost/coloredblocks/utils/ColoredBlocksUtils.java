@@ -29,8 +29,10 @@ public class ColoredBlocksUtils {
     }
     private static String stripColorOffName(String name) {
         String strippedName = name;
+        System.out.println("Original name: "+strippedName);
         for (String suffix: ColoredBlocksConstants.BLOCK_SUFFIXES) {
             strippedName = strippedName.replace(suffix, "");
+            System.out.println("Stripped off '"+suffix+"': "+strippedName);
         }
         return strippedName;
     }
@@ -39,6 +41,11 @@ public class ColoredBlocksUtils {
                blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS)
             || blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANKS)
             || blockState.isIn(CustomBlockTags.COLORABLE_WOOL_BLOCKS)
+            || blockState.isIn(CustomBlockTags.COLORABLE_TERRACOTTA)
+            || blockState.isIn(CustomBlockTags.COLORABLE_GLAZED_TERRACOTTA)
+            || blockState.isIn(CustomBlockTags.COLORABLE_CONCRETE)
+            || blockState.isIn(CustomBlockTags.COLORABLE_STAINED_GLASS)
+            || blockState.isIn(CustomBlockTags.COLORABLE_CARPET)
         );
     }
     public static boolean isSameColor(BlockState blockState, int color) {

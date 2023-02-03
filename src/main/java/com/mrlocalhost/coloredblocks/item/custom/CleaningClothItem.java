@@ -45,6 +45,16 @@ public class CleaningClothItem extends Item {
             doCleaningAction(world, blockLocation, Blocks.BIRCH_PLANKS);
         } else if (blockState.isIn(CustomBlockTags.COLORED_WOOL_BLOCKS)) {
             doCleaningAction(world, blockLocation, Blocks.WHITE_WOOL);
+        } else if (blockState.isIn(CustomBlockTags.COLORED_TERRACOTTA)) {
+            doCleaningAction(world, blockLocation, Blocks.TERRACOTTA);
+        } else if (blockState.isIn(CustomBlockTags.COLORED_GLAZED_TERRACOTTA)) {
+            doCleaningAction(world, blockLocation, Blocks.WHITE_GLAZED_TERRACOTTA);
+        } else if (blockState.isIn(CustomBlockTags.COLORED_CONCRETE)) {
+            doCleaningAction(world, blockLocation, Blocks.WHITE_CONCRETE);
+        } else if (blockState.isIn(CustomBlockTags.COLORED_STAINED_GLASS)) {
+            doCleaningAction(world, blockLocation, Blocks.GLASS);
+        } else if (blockState.isIn(CustomBlockTags.COLORED_CARPET)) {
+            doCleaningAction(world, blockLocation, Blocks.WHITE_CARPET);
         }
 
         return ActionResult.PASS;

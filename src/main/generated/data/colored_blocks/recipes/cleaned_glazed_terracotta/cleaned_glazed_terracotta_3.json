@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "colored_blocks:colored_glazed_terracotta"
+    },
+    {
+      "tag": "colored_blocks:colored_glazed_terracotta"
+    },
+    {
+      "tag": "colored_blocks:colored_glazed_terracotta"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "minecraft:white_glazed_terracotta"
+  }
+}

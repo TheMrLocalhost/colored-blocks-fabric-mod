@@ -23,6 +23,21 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
     private static final TagKey<Item> COLORED_WOOL_BLOCKS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_wool_blocks"));
     private static final TagKey<Item> COLORABLE_WOOL_BLOCKS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_wool_blocks"));
 
+    private static final TagKey<Item> COLORED_TERRACOTTA_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_terracotta"));
+    private static final TagKey<Item> COLORABLE_TERRACOTTA_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_terracotta"));
+
+    private static final TagKey<Item> COLORED_GLAZED_TERRACOTTA_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_glazed_terracotta"));
+    private static final TagKey<Item> COLORABLE_GLAZED_TERRACOTTA_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_glazed_terracotta"));
+
+    private static final TagKey<Item> COLORED_CONCRETE_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_concrete"));
+    private static final TagKey<Item> COLORABLE_CONCRETE_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_concrete"));
+
+    private static final TagKey<Item> COLORED_STAINED_GLASS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_stained_glass"));
+    private static final TagKey<Item> COLORABLE_STAINED_GLASS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_stained_glass"));
+
+    private static final TagKey<Item> COLORED_CARPET_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_carpet"));
+    private static final TagKey<Item> COLORABLE_CARPET_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_carpet"));
+
     private static final TagKey<Item> DYES = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":dyes"));
     public ModItemTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookupFuture) {
         super(output, RegistryKeys.ITEM, registryLookupFuture);
@@ -33,6 +48,11 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
             getOrCreateTagBuilder(COLORED_STONE_BRICKS_ITEM).add(COLORED_STONE_BRICKS[i].asItem());
             getOrCreateTagBuilder(COLORED_WOOD_PLANKS_ITEM).add(COLORED_WOOD_PLANKS[i].asItem());
             getOrCreateTagBuilder(COLORED_WOOL_BLOCKS_ITEM).add(COLORED_WOOL_BLOCKS[i].asItem());
+            getOrCreateTagBuilder(COLORED_TERRACOTTA_ITEM).add(COLORED_TERRACOTTA[i].asItem());
+            getOrCreateTagBuilder(COLORED_GLAZED_TERRACOTTA_ITEM).add(COLORED_GLAZED_TERRACOTTA[i].asItem());
+            getOrCreateTagBuilder(COLORED_CONCRETE_ITEM).add(COLORED_CONCRETE[i].asItem());
+            getOrCreateTagBuilder(COLORED_STAINED_GLASS_ITEM).add(COLORED_STAINED_GLASS[i].asItem());
+            getOrCreateTagBuilder(COLORED_CARPET_ITEM).add(COLORED_CARPET[i].asItem());
             getOrCreateTagBuilder(DYES).add(DYE_ITEMS[i]);
         }
         getOrCreateTagBuilder(COLORABLE_STONE_BRICKS_ITEM)
@@ -44,5 +64,20 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(COLORABLE_WOOL_BLOCKS_ITEM)
                 .add(Items.WHITE_WOOL)
                 .addTag(COLORED_WOOL_BLOCKS_ITEM);
+        getOrCreateTagBuilder(COLORABLE_TERRACOTTA_ITEM)
+                .add(Items.TERRACOTTA)
+                .addTag(COLORED_TERRACOTTA_ITEM);
+        getOrCreateTagBuilder(COLORABLE_GLAZED_TERRACOTTA_ITEM)
+                .add(Items.WHITE_GLAZED_TERRACOTTA)
+                .addTag(COLORED_GLAZED_TERRACOTTA_ITEM);
+        getOrCreateTagBuilder(COLORABLE_CONCRETE_ITEM)
+                .add(Items.WHITE_CONCRETE)
+                .addTag(COLORED_CONCRETE_ITEM);
+        getOrCreateTagBuilder(COLORABLE_STAINED_GLASS_ITEM)
+                .add(Items.GLASS)
+                .addTag(COLORED_STAINED_GLASS_ITEM);
+        getOrCreateTagBuilder(COLORABLE_CARPET_ITEM)
+                .add(Items.WHITE_CARPET)
+                .addTag(COLORED_CARPET_ITEM);
     }
 }

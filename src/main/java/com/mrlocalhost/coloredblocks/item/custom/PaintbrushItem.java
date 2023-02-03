@@ -119,6 +119,16 @@ public class PaintbrushItem extends Item {
             newBlockState = ColoredBlocksConstants.COLORED_WOOD_PLANKS[color].getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOL_BLOCKS)) {
             newBlockState = ColoredBlocksConstants.COLORED_WOOL_BLOCKS[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_TERRACOTTA)) {
+            newBlockState = ColoredBlocksConstants.COLORED_TERRACOTTA[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_GLAZED_TERRACOTTA)) {
+            newBlockState = ColoredBlocksConstants.COLORED_GLAZED_TERRACOTTA[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_CONCRETE)) {
+            newBlockState = ColoredBlocksConstants.COLORED_CONCRETE[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STAINED_GLASS)) {
+            newBlockState = ColoredBlocksConstants.COLORED_STAINED_GLASS[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_CARPET)) {
+            newBlockState = ColoredBlocksConstants.COLORED_CARPET[color].getDefaultState();
         } else {
             return false;
         }

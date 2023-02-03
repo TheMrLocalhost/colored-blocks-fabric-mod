@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "colored_blocks:colored_stained_glass"
+    },
+    {
+      "tag": "colored_blocks:colored_stained_glass"
+    },
+    {
+      "tag": "colored_blocks:colored_stained_glass"
+    },
+    {
+      "tag": "colored_blocks:colored_stained_glass"
+    },
+    {
+      "tag": "colored_blocks:colored_stained_glass"
+    },
+    {
+      "tag": "colored_blocks:colored_stained_glass"
+    },
+    {
+      "tag": "colored_blocks:colored_stained_glass"
+    },
+    {
+      "tag": "colored_blocks:colored_stained_glass"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "item": "minecraft:glass"
+  }
+}
