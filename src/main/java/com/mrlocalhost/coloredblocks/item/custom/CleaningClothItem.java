@@ -65,6 +65,9 @@ public class CleaningClothItem extends Item {
         } else if (blockState.isIn(CustomBlockTags.COLORED_STONE_BRICK_SLAB)) {
             newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
                     Blocks.STONE_BRICK_SLAB.getDefaultState());
+        } else if (blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANK_SLAB)) {
+            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
+                    Blocks.BIRCH_SLAB.getDefaultState());
         } else {
             return ActionResult.PASS;
         }

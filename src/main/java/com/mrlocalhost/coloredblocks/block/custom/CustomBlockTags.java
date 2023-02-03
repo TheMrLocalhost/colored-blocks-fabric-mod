@@ -30,4 +30,6 @@ public class CustomBlockTags {
     //Slab Blocks
     public static final TagKey<Block> COLORED_STONE_BRICK_SLAB = ModBlockTagGenerator.COLORED_STONE_BRICK_SLAB_BLOCK;
     public static final TagKey<Block> COLORABLE_STONE_BRICK_SLAB = ModBlockTagGenerator.COLORABLE_STONE_BRICK_SLAB_ITEM;
+    public static final TagKey<Block> COLORED_WOOD_PLANK_SLAB = ModBlockTagGenerator.COLORED_WOOD_PLANK_SLAB_BLOCK;
+    public static final TagKey<Block> COLORABLE_WOOD_PLANK_SLAB = ModBlockTagGenerator.COLORABLE_WOOD_PLANK_SLAB_ITEM;
 }

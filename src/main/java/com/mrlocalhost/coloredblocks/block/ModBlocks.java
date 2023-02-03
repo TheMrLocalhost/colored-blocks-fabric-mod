@@ -104,6 +104,23 @@ public class ModBlocks {
     public static final Block GRAY_STONE_BRICK_SLAB = registerSlabBlock("gray_stone_brick_slab", Material.STONE);
     public static final Block BLACK_STONE_BRICK_SLAB = registerSlabBlock("black_stone_brick_slab", Material.STONE);
 
+    public static final Block RED_WOOD_PLANK_SLAB = registerSlabBlock("red_wood_plank_slab", Material.WOOD);
+    public static final Block ORANGE_WOOD_PLANK_SLAB = registerSlabBlock("orange_wood_plank_slab", Material.WOOD);
+    public static final Block YELLOW_WOOD_PLANK_SLAB = registerSlabBlock("yellow_wood_plank_slab", Material.WOOD);
+    public static final Block LIME_WOOD_PLANK_SLAB = registerSlabBlock("lime_wood_plank_slab", Material.WOOD);
+    public static final Block GREEN_WOOD_PLANK_SLAB = registerSlabBlock("green_wood_plank_slab", Material.WOOD);
+    public static final Block CYAN_WOOD_PLANK_SLAB = registerSlabBlock("cyan_wood_plank_slab", Material.WOOD);
+    public static final Block LIGHT_BLUE_WOOD_PLANK_SLAB = registerSlabBlock("light_blue_wood_plank_slab", Material.WOOD);
+    public static final Block BLUE_WOOD_PLANK_SLAB = registerSlabBlock("blue_wood_plank_slab", Material.WOOD);
+    public static final Block PURPLE_WOOD_PLANK_SLAB = registerSlabBlock("purple_wood_plank_slab", Material.WOOD);
+    public static final Block MAGENTA_WOOD_PLANK_SLAB = registerSlabBlock( "magenta_wood_plank_slab", Material.WOOD);
+    public static final Block PINK_WOOD_PLANK_SLAB = registerSlabBlock("pink_wood_plank_slab", Material.WOOD);
+    public static final Block BROWN_WOOD_PLANK_SLAB = registerSlabBlock("brown_wood_plank_slab", Material.WOOD);
+    public static final Block WHITE_WOOD_PLANK_SLAB = registerSlabBlock("white_wood_plank_slab", Material.WOOD);
+    public static final Block LIGHT_GRAY_WOOD_PLANK_SLAB = registerSlabBlock("light_gray_wood_plank_slab", Material.WOOD);
+    public static final Block GRAY_WOOD_PLANK_SLAB = registerSlabBlock("gray_wood_plank_slab", Material.WOOD);
+    public static final Block BLACK_WOOD_PLANK_SLAB = registerSlabBlock("black_wood_plank_slab", Material.WOOD);
+
     private static Block registerSlabBlock(String name, Material material) {
         Block block = new ColoredSlabBlock(FabricBlockSettings
                 .of(material)

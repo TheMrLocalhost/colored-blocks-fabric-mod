@@ -53,6 +53,7 @@ public class ColoredBlocksUtils {
             || blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_STAIRS)
             || blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_STAIRS)
             || blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_SLAB)
+            || blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_SLAB)
         );
     }
     public static boolean isSameColor(BlockState blockState, int color) {

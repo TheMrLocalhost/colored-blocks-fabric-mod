@@ -39,6 +39,8 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
     //Slab Blocks
     public static final TagKey<Block> COLORED_STONE_BRICK_SLAB_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_brick_slab"));
     public static final TagKey<Block> COLORABLE_STONE_BRICK_SLAB_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_brick_slab"));
+    public static final TagKey<Block> COLORED_WOOD_PLANK_SLAB_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_plank_slab"));
+    public static final TagKey<Block> COLORABLE_WOOD_PLANK_SLAB_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_plank_slab"));
     //Mineable
     public static final TagKey<Block> MINEABLE_BLOCKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:mineable/pickaxe"));
     public static final TagKey<Block> AXEABLE_BLOCKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:mineable/axe"));
@@ -86,6 +88,10 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
             getOrCreateTagBuilder(COLORED_STONE_BRICK_SLAB_BLOCK).add(block);
             getOrCreateTagBuilder(MINEABLE_BLOCKS).add(block);
         }
+        for (Block block : COLORED_WOOD_PLANK_SLAB) {
+            getOrCreateTagBuilder(COLORED_WOOD_PLANK_SLAB_BLOCK).add(block);
+            getOrCreateTagBuilder(AXEABLE_BLOCKS).add(block);
+        }
         getOrCreateTagBuilder(COLORABLE_STONE_BRICKS_ITEM)
                 .add(Blocks.STONE_BRICKS)
                 .addTag(COLORED_STONE_BRICKS_BLOCK);
@@ -119,5 +125,8 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(COLORABLE_STONE_BRICK_SLAB_ITEM)
                 .add(Blocks.STONE_BRICK_SLAB)
                 .addTag(COLORED_STONE_BRICK_SLAB_BLOCK);
+        getOrCreateTagBuilder(COLORABLE_WOOD_PLANK_SLAB_ITEM)
+                .add(Blocks.BIRCH_SLAB)
+                .addTag(COLORED_WOOD_PLANK_SLAB_BLOCK);
     }
 }

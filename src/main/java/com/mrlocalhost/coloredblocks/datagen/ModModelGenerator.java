@@ -26,6 +26,7 @@ public class ModModelGenerator extends FabricModelProvider {
             registerStairs(colorPrefix,blockStateModelGenerator,COLORED_WOOD_PLANK_STAIRS[i], "wood_planks","wood_plank_stairs");
             //Slab blocks
             registerSlabs(colorPrefix,blockStateModelGenerator,COLORED_STONE_BRICK_SLAB[i], "stone_bricks","stone_brick_slab");
+            registerSlabs(colorPrefix,blockStateModelGenerator,COLORED_WOOD_PLANK_SLAB[i], "wood_planks","wood_plank_slab");
         }
     }
     @Override

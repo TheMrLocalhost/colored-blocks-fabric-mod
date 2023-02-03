@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "colored_blocks:red_wood_plank_slab",
+    "colored_blocks:orange_wood_plank_slab",
+    "colored_blocks:yellow_wood_plank_slab",
+    "colored_blocks:lime_wood_plank_slab",
+    "colored_blocks:green_wood_plank_slab",
+    "colored_blocks:cyan_wood_plank_slab",
+    "colored_blocks:light_blue_wood_plank_slab",
+    "colored_blocks:blue_wood_plank_slab",
+    "colored_blocks:purple_wood_plank_slab",
+    "colored_blocks:magenta_wood_plank_slab",
+    "colored_blocks:pink_wood_plank_slab",
+    "colored_blocks:brown_wood_plank_slab",
+    "colored_blocks:white_wood_plank_slab",
+    "colored_blocks:light_gray_wood_plank_slab",
+    "colored_blocks:gray_wood_plank_slab",
+    "colored_blocks:black_wood_plank_slab"
+  ]
+}

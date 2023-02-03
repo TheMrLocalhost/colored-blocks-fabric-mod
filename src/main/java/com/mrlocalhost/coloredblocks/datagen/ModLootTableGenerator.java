@@ -95,6 +95,23 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         addSlabDrop(ModBlocks.LIGHT_GRAY_STONE_BRICK_SLAB);
         addSlabDrop(ModBlocks.GRAY_STONE_BRICK_SLAB);
         addSlabDrop(ModBlocks.BLACK_STONE_BRICK_SLAB);
+
+        addSlabDrop(ModBlocks.RED_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.ORANGE_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.YELLOW_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.LIME_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.GREEN_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.CYAN_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.LIGHT_BLUE_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.BLUE_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.PURPLE_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.MAGENTA_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.PINK_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.BROWN_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.WHITE_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.LIGHT_GRAY_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.GRAY_WOOD_PLANK_SLAB);
+        addSlabDrop(ModBlocks.BLACK_WOOD_PLANK_SLAB);
     }
     private void addSlabDrop(Block block) {
         addDrop(block, slabDrops(block));

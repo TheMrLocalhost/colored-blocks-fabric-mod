@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "colored_blocks:colored_wood_plank_slab"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_slab"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_slab"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_slab"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_slab"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_slab"
+    },
+    {
+      "tag": "colored_blocks:colored_wood_plank_slab"
+    }
+  ],
+  "result": {
+    "count": 7,
+    "item": "minecraft:birch_slab"
+  }
+}
