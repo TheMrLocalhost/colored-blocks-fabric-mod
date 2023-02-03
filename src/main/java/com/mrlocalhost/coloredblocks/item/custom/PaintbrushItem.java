@@ -134,6 +134,9 @@ public class PaintbrushItem extends Item {
         } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_STAIRS)) {
             newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
                 ColoredBlocksConstants.COLORED_WOOD_PLANK_STAIRS[color].getDefaultState());
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_SLAB)) {
+            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
+                    ColoredBlocksConstants.COLORED_STONE_BRICK_SLAB[color].getDefaultState());
         } else {
             return false;
         }

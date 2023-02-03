@@ -39,6 +39,9 @@ public class CustomItemTags {
     public static final TagKey<Item> COLORED_WOOD_PLANK_STAIRS = of("colored_blocks:colored_wood_plank_stairs");
     public static final TagKey<Item> COLORABLE_WOOD_PLANK_STAIRS = of("colored_blocks:colorable_wood_plank_stairs");
 
+    public static final TagKey<Item> COLORED_STONE_BRICK_SLAB = of("colored_blocks:colored_stone_brick_slab");
+    public static final TagKey<Item> COLORABLE_STONE_BRICK_SLAB = of("colored_blocks:colorable_stone_brick_slab");
+
     private static TagKey<Item> of(String id) {
         return TagKey.of(RegistryKeys.ITEM, new Identifier(id));
     }

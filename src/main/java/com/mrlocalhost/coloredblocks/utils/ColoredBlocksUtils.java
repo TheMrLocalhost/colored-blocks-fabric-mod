@@ -1,13 +1,18 @@
 package com.mrlocalhost.coloredblocks.utils;
 
+import com.mrlocalhost.coloredblocks.ColoredBlocks;
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.block.StairsBlock;
+import net.minecraft.data.client.TextureKey;
+import net.minecraft.data.client.TextureMap;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 
 public class ColoredBlocksUtils {
 
@@ -47,6 +52,7 @@ public class ColoredBlocksUtils {
             || blockState.isIn(CustomBlockTags.COLORABLE_CARPET)
             || blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_STAIRS)
             || blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_STAIRS)
+            || blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_SLAB)
         );
     }
     public static boolean isSameColor(BlockState blockState, int color) {
@@ -58,5 +64,26 @@ public class ColoredBlocksUtils {
                 .with(StairsBlock.HALF, sourceBlockState.get(StairsBlock.HALF))
                 .with(StairsBlock.SHAPE, sourceBlockState.get(StairsBlock.SHAPE))
                 .with(StairsBlock.WATERLOGGED, sourceBlockState.get(StairsBlock.WATERLOGGED));
+    }
+    public static BlockState cloneSlabBlockStateProperties(BlockState sourceBlockState, BlockState newBlockState) {
+        return newBlockState
+                .with(SlabBlock.TYPE, sourceBlockState.get(SlabBlock.TYPE))
+                .with(StairsBlock.WATERLOGGED, sourceBlockState.get(StairsBlock.WATERLOGGED));
+    }
+    public static TextureMap createStairsTextureMap(String colorPrefix, String sourceTextureSuffix) {
+        TextureMap stairsTextureMap = new TextureMap();
+        Identifier id = new Identifier(ColoredBlocks.MOD_ID,"block/"+colorPrefix+"_"+sourceTextureSuffix);
+        stairsTextureMap.put(TextureKey.TOP, id);
+        stairsTextureMap.put(TextureKey.SIDE, id);
+        stairsTextureMap.put(TextureKey.BOTTOM, id);
+        return stairsTextureMap;
+    }
+    public static TextureMap createSlabTextureMap(String colorPrefix, String sourceTextureSuffix) {
+        TextureMap slabTextureMap = new TextureMap();
+        Identifier id = new Identifier(ColoredBlocks.MOD_ID,"block/"+colorPrefix+"_"+sourceTextureSuffix);
+        slabTextureMap.put(TextureKey.ALL, id);
+        slabTextureMap.put(TextureKey.TOP, id);
+        slabTextureMap.put(TextureKey.BOTTOM, id);
+        return slabTextureMap;
     }
 }

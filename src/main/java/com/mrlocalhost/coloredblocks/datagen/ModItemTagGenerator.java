@@ -35,6 +35,9 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
     private static final TagKey<Item> COLORABLE_STONE_BRICK_STAIRS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_brick_stairs"));
     private static final TagKey<Item> COLORED_WOOD_PLANK_STAIRS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_plank_stairs"));
     private static final TagKey<Item> COLORABLE_WOOD_PLANK_STAIRS_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_plank_stairs"));
+    //Stair Blocks
+    private static final TagKey<Item> COLORED_STONE_BRICK_SLAB_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_brick_slab"));
+    private static final TagKey<Item> COLORABLE_STONE_BRICK_SLAB_ITEM = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_brick_slab"));
 
     private static final TagKey<Item> DYES = TagKey.of(RegistryKeys.ITEM, new Identifier(ColoredBlocks.MOD_ID+":dyes"));
     public ModItemTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookupFuture) {
@@ -53,6 +56,7 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
             getOrCreateTagBuilder(COLORED_CARPET_ITEM).add(COLORED_CARPET[i].asItem());
             getOrCreateTagBuilder(COLORED_STONE_BRICK_STAIRS_ITEM).add(COLORED_STONE_BRICK_STAIRS[i].asItem());
             getOrCreateTagBuilder(COLORED_WOOD_PLANK_STAIRS_ITEM).add(COLORED_WOOD_PLANK_STAIRS[i].asItem());
+            getOrCreateTagBuilder(COLORED_STONE_BRICK_SLAB_ITEM).add(COLORED_STONE_BRICK_SLAB[i].asItem());
             getOrCreateTagBuilder(DYES).add(DYE_ITEMS[i]);
         }
         getOrCreateTagBuilder(COLORABLE_STONE_BRICKS_ITEM)
@@ -85,5 +89,8 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(COLORABLE_WOOD_PLANK_STAIRS_ITEM)
                 .add(Items.BIRCH_STAIRS)
                 .addTag(COLORED_WOOD_PLANK_STAIRS_ITEM);
+        getOrCreateTagBuilder(COLORABLE_STONE_BRICK_SLAB_ITEM)
+                .add(Items.STONE_BRICK_SLAB)
+                .addTag(COLORED_STONE_BRICK_SLAB_ITEM);
     }
 }

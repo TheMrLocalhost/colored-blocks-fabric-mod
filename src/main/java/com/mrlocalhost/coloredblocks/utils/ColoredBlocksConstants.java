@@ -199,6 +199,24 @@ public class ColoredBlocksConstants {
         ModBlocks.GRAY_WOOD_PLANK_STAIRS,
         ModBlocks.BLACK_WOOD_PLANK_STAIRS
     };
+    public static final Block[] COLORED_STONE_BRICK_SLAB = new Block[]{
+        ModBlocks.RED_STONE_BRICK_SLAB,
+        ModBlocks.ORANGE_STONE_BRICK_SLAB,
+        ModBlocks.YELLOW_STONE_BRICK_SLAB,
+        ModBlocks.LIME_STONE_BRICK_SLAB,
+        ModBlocks.GREEN_STONE_BRICK_SLAB,
+        ModBlocks.CYAN_STONE_BRICK_SLAB,
+        ModBlocks.LIGHT_BLUE_STONE_BRICK_SLAB,
+        ModBlocks.BLUE_STONE_BRICK_SLAB,
+        ModBlocks.PURPLE_STONE_BRICK_SLAB,
+        ModBlocks.MAGENTA_STONE_BRICK_SLAB,
+        ModBlocks.PINK_STONE_BRICK_SLAB,
+        ModBlocks.BROWN_STONE_BRICK_SLAB,
+        ModBlocks.WHITE_STONE_BRICK_SLAB,
+        ModBlocks.LIGHT_GRAY_STONE_BRICK_SLAB,
+        ModBlocks.GRAY_STONE_BRICK_SLAB,
+        ModBlocks.BLACK_STONE_BRICK_SLAB
+    };
     public static final List<String> COLOR_MAP = new ArrayList<>(){{
         add("red");
         add("orange");
@@ -218,6 +236,7 @@ public class ColoredBlocksConstants {
         add("black");
     }};
     public static final List<String> BLOCK_SUFFIXES = new ArrayList<>(){{
+        add("_stone_brick_slab");
         add("_stone_brick_stairs");
         add("_wood_plank_stairs");
         add("_stone_bricks");
@@ -241,6 +260,7 @@ public class ColoredBlocksConstants {
             add(COLORED_CARPET[i]);
             add(COLORED_STONE_BRICK_STAIRS[i]);
             add(COLORED_WOOD_PLANK_STAIRS[i]);
+            add(COLORED_STONE_BRICK_SLAB[i]);
         }
     }};
     public static final Item[] DYE_ITEMS = new Item[]{

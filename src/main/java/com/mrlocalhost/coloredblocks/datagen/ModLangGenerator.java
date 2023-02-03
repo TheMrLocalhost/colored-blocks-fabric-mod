@@ -87,5 +87,22 @@ public class ModLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.LIGHT_GRAY_WOOD_PLANK_STAIRS,"Light Gray Wood Plank Stairs");
         translationBuilder.add(ModBlocks.GRAY_WOOD_PLANK_STAIRS,"Gray Wood Plank Stairs");
         translationBuilder.add(ModBlocks.BLACK_WOOD_PLANK_STAIRS,"Black Wood Plank Stairs");
+
+        translationBuilder.add(ModBlocks.RED_STONE_BRICK_SLAB,"Red Stone Brick Slab");
+        translationBuilder.add(ModBlocks.ORANGE_STONE_BRICK_SLAB,"Orange Stone Brick Slab");
+        translationBuilder.add(ModBlocks.YELLOW_STONE_BRICK_SLAB,"Yellow Stone Brick Slab");
+        translationBuilder.add(ModBlocks.LIME_STONE_BRICK_SLAB,"Lime Stone Brick Slab");
+        translationBuilder.add(ModBlocks.GREEN_STONE_BRICK_SLAB,"Green Stone Brick Slab");
+        translationBuilder.add(ModBlocks.CYAN_STONE_BRICK_SLAB,"Cyan Stone Brick Slab");
+        translationBuilder.add(ModBlocks.LIGHT_BLUE_STONE_BRICK_SLAB,"Light Blue Stone Brick Slab");
+        translationBuilder.add(ModBlocks.BLUE_STONE_BRICK_SLAB,"Blue Stone Brick Slab");
+        translationBuilder.add(ModBlocks.PURPLE_STONE_BRICK_SLAB,"Purple Stone Brick Slab");
+        translationBuilder.add(ModBlocks.MAGENTA_STONE_BRICK_SLAB,"Magenta Stone Brick Slab");
+        translationBuilder.add(ModBlocks.PINK_STONE_BRICK_SLAB,"Pink Stone Brick Slab");
+        translationBuilder.add(ModBlocks.BROWN_STONE_BRICK_SLAB,"Brown Stone Brick Slab");
+        translationBuilder.add(ModBlocks.WHITE_STONE_BRICK_SLAB,"White Stone Brick Slab");
+        translationBuilder.add(ModBlocks.LIGHT_GRAY_STONE_BRICK_SLAB,"Light Gray Stone Brick Slab");
+        translationBuilder.add(ModBlocks.GRAY_STONE_BRICK_SLAB,"Gray Stone Brick Slab");
+        translationBuilder.add(ModBlocks.BLACK_STONE_BRICK_SLAB,"Black Stone Brick Slab");
     }
 }

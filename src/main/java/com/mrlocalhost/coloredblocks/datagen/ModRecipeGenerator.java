@@ -78,6 +78,9 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_WOOD_PLANK_STAIRS, "_wood_plank_stairs", CustomItemTags.COLORABLE_WOOD_PLANK_STAIRS);
         generateCleanedBlocks(exporter, Blocks.BIRCH_STAIRS, "_wood_plank_stairs", CustomItemTags.COLORED_WOOD_PLANK_STAIRS);
 
+        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_STONE_BRICK_SLAB, "_stone_brick_slab", CustomItemTags.COLORABLE_STONE_BRICK_SLAB);
+        generateCleanedBlocks(exporter, Blocks.STONE_BRICK_SLAB, "_stone_brick_slab", CustomItemTags.COLORED_STONE_BRICK_SLAB);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLEANING_CLOTH, 1)
                 .pattern("TTT").pattern("TWT").pattern("TTT")
                 .input('T', Items.PAPER).input('W', ItemTags.WOOL)
