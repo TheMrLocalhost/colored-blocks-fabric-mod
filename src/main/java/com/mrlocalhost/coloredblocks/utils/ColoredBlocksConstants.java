@@ -144,7 +144,8 @@ public class ColoredBlocksConstants {
         Blocks.LIGHT_GRAY_STAINED_GLASS,
         Blocks.GRAY_STAINED_GLASS,
         Blocks.BLACK_STAINED_GLASS
-    };public static final Block[] COLORED_CARPET = new Block[]{
+    };
+    public static final Block[] COLORED_CARPET = new Block[]{
         Blocks.RED_CARPET,
         Blocks.ORANGE_CARPET,
         Blocks.YELLOW_CARPET,
@@ -161,6 +162,78 @@ public class ColoredBlocksConstants {
         Blocks.LIGHT_GRAY_CARPET,
         Blocks.GRAY_CARPET,
         Blocks.BLACK_CARPET
+    };
+    public static final Block[] COLORED_STONE_BRICK_STAIRS = new Block[]{
+        ModBlocks.RED_STONE_BRICK_STAIRS,
+        ModBlocks.ORANGE_STONE_BRICK_STAIRS,
+        ModBlocks.YELLOW_STONE_BRICK_STAIRS,
+        ModBlocks.LIME_STONE_BRICK_STAIRS,
+        ModBlocks.GREEN_STONE_BRICK_STAIRS,
+        ModBlocks.CYAN_STONE_BRICK_STAIRS,
+        ModBlocks.LIGHT_BLUE_STONE_BRICK_STAIRS,
+        ModBlocks.BLUE_STONE_BRICK_STAIRS,
+        ModBlocks.PURPLE_STONE_BRICK_STAIRS,
+        ModBlocks.MAGENTA_STONE_BRICK_STAIRS,
+        ModBlocks.PINK_STONE_BRICK_STAIRS,
+        ModBlocks.BROWN_STONE_BRICK_STAIRS,
+        ModBlocks.WHITE_STONE_BRICK_STAIRS,
+        ModBlocks.LIGHT_GRAY_STONE_BRICK_STAIRS,
+        ModBlocks.GRAY_STONE_BRICK_STAIRS,
+        ModBlocks.BLACK_STONE_BRICK_STAIRS
+    };
+    public static final Block[] COLORED_WOOD_PLANK_STAIRS = new Block[]{
+        ModBlocks.RED_WOOD_PLANK_STAIRS,
+        ModBlocks.ORANGE_WOOD_PLANK_STAIRS,
+        ModBlocks.YELLOW_WOOD_PLANK_STAIRS,
+        ModBlocks.LIME_WOOD_PLANK_STAIRS,
+        ModBlocks.GREEN_WOOD_PLANK_STAIRS,
+        ModBlocks.CYAN_WOOD_PLANK_STAIRS,
+        ModBlocks.LIGHT_BLUE_WOOD_PLANK_STAIRS,
+        ModBlocks.BLUE_WOOD_PLANK_STAIRS,
+        ModBlocks.PURPLE_WOOD_PLANK_STAIRS,
+        ModBlocks.MAGENTA_WOOD_PLANK_STAIRS,
+        ModBlocks.PINK_WOOD_PLANK_STAIRS,
+        ModBlocks.BROWN_WOOD_PLANK_STAIRS,
+        ModBlocks.WHITE_WOOD_PLANK_STAIRS,
+        ModBlocks.LIGHT_GRAY_WOOD_PLANK_STAIRS,
+        ModBlocks.GRAY_WOOD_PLANK_STAIRS,
+        ModBlocks.BLACK_WOOD_PLANK_STAIRS
+    };
+    public static final Block[] COLORED_STONE_BRICK_SLAB = new Block[]{
+        ModBlocks.RED_STONE_BRICK_SLAB,
+        ModBlocks.ORANGE_STONE_BRICK_SLAB,
+        ModBlocks.YELLOW_STONE_BRICK_SLAB,
+        ModBlocks.LIME_STONE_BRICK_SLAB,
+        ModBlocks.GREEN_STONE_BRICK_SLAB,
+        ModBlocks.CYAN_STONE_BRICK_SLAB,
+        ModBlocks.LIGHT_BLUE_STONE_BRICK_SLAB,
+        ModBlocks.BLUE_STONE_BRICK_SLAB,
+        ModBlocks.PURPLE_STONE_BRICK_SLAB,
+        ModBlocks.MAGENTA_STONE_BRICK_SLAB,
+        ModBlocks.PINK_STONE_BRICK_SLAB,
+        ModBlocks.BROWN_STONE_BRICK_SLAB,
+        ModBlocks.WHITE_STONE_BRICK_SLAB,
+        ModBlocks.LIGHT_GRAY_STONE_BRICK_SLAB,
+        ModBlocks.GRAY_STONE_BRICK_SLAB,
+        ModBlocks.BLACK_STONE_BRICK_SLAB
+    };
+    public static final Block[] COLORED_WOOD_PLANK_SLAB = new Block[]{
+        ModBlocks.RED_WOOD_PLANK_SLAB,
+        ModBlocks.ORANGE_WOOD_PLANK_SLAB,
+        ModBlocks.YELLOW_WOOD_PLANK_SLAB,
+        ModBlocks.LIME_WOOD_PLANK_SLAB,
+        ModBlocks.GREEN_WOOD_PLANK_SLAB,
+        ModBlocks.CYAN_WOOD_PLANK_SLAB,
+        ModBlocks.LIGHT_BLUE_WOOD_PLANK_SLAB,
+        ModBlocks.BLUE_WOOD_PLANK_SLAB,
+        ModBlocks.PURPLE_WOOD_PLANK_SLAB,
+        ModBlocks.MAGENTA_WOOD_PLANK_SLAB,
+        ModBlocks.PINK_WOOD_PLANK_SLAB,
+        ModBlocks.BROWN_WOOD_PLANK_SLAB,
+        ModBlocks.WHITE_WOOD_PLANK_SLAB,
+        ModBlocks.LIGHT_GRAY_WOOD_PLANK_SLAB,
+        ModBlocks.GRAY_WOOD_PLANK_SLAB,
+        ModBlocks.BLACK_WOOD_PLANK_SLAB,
     };
     public static final List<String> COLOR_MAP = new ArrayList<>(){{
         add("red");
@@ -181,6 +254,10 @@ public class ColoredBlocksConstants {
         add("black");
     }};
     public static final List<String> BLOCK_SUFFIXES = new ArrayList<>(){{
+        add("_stone_brick_slab");
+        add("_wood_plank_slab");
+        add("_stone_brick_stairs");
+        add("_wood_plank_stairs");
         add("_stone_bricks");
         add("_wood_planks");
         add("_wool");
@@ -200,6 +277,10 @@ public class ColoredBlocksConstants {
             add(COLORED_CONCRETE[i]);
             add(COLORED_STAINED_GLASS[i]);
             add(COLORED_CARPET[i]);
+            add(COLORED_STONE_BRICK_STAIRS[i]);
+            add(COLORED_WOOD_PLANK_STAIRS[i]);
+            add(COLORED_STONE_BRICK_SLAB[i]);
+            add(COLORED_WOOD_PLANK_SLAB[i]);
         }
     }};
     public static final Item[] DYE_ITEMS = new Item[]{

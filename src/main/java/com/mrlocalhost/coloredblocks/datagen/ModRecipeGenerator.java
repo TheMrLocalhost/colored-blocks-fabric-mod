@@ -26,26 +26,6 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
     public ModRecipeGenerator(FabricDataOutput output) {
         super(output);
     }
-    private void generateCleanedBlocks(Consumer<RecipeJsonProvider> exporter, Block output, String suffix, TagKey<Item> tag) {
-        for (int i=1; i<10; i++) {
-            ShapelessRecipeJsonBuilder builder = new ShapelessRecipeJsonBuilder(RecipeCategory.MISC, output, i);
-            for (int j=1;j<=i;j++) {builder.input(tag);}
-            builder.criterion("cleaned"+suffix+"/cleaned"+suffix+"_"+i,conditionsFromTag(tag));
-            builder.offerTo(exporter, new Identifier(ColoredBlocks.MOD_ID+":cleaned"+suffix+"/cleaned"+suffix+"_"+i));
-        }
-    }
-    private void generateColoredBlocks(Consumer<RecipeJsonProvider> exporter, Block[] blocks, String suffix, TagKey<Item> tag) {
-
-        for (int i = 0; i<16; i++) {
-            String blockName = COLOR_MAP.get(getColorOfBlock(blocks[i]))+suffix;
-            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, blocks[i], 8)
-                    .pattern("TTT").pattern("TDT").pattern("TTT")
-                    .input('T', tag).input('D', DYE_ITEMS[i])
-                    .criterion("dye_for_"+blockName,conditionsFromTag(CustomItemTags.DYES))
-                    .criterion("colored"+suffix+"/"+blockName,conditionsFromTag(tag))
-                    .offerTo(exporter, new Identifier(ColoredBlocks.MOD_ID+":colored"+suffix+"/"+blockName));
-        }
-    }
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_STONE_BRICKS, "_stone_bricks", CustomItemTags.COLORABLE_STONE_BRICKS);
@@ -72,6 +52,22 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_CARPET, "_carpet", CustomItemTags.COLORABLE_CARPET);
         generateCleanedBlocks(exporter, Blocks.WHITE_CARPET, "_carpet", CustomItemTags.COLORED_CARPET);
 
+        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_STONE_BRICK_STAIRS, "_stone_brick_stairs", CustomItemTags.COLORABLE_STONE_BRICK_STAIRS);
+        generateCleanedBlocks(exporter, Blocks.STONE_BRICK_STAIRS, "_stone_brick_stairs", CustomItemTags.COLORED_STONE_BRICK_STAIRS);
+        generateStairsRecipe(exporter, ColoredBlocksConstants.COLORED_STONE_BRICKS, ColoredBlocksConstants.COLORED_STONE_BRICK_STAIRS, "_stone_bricks");
+
+        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_WOOD_PLANK_STAIRS, "_wood_plank_stairs", CustomItemTags.COLORABLE_WOOD_PLANK_STAIRS);
+        generateCleanedBlocks(exporter, Blocks.BIRCH_STAIRS, "_wood_plank_stairs", CustomItemTags.COLORED_WOOD_PLANK_STAIRS);
+        generateStairsRecipe(exporter,ColoredBlocksConstants.COLORED_WOOD_PLANKS, ColoredBlocksConstants.COLORED_WOOD_PLANK_STAIRS, "_wood_planks");
+
+        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_STONE_BRICK_SLAB, "_stone_brick_slab", CustomItemTags.COLORABLE_STONE_BRICK_SLAB);
+        generateCleanedBlocks(exporter, Blocks.STONE_BRICK_SLAB, "_stone_brick_slab", CustomItemTags.COLORED_STONE_BRICK_SLAB);
+        generateSlabRecipe(exporter, ColoredBlocksConstants.COLORED_STONE_BRICKS, ColoredBlocksConstants.COLORED_STONE_BRICK_SLAB, "_stone_bricks");
+
+        generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_WOOD_PLANK_SLAB, "_wood_plank_slab", CustomItemTags.COLORABLE_WOOD_PLANK_SLAB);
+        generateCleanedBlocks(exporter, Blocks.BIRCH_SLAB, "_wood_plank_slab", CustomItemTags.COLORED_WOOD_PLANK_SLAB);
+        generateSlabRecipe(exporter, ColoredBlocksConstants.COLORED_WOOD_PLANKS, ColoredBlocksConstants.COLORED_WOOD_PLANK_SLAB, "_wood_planks");
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLEANING_CLOTH, 1)
                 .pattern("TTT").pattern("TWT").pattern("TTT")
                 .input('T', Items.PAPER).input('W', ItemTags.WOOL)
@@ -89,5 +85,50 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion("has_stick_for_paintbrush",conditionsFromItem(Items.STICK))
                 .criterion("has_any_wool_for_paintbrush",conditionsFromTag(ItemTags.WOOL))
                 .offerTo(exporter, new Identifier(ColoredBlocks.MOD_ID+":paintbrush"));
+    }
+    private void generateStairsRecipe(Consumer<RecipeJsonProvider> exporter, Block[] input, Block[] output, String suffix) {
+        for (int i = 0;i<16;i++) {
+            String colorName = COLOR_MAP.get(i);
+            Block outputBlock = output[i];
+            Block inputBlock = input[i];
+            String blockName = colorName+suffix+"_stairs";
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, outputBlock, 4)
+                .pattern("S  ")
+                .pattern("SS ")
+                .pattern("SSS")
+                .input('S', inputBlock)
+                .criterion("block_for_"+blockName,conditionsFromItem(inputBlock))
+                .offerTo(exporter, new Identifier(ColoredBlocks.MOD_ID+":colored"+suffix+"_stairs/"+blockName));
+        }
+    }
+    private void generateSlabRecipe(Consumer<RecipeJsonProvider> exporter, Block[] input, Block[] output, String suffix) {
+        for (int i = 0;i<16;i++) {
+            String colorName = COLOR_MAP.get(i);
+            Block outputBlock = output[i];
+            Block inputBlock = input[i];
+            String blockName = colorName+suffix+"_slab";
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, outputBlock, 6)
+                .pattern("SSS")
+                .input('S', inputBlock)
+                .criterion("block_for_"+blockName,conditionsFromItem(inputBlock))
+                .offerTo(exporter, new Identifier(ColoredBlocks.MOD_ID+":colored"+suffix+"_slab/"+blockName));
+        }
+    }
+    private void generateCleanedBlocks(Consumer<RecipeJsonProvider> exporter, Block output, String suffix, TagKey<Item> tag) {
+        ShapelessRecipeJsonBuilder builder = new ShapelessRecipeJsonBuilder(RecipeCategory.MISC, output, 1);
+        builder.input(tag);
+        builder.criterion("cleaned"+suffix+"/cleaned"+suffix,conditionsFromTag(tag));
+        builder.offerTo(exporter, new Identifier(ColoredBlocks.MOD_ID+":cleaned"+suffix+"/cleaned"+suffix));
+    }
+    private void generateColoredBlocks(Consumer<RecipeJsonProvider> exporter, Block[] blocks, String suffix, TagKey<Item> tag) {
+        for (int i = 0; i<16; i++) {
+            String blockName = COLOR_MAP.get(getColorOfBlock(blocks[i]))+suffix;
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, blocks[i], 8)
+                    .pattern("TTT").pattern("TDT").pattern("TTT")
+                    .input('T', tag).input('D', DYE_ITEMS[i])
+                    .criterion("dye_for_"+blockName,conditionsFromTag(CustomItemTags.DYES))
+                    .criterion("colored"+suffix+"/"+blockName,conditionsFromTag(tag))
+                    .offerTo(exporter, new Identifier(ColoredBlocks.MOD_ID+":colored"+suffix+"/"+blockName));
+        }
     }
 }

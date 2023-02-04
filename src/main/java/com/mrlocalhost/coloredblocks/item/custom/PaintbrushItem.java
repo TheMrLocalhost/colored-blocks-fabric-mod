@@ -111,7 +111,6 @@ public class PaintbrushItem extends Item {
         palette.setDamage(palette.getDamage() + 1);
     }
     private boolean doPaintAction(World world, BlockPos pos, BlockState blockState, int color) {
-        //TODO add support for terracotta, concrete, concrete powder, glazed terracotta, carpet
         BlockState newBlockState;
         if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS)) {
             newBlockState = ColoredBlocksConstants.COLORED_STONE_BRICKS[color].getDefaultState();
@@ -129,6 +128,18 @@ public class PaintbrushItem extends Item {
             newBlockState = ColoredBlocksConstants.COLORED_STAINED_GLASS[color].getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORABLE_CARPET)) {
             newBlockState = ColoredBlocksConstants.COLORED_CARPET[color].getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_STAIRS)) {
+            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
+                ColoredBlocksConstants.COLORED_STONE_BRICK_STAIRS[color].getDefaultState());
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_STAIRS)) {
+            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
+                ColoredBlocksConstants.COLORED_WOOD_PLANK_STAIRS[color].getDefaultState());
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_SLAB)) {
+            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
+                    ColoredBlocksConstants.COLORED_STONE_BRICK_SLAB[color].getDefaultState());
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_SLAB)) {
+            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
+                    ColoredBlocksConstants.COLORED_WOOD_PLANK_SLAB[color].getDefaultState());
         } else {
             return false;
         }
