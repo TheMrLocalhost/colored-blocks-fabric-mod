@@ -1,6 +1,6 @@
 # Colored Blocks Minecraft Mod for Fabric
 
-![0.0.2 screenshot](/showcase/0.0.2_blocks_preview.jpg)
+![0.0.3 screenshot](/showcase/0.0.3_blocks_preview.jpg)
 
 This mod adds custom blocks with 16 color choices.
 
