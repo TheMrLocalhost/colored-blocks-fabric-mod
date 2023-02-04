@@ -6,8 +6,8 @@ import net.minecraft.registry.tag.TagKey;
 
 public class CustomBlockTags {
     //Regular Blocks
-    public static final TagKey<Block> COLORABLE_STONE_BRICKS = ModBlockTagGenerator.COLORED_STONE_BRICKS_BLOCK;
-    public static final TagKey<Block> COLORED_STONE_BRICKS = ModBlockTagGenerator.COLORABLE_STONE_BRICKS_ITEM;
+    public static final TagKey<Block> COLORED_STONE_BRICKS = ModBlockTagGenerator.COLORED_STONE_BRICKS_BLOCK;
+    public static final TagKey<Block> COLORABLE_STONE_BRICKS = ModBlockTagGenerator.COLORABLE_STONE_BRICKS_ITEM;
     public static final TagKey<Block> COLORED_WOOD_PLANKS = ModBlockTagGenerator.COLORED_WOOD_PLANKS_BLOCK;
     public static final TagKey<Block> COLORABLE_WOOD_PLANKS = ModBlockTagGenerator.COLORABLE_WOOD_PLANKS_ITEM;
     public static final TagKey<Block> COLORED_WOOL_BLOCKS = ModBlockTagGenerator.COLORED_WOOL_BLOCKS_BLOCK;
