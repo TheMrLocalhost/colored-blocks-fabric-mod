@@ -2,6 +2,7 @@ package com.mrlocalhost.coloredblocks;
 
 import com.mrlocalhost.coloredblocks.block.ModBlocks;
 import com.mrlocalhost.coloredblocks.item.ModItems;
+import com.mrlocalhost.coloredblocks.networking.PacketHandler;
 import com.mrlocalhost.coloredblocks.predicate.custom.ModPredicates;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -17,6 +18,6 @@ public class ColoredBlocks implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModPredicates.registerModPredicates();
-
+		PacketHandler.registerC2SPackets();
 	}
 }

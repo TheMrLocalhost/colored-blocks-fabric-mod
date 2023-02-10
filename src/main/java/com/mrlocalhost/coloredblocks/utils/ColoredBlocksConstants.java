@@ -19,6 +19,24 @@ public class ColoredBlocksConstants {
         "Purple","Magenta","Pink","Brown",
         "White","Light Gray","Gray","Black"
     };
+    public static final int[] HEX_COLOR_VALUES = new int[]{
+            0xAA0D0D, //Red
+            0xFF7519, //Orange
+            0xFFCC2F, //Yellow
+            0x80FF00, //Lime
+            0x547F00, //Green
+            0x0D8282, //Cyan
+            0x89C1FF, //Light Blue
+            0x2639AF, //Blue
+            0x7D00B7, //Purple
+            0xBF3BB8, //Magenta
+            0xFF99CA, //Pink
+            0x7C5235, //Brown
+            0xFFFFFF, //White
+            0xA8ADAD, //Light Gray
+            0x4B5050, //Gray
+            0x161616, //Black
+    };
     public static final Block[] COLORED_STONE_BRICKS = new Block[]{
         ModBlocks.RED_STONE_BRICKS,
         ModBlocks.ORANGE_STONE_BRICKS,
