@@ -1,6 +1,7 @@
 # Colored Blocks Minecraft Mod for Fabric
 
-![0.0.3 screenshot](/showcase/0.0.3_blocks_preview.jpg)
+![screenshot](/showcase/blocks_preview.jpg)
+![color_wheel](/showcase/color_wheel.jpg)
 
 This mod adds custom blocks with 16 color choices.
 
@@ -18,7 +19,7 @@ Using the three primary components of this mod you can color, clean, and recolor
 - ***Paintbrush***
   - Held in the main hand.
   - Paintbrush tip shows color picked.
-  - Shfit right click to cycle color chosen (hold to cycle faster).
+  - Shfit right click to open the color wheel (releasing shift to exit).
   - right click on a block to color it.
 
 - ***Cleaning Cloth***
@@ -26,8 +27,24 @@ Using the three primary components of this mod you can color, clean, and recolor
   - Right click colored blocks in the world to "clean" them.
   - If a block doesn't have a "clean" version, it will change to the white variant of the block.
   
- ## TODO
+## Recipes
+
+**Using any pressure plates or wool, you can craft the base items of the mod:**
+
+![color_wheel](/showcase/recipes_main_items.jpg)
+
+**Colored Blocks can be crafted/reverted in the following ways:**
+
+![color_wheel](/showcase/recipe_color_block_crafting.jpg)
+
+**You can even recolor blocks directly while mixing/matching any color:**
+
+![color_wheel](/showcase/recipe_recoloring.jpg)
+
+## TODO
  
- Add rotary dial that displays when shift is held with the paintbrush in the main hand.
+Done ~~Add rotary dial that displays when shift is held with the paintbrush in the main hand.~~
  
- This would assist in more precise color picking and remove frustration of accidentally passing the desired color.
+Enhance color wheel to be more graphically pleasing.
+
+This would assist in more precise color picking and remove frustration of accidentally passing the desired color.

@@ -2,6 +2,7 @@ package com.mrlocalhost.coloredblocks.item.custom;
 
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import com.mrlocalhost.coloredblocks.item.ModItems;
+import com.mrlocalhost.coloredblocks.screen.ModScreens;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
 import net.minecraft.block.BlockState;
@@ -86,12 +87,8 @@ public class PaintbrushItem extends Item {
     }
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if (!world.isClient() && hand == Hand.MAIN_HAND && Screen.hasShiftDown()) {
-            ItemStack mainHandStack = user.getMainHandStack();
-            int currentColor = getPaintbrushColor(mainHandStack);
-            int nextColor = (currentColor != ColoredBlocksConstants.MAX_COLOR_VALUE) ? currentColor + 1 : ColoredBlocksConstants.MIN_COLOR_VALUE;
-            changePaintbrushColor(mainHandStack, nextColor);
-            ColoredBlocksUtils.sendMessage(user, "New color: "+ColoredBlocksUtils.getColorName(getPaintbrushColor(mainHandStack)));
+        if (world.isClient() && hand == Hand.MAIN_HAND && Screen.hasShiftDown()) {
+            ModScreens.openColorWheelScreen(user, user.getMainHandStack());
         }
         return TypedActionResult.pass(user.getStackInHand(hand));
     }
@@ -102,10 +99,6 @@ public class PaintbrushItem extends Item {
     private int getPaintbrushColor(ItemStack stack) {
         NbtCompound nbtCompound = stack.getOrCreateNbt();
         return nbtCompound.getInt("color");
-    }
-    private void changePaintbrushColor(ItemStack stack, int color) {
-        NbtCompound nbtCompound = stack.getOrCreateNbt();
-        nbtCompound.putInt("color", color);
     }
     private void doDamagePaletteAction(ItemStack palette) {
         palette.setDamage(palette.getDamage() + 1);
