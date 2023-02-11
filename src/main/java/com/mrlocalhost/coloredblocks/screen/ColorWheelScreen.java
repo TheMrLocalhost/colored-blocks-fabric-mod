@@ -26,8 +26,8 @@ public class ColorWheelScreen extends Screen {
     private ItemStack paintbrush;
     private HashMap<String, ButtonWidget> upgradeButtons = new HashMap<>();
     private final int buttonWidth = 60;
-    private final int buttonHeight = 20;
-    private final int buttonGap = 30;
+    private final int buttonHeight = 40;
+    private final int buttonGap = 10;
 
     public ColorWheelScreen(PlayerEntity player, ItemStack paintbrush) {
         super(ColoredBlocksUtils.stringToText("title"));
@@ -37,7 +37,7 @@ public class ColorWheelScreen extends Screen {
     @Override
     protected void init() {
         int baseX = (width / 2) - ((buttonGap * 3/2) + (buttonWidth * 4/2));
-        int baseY = (height / 2) - ((buttonGap * 7)/2);
+        int baseY = (height / 2) - ((buttonGap * 3/2) + (buttonHeight * 4/2));
         int colCount = 0;
         int rowCount = 0;
         for (int i = 0; i <= ColoredBlocksConstants.MAX_COLOR_VALUE; i++) {
@@ -46,9 +46,11 @@ public class ColorWheelScreen extends Screen {
             String color = ColoredBlocksConstants.COLOR_MAP.get(i);
             int colorIdx = ColoredBlocksUtils.getIndexOfColor(color);
             String prettyColorName = ColoredBlocksUtils.getColorName(colorIdx);
-            Text buttonTitle = ColoredBlocksUtils.stringToText("▓▓▓▓▓▓",
+            Text buttonTitle = ColoredBlocksUtils.stringToText("",
                     Style.EMPTY.withColor(ColoredBlocksConstants.HEX_COLOR_VALUES[colorIdx])
             );
+            ColoredBlocksConstants.RGB_SHADER_VALUES shader = ColoredBlocksConstants.RGB_SHADER_VALUES.byIndex(colorIdx);
+            System.out.println(prettyColorName+"- r:"+shader.r()+" g:"+shader.g()+" b:"+shader.b());
             CustomButton button =
                 CustomButton.customBuilder(
                     buttonTitle,
@@ -61,6 +63,9 @@ public class ColorWheelScreen extends Screen {
                         this.close();
                     }
                 )
+                .setRgb(shader.r())
+                .setrGb(shader.g())
+                .setrgB(shader.b())
                 .dimensions((baseX+xOffset), (baseY+yOffset), buttonWidth, buttonHeight)
                 .tooltip(Tooltip.of(ColoredBlocksUtils.stringToText("Change color to "+prettyColorName)))
             .build();
@@ -79,7 +84,7 @@ public class ColorWheelScreen extends Screen {
         this.renderBackground(matrices);
         super.render(matrices, mouseX, mouseY, delta);
 
-        int top = ((height / 2) - ((buttonGap * 7)/2)) - buttonHeight;
+        int top = ((height / 2) - ((buttonGap * 3/2) + (buttonHeight * 4/2))) - buttonHeight;
         drawCenteredText(matrices, Screens.getTextRenderer(this), ColoredBlocksUtils.stringToText("Color Wheel"), (width / 2), top, 0xFFFFFF);
 
         //TODO may implement in the future for custom graphics color wheel dial

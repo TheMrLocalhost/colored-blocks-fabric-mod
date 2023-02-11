@@ -6,6 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ColoredBlocksConstants {
@@ -20,23 +21,59 @@ public class ColoredBlocksConstants {
         "White","Light Gray","Gray","Black"
     };
     public static final int[] HEX_COLOR_VALUES = new int[]{
-            0xAA0D0D, //Red
-            0xFF7519, //Orange
-            0xFFCC2F, //Yellow
-            0x80FF00, //Lime
-            0x547F00, //Green
-            0x0D8282, //Cyan
-            0x89C1FF, //Light Blue
-            0x2639AF, //Blue
-            0x7D00B7, //Purple
-            0xBF3BB8, //Magenta
-            0xFF99CA, //Pink
-            0x7C5235, //Brown
-            0xFFFFFF, //White
-            0xA8ADAD, //Light Gray
-            0x4B5050, //Gray
-            0x161616, //Black
+            0xAA0D0D, //RED
+            0xFF7519, //ORANGE
+            0xFFCC2F, //YELLOW
+            0x80FF00, //LIME
+            0x547F00, //GREEN
+            0x0D8282, //CYAN
+            0x89C1FF, //LIGHT_BLUE
+            0x2639AF, //BLUE
+            0x7D00B7, //PURPLE
+            0xBF3BB8, //MAGENTA
+            0xFF99CA, //PINK
+            0x7C5235, //BROWN
+            0xFFFFFF, //WHITE
+            0xA8ADAD, //LIGHT_GRAY
+            0x4B5050, //GRAY
+            0x161616, //BLACK
     };
+    private static final int AND_R = 0xFF0000;
+    private static final int AND_G = 0x00FF00;
+    private static final int AND_B = 0x0000FF;
+    private static final int SHF_R = 16;
+    private static final int SHF_G = 8;
+    private static final float MAX_F = 255.0F;
+
+    public enum RGB_SHADER_VALUES {
+        RED(0,(float)((HEX_COLOR_VALUES[0]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[0]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[0]&AND_B)/MAX_F),
+        ORANGE(1,(float)((HEX_COLOR_VALUES[1]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[1]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[1]&AND_B)/MAX_F),
+        YELLOW(2,(float)((HEX_COLOR_VALUES[2]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[2]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[2]&AND_B)/MAX_F),
+        LIME(3,(float)((HEX_COLOR_VALUES[3]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[3]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[3]&AND_B)/MAX_F),
+        GREEN(4,(float)((HEX_COLOR_VALUES[4]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[4]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[4]&AND_B)/MAX_F),
+        CYAN(5,(float)((HEX_COLOR_VALUES[5]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[5]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[5]&AND_B)/MAX_F),
+        LIGHT_BLUE(6,(float)((HEX_COLOR_VALUES[6]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[6]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[6]&AND_B)/MAX_F),
+        BLUE(7,(float)((HEX_COLOR_VALUES[7]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[7]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[7]&AND_B)/MAX_F),
+        PURPLE(8,(float)((HEX_COLOR_VALUES[8]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[8]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[8]&AND_B)/MAX_F),
+        MAGENTA(9,(float)((HEX_COLOR_VALUES[9]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[9]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[9]&AND_B)/MAX_F),
+        PINK(10,(float)((HEX_COLOR_VALUES[10]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[10]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[10]&AND_B)/MAX_F),
+        BROWN(11,(float)((HEX_COLOR_VALUES[11]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[11]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[11]&AND_B)/MAX_F),
+        WHITE(12,(float)((HEX_COLOR_VALUES[12]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[12]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[12]&AND_B)/MAX_F),
+        LIGHT_GRAY(13,(float)((HEX_COLOR_VALUES[13]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[13]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[13]&AND_B)/MAX_F),
+        GRAY(14,(float)((HEX_COLOR_VALUES[14]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[14]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[14]&AND_B)/MAX_F),
+        BLACK(15,(float)((HEX_COLOR_VALUES[15]&AND_R)>>SHF_R)/MAX_F, (float)((HEX_COLOR_VALUES[15]&AND_G)>>SHF_G)/MAX_F, (float)(HEX_COLOR_VALUES[15]&AND_B)/MAX_F);
+        private final float r, g, b;
+
+        RGB_SHADER_VALUES(int index, float r, float g, float b) {
+            this.r=r;this.g=g;this.b=b;}
+        public float r() { return this.r;}
+        public float g() { return this.g;}
+        public float b() { return this.b;}
+        private static final List<RGB_SHADER_VALUES> BY_VALUE = Arrays.stream(values()).toList();
+        public static RGB_SHADER_VALUES byIndex(int index) {
+            return BY_VALUE.get(index);
+        }
+    }
     public static final Block[] COLORED_STONE_BRICKS = new Block[]{
         ModBlocks.RED_STONE_BRICKS,
         ModBlocks.ORANGE_STONE_BRICKS,
