@@ -80,26 +80,10 @@ public class ColorWheelScreen extends Screen {
     }
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-
         this.renderBackground(matrices);
         super.render(matrices, mouseX, mouseY, delta);
-
         int top = ((height / 2) - ((buttonGap * 3/2) + (buttonHeight * 4/2))) - buttonHeight;
         drawCenteredText(matrices, Screens.getTextRenderer(this), ColoredBlocksUtils.stringToText("Color Wheel"), (width / 2), top, 0xFFFFFF);
-
-        //TODO may implement in the future for custom graphics color wheel dial
-//        this.children().forEach( (e) -> {
-//            if (!(e instanceof ButtonWidget)) { return; }
-//
-//            ButtonWidget button = ((ButtonWidget) e);
-//
-//            if (button.isHovered() && !hasShiftDown()) {
-//                this.changePaintbrushColor(this.paintbrush, 0);
-//                ColoredBlocksUtils.sendMessage(this.player, "New color: Red");
-//            }
-//
-//
-//        });
         if (!hasShiftDown()) {
             this.close();
         }
