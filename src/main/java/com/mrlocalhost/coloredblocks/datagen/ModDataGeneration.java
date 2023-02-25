@@ -8,8 +8,8 @@ public class ModDataGeneration implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
-        pack.addProvider(ModLootTableGenerator::new);
-        pack.addProvider(ModRecipeGenerator::new);
+        //TODO reimplement after custom recipes work
+        //pack.addProvider(ModRecipeGenerator::new);
         pack.addProvider(ModModelGenerator::new);
         pack.addProvider(ModItemTagGenerator::new);
         pack.addProvider(ModBlockTagGenerator::new);

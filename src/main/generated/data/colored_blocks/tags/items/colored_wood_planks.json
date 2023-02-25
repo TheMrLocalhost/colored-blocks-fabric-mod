@@ -1,21 +1,6 @@
 {
   "replace": false,
   "values": [
-    "colored_blocks:red_wood_planks",
-    "colored_blocks:orange_wood_planks",
-    "colored_blocks:yellow_wood_planks",
-    "colored_blocks:lime_wood_planks",
-    "colored_blocks:green_wood_planks",
-    "colored_blocks:cyan_wood_planks",
-    "colored_blocks:light_blue_wood_planks",
-    "colored_blocks:blue_wood_planks",
-    "colored_blocks:purple_wood_planks",
-    "colored_blocks:magenta_wood_planks",
-    "colored_blocks:pink_wood_planks",
-    "colored_blocks:brown_wood_planks",
-    "colored_blocks:white_wood_planks",
-    "colored_blocks:light_gray_wood_planks",
-    "colored_blocks:gray_wood_planks",
-    "colored_blocks:black_wood_planks"
+    "colored_blocks:colored_wood_planks"
   ]
 }

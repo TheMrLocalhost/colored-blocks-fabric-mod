@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "colored_blocks:block/light_gray_stone_bricks"
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "colored_blocks:block/lime_wood_planks"
-  }
-}

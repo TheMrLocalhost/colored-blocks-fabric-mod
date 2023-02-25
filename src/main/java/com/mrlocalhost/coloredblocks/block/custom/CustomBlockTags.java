@@ -22,14 +22,14 @@ public class CustomBlockTags {
     public static final TagKey<Block> COLORABLE_STAINED_GLASS = ModBlockTagGenerator.COLORABLE_STAINED_GLASS_ITEM;
     public static final TagKey<Block> COLORED_CARPET = ModBlockTagGenerator.COLORED_CARPET_BLOCK;
     public static final TagKey<Block> COLORABLE_CARPET = ModBlockTagGenerator.COLORABLE_CARPET_ITEM;
-    //Stair Blocks
-    public static final TagKey<Block> COLORED_STONE_BRICK_STAIRS = ModBlockTagGenerator.COLORED_STONE_BRICK_STAIRS_BLOCK;
-    public static final TagKey<Block> COLORABLE_STONE_BRICK_STAIRS = ModBlockTagGenerator.COLORABLE_STONE_BRICK_STAIRS_ITEM;
-    public static final TagKey<Block> COLORED_WOOD_PLANK_STAIRS = ModBlockTagGenerator.COLORED_WOOD_PLANK_STAIRS_BLOCK;
-    public static final TagKey<Block> COLORABLE_WOOD_PLANK_STAIRS = ModBlockTagGenerator.COLORABLE_WOOD_PLANK_STAIRS_ITEM;
-    //Slab Blocks
-    public static final TagKey<Block> COLORED_STONE_BRICK_SLAB = ModBlockTagGenerator.COLORED_STONE_BRICK_SLAB_BLOCK;
-    public static final TagKey<Block> COLORABLE_STONE_BRICK_SLAB = ModBlockTagGenerator.COLORABLE_STONE_BRICK_SLAB_ITEM;
-    public static final TagKey<Block> COLORED_WOOD_PLANK_SLAB = ModBlockTagGenerator.COLORED_WOOD_PLANK_SLAB_BLOCK;
-    public static final TagKey<Block> COLORABLE_WOOD_PLANK_SLAB = ModBlockTagGenerator.COLORABLE_WOOD_PLANK_SLAB_ITEM;
+//    //Stair Blocks
+//    public static final TagKey<Block> COLORED_STONE_BRICK_STAIRS = ModBlockTagGenerator.COLORED_STONE_BRICK_STAIRS_BLOCK;
+//    public static final TagKey<Block> COLORABLE_STONE_BRICK_STAIRS = ModBlockTagGenerator.COLORABLE_STONE_BRICK_STAIRS_ITEM;
+//    public static final TagKey<Block> COLORED_WOOD_PLANK_STAIRS = ModBlockTagGenerator.COLORED_WOOD_PLANK_STAIRS_BLOCK;
+//    public static final TagKey<Block> COLORABLE_WOOD_PLANK_STAIRS = ModBlockTagGenerator.COLORABLE_WOOD_PLANK_STAIRS_ITEM;
+//    //Slab Blocks
+//    public static final TagKey<Block> COLORED_STONE_BRICK_SLAB = ModBlockTagGenerator.COLORED_STONE_BRICK_SLAB_BLOCK;
+//    public static final TagKey<Block> COLORABLE_STONE_BRICK_SLAB = ModBlockTagGenerator.COLORABLE_STONE_BRICK_SLAB_ITEM;
+//    public static final TagKey<Block> COLORED_WOOD_PLANK_SLAB = ModBlockTagGenerator.COLORED_WOOD_PLANK_SLAB_BLOCK;
+//    public static final TagKey<Block> COLORABLE_WOOD_PLANK_SLAB = ModBlockTagGenerator.COLORABLE_WOOD_PLANK_SLAB_ITEM;
 }

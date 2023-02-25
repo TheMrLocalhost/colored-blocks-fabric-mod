@@ -1,5 +1,6 @@
 package com.mrlocalhost.coloredblocks.item.custom;
 
+import com.mrlocalhost.coloredblocks.block.ModBlocks;
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import com.mrlocalhost.coloredblocks.item.ModItems;
 import com.mrlocalhost.coloredblocks.screen.ModScreens;
@@ -22,6 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
+import static com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants.HEX_COLOR_VALUES;
 
 public class PaintbrushItem extends Item {
     public PaintbrushItem(Settings settings) {
@@ -33,7 +35,7 @@ public class PaintbrushItem extends Item {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if (Screen.hasShiftDown()) {
             tooltip.add(ColoredBlocksUtils.stringToText("Right click on colorable blocks to use!",Formatting.AQUA));
-            tooltip.add(ColoredBlocksUtils.stringToText("Shift right click to change colors!",Formatting.GREEN));
+            tooltip.add(ColoredBlocksUtils.stringToText("Sneak right click to change colors!",Formatting.GREEN));
         } else {
             tooltip.add(ColoredBlocksUtils.stringToText("Color: "+ColoredBlocksUtils.getColorName(getPaintbrushColor(stack)),Formatting.WHITE));
             tooltip.add(ColoredBlocksUtils.stringToText("Press shift for more info",Formatting.YELLOW));
@@ -44,8 +46,11 @@ public class PaintbrushItem extends Item {
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
         PlayerEntity player = context.getPlayer();
-        //If not server, holding shift, or use called with offHand
-        if (Screen.hasShiftDown() || world.isClient() || context.getHand() != Hand.MAIN_HAND) {
+        if (player == null) {
+            return ActionResult.FAIL;
+        }
+        //If not server, sneaking, or use called with offHand
+        if (world.isClient() || player.isSneaking() || context.getHand() != Hand.MAIN_HAND) {
             return ActionResult.PASS;
         }
         ItemStack paintBrushStack = player.getMainHandStack();
@@ -78,7 +83,7 @@ public class PaintbrushItem extends Item {
             return ActionResult.PASS;
         }
         //Do coloring
-        boolean didPaint = doPaintAction(world, blockLocation, blockState, paintbrushColor);
+        boolean didPaint = doPaintAction(world, player, blockLocation, blockState, paintbrushColor);
         //Do palette damage if not creative
         if (didPaint && !player.isCreative()) {
             doDamagePaletteAction(paletteStack);
@@ -87,10 +92,10 @@ public class PaintbrushItem extends Item {
     }
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if (world.isClient() && hand == Hand.MAIN_HAND && Screen.hasShiftDown()) {
+        if (world.isClient() && hand == Hand.MAIN_HAND && user.isSneaking()) {
             ModScreens.openColorWheelScreen(user, user.getMainHandStack());
         }
-        return TypedActionResult.pass(user.getStackInHand(hand));
+        return TypedActionResult.consume(user.getStackInHand(hand));
     }
     @Override
     public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
@@ -103,12 +108,14 @@ public class PaintbrushItem extends Item {
     private void doDamagePaletteAction(ItemStack palette) {
         palette.setDamage(palette.getDamage() + 1);
     }
-    private boolean doPaintAction(World world, BlockPos pos, BlockState blockState, int color) {
+    private boolean doPaintAction(World world, PlayerEntity player, BlockPos pos, BlockState blockState, int color) {
         BlockState newBlockState;
-        if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS)) {
-            newBlockState = ColoredBlocksConstants.COLORED_STONE_BRICKS[color].getDefaultState();
+        if (player.isSneaking()) {
+            return false;
+        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS)) {
+            newBlockState = ColoredBlocksUtils.changeBlockColor(ModBlocks.COLORED_STONE_BRICKS, HEX_COLOR_VALUES[color]);
         } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANKS)) {
-            newBlockState = ColoredBlocksConstants.COLORED_WOOD_PLANKS[color].getDefaultState();
+            newBlockState = ColoredBlocksUtils.changeBlockColor(ModBlocks.COLORED_WOOD_PLANKS, HEX_COLOR_VALUES[color]);
         } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOL_BLOCKS)) {
             newBlockState = ColoredBlocksConstants.COLORED_WOOL_BLOCKS[color].getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORABLE_TERRACOTTA)) {
@@ -121,18 +128,18 @@ public class PaintbrushItem extends Item {
             newBlockState = ColoredBlocksConstants.COLORED_STAINED_GLASS[color].getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORABLE_CARPET)) {
             newBlockState = ColoredBlocksConstants.COLORED_CARPET[color].getDefaultState();
-        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_STAIRS)) {
-            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
-                ColoredBlocksConstants.COLORED_STONE_BRICK_STAIRS[color].getDefaultState());
-        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_STAIRS)) {
-            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
-                ColoredBlocksConstants.COLORED_WOOD_PLANK_STAIRS[color].getDefaultState());
-        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_SLAB)) {
-            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
-                    ColoredBlocksConstants.COLORED_STONE_BRICK_SLAB[color].getDefaultState());
-        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_SLAB)) {
-            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
-                    ColoredBlocksConstants.COLORED_WOOD_PLANK_SLAB[color].getDefaultState());
+//        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_STAIRS)) {
+//            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
+//                ColoredBlocksConstants.COLORED_STONE_BRICK_STAIRS[color].getDefaultState());
+//        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_STAIRS)) {
+//            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
+//                ColoredBlocksConstants.COLORED_WOOD_PLANK_STAIRS[color].getDefaultState());
+//        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_SLAB)) {
+//            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
+//                ColoredBlocksConstants.COLORED_STONE_BRICK_SLAB[color].getDefaultState());
+//        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_SLAB)) {
+//            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
+//                ColoredBlocksConstants.COLORED_WOOD_PLANK_SLAB[color].getDefaultState());
         } else {
             return false;
         }

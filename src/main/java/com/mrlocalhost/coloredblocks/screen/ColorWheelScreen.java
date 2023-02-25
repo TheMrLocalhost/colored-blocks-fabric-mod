@@ -8,7 +8,6 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.screen.v1.Screens;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -18,13 +17,10 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 
-import java.util.HashMap;
-
 public class ColorWheelScreen extends Screen {
 
     private PlayerEntity player;
     private ItemStack paintbrush;
-    private HashMap<String, ButtonWidget> upgradeButtons = new HashMap<>();
     private final int buttonWidth = 60;
     private final int buttonHeight = 40;
     private final int buttonGap = 10;
@@ -50,7 +46,6 @@ public class ColorWheelScreen extends Screen {
                     Style.EMPTY.withColor(ColoredBlocksConstants.HEX_COLOR_VALUES[colorIdx])
             );
             ColoredBlocksConstants.RGB_SHADER_VALUES shader = ColoredBlocksConstants.RGB_SHADER_VALUES.byIndex(colorIdx);
-            System.out.println(prettyColorName+"- r:"+shader.r()+" g:"+shader.g()+" b:"+shader.b());
             CustomButton button =
                 CustomButton.customBuilder(
                     buttonTitle,
@@ -70,7 +65,6 @@ public class ColorWheelScreen extends Screen {
                 .tooltip(Tooltip.of(ColoredBlocksUtils.stringToText("Change color to "+prettyColorName)))
             .build();
             addDrawableChild(button);
-            upgradeButtons.put(color, button);
             if (colCount >= 3) { colCount = 0; rowCount++; } else { colCount++; }
         }
     }

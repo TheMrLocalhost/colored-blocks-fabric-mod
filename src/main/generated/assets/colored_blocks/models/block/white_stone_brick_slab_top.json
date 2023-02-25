@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "colored_blocks:block/white_stone_bricks",
-    "side": "colored_blocks:block/white_stone_bricks",
-    "top": "colored_blocks:block/white_stone_bricks"
-  }
-}

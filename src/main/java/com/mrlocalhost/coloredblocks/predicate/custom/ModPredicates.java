@@ -10,10 +10,9 @@ import net.minecraft.util.Identifier;
 public class ModPredicates {
 
     public static void registerModPredicates() {
-        registerPredicate(ModItems.PAINTBRUSH, "color");
-    }
+        Item item = ModItems.PAINTBRUSH;
+        String predicate = "color";
 
-    private static void registerPredicate(Item item, String predicate) {
         ModelPredicateProviderRegistry.register(item, new Identifier(predicate), (itemStack, clientWorld, livingEntity, i) -> {
             if (livingEntity == null) {
                 return 0.0F;

@@ -2,10 +2,8 @@ package com.mrlocalhost.coloredblocks.item.custom;
 
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
-import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,8 +21,9 @@ public class CleaningClothItem extends Item {
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
         PlayerEntity player = context.getPlayer();
-        //If not server, holding shift, or use called with offHand
-        if (Screen.hasShiftDown() || world.isClient() || context.getHand() != Hand.MAIN_HAND) {
+        if (player == null) { return ActionResult.PASS; }
+        //If not server, sneaking, or use called with offHand
+        if (player.isSneaking() || world.isClient() || context.getHand() != Hand.MAIN_HAND) {
             return ActionResult.PASS;
         }
         ItemStack cleaningClothStack = player.getMainHandStack();
@@ -56,18 +55,6 @@ public class CleaningClothItem extends Item {
             newBlockState = Blocks.GLASS.getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORED_CARPET)) {
             newBlockState = Blocks.WHITE_CARPET.getDefaultState();
-        } else if (blockState.isIn(CustomBlockTags.COLORED_STONE_BRICK_STAIRS)) {
-            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
-                Blocks.STONE_BRICK_STAIRS.getDefaultState());
-        } else if (blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANK_STAIRS)) {
-            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
-                Blocks.BIRCH_STAIRS.getDefaultState());
-        } else if (blockState.isIn(CustomBlockTags.COLORED_STONE_BRICK_SLAB)) {
-            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
-                    Blocks.STONE_BRICK_SLAB.getDefaultState());
-        } else if (blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANK_SLAB)) {
-            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
-                    Blocks.BIRCH_SLAB.getDefaultState());
         } else {
             return ActionResult.PASS;
         }

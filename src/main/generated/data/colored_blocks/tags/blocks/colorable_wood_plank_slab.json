@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:birch_slab",
-    "#colored_blocks:colored_wood_plank_slab"
-  ]
-}
