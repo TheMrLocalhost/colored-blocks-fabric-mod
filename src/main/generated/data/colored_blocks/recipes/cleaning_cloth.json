@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "T": {
+      "item": "minecraft:paper"
+    },
+    "W": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "TWT",
+    "TTT"
+  ],
+  "result": {
+    "item": "colored_blocks:cleaning_cloth"
+  }
+}

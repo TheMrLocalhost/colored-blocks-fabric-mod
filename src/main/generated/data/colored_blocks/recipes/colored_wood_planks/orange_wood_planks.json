@@ -1,0 +1,17 @@
+{
+  "type": "colored_blocks:colored_block_crafting",
+  "category": "building",
+  "key": {
+    "blockToColor": {
+      "tag": "colored_blocks:colorable_wood_planks"
+    },
+    "dye": {
+      "item": "minecraft:orange_dye"
+    }
+  },
+  "result": {
+    "amount": 8,
+    "colorIndex": "orange",
+    "item": "colored_blocks:colored_wood_planks"
+  }
+}

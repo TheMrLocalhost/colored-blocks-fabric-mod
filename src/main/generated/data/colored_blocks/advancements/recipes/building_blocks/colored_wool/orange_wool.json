@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "colored_wool/orange_wool": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:colorable_wool_blocks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dye_for_orange_wool": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:dyes"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "colored_blocks:colored_wool/orange_wool"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "dye_for_orange_wool",
+      "colored_wool/orange_wool",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "colored_blocks:colored_wool/orange_wool"
+    ]
+  }
+}

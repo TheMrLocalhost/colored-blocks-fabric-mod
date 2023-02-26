@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "colored_wood_planks/pink_wood_planks": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:colorable_wood_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dye_for_translation{key='block.colored_blocks.colored_wood_planks', args=[]}": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:pink_dye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "colored_blocks:colored_wood_planks/pink_wood_planks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "dye_for_translation{key='block.colored_blocks.colored_wood_planks', args=[]}",
+      "colored_wood_planks/pink_wood_planks",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "colored_blocks:colored_wood_planks/pink_wood_planks"
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "colored_stone_bricks/lime_stone_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:colorable_stone_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dye_for_translation{key='block.colored_blocks.colored_stone_bricks', args=[]}": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:lime_dye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "colored_blocks:colored_stone_bricks/lime_stone_bricks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "dye_for_translation{key='block.colored_blocks.colored_stone_bricks', args=[]}",
+      "colored_stone_bricks/lime_stone_bricks",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "colored_blocks:colored_stone_bricks/lime_stone_bricks"
+    ]
+  }
+}

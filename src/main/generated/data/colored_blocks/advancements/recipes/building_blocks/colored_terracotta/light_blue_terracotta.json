@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "colored_terracotta/light_blue_terracotta": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:colorable_terracotta"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dye_for_light_blue_terracotta": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "colored_blocks:dyes"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "colored_blocks:colored_terracotta/light_blue_terracotta"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "dye_for_light_blue_terracotta",
+      "colored_terracotta/light_blue_terracotta",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "colored_blocks:colored_terracotta/light_blue_terracotta"
+    ]
+  }
+}

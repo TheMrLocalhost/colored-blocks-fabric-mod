@@ -1,0 +1,17 @@
+{
+  "type": "colored_blocks:colored_block_crafting",
+  "category": "building",
+  "key": {
+    "blockToColor": {
+      "tag": "colored_blocks:colorable_stone_bricks"
+    },
+    "dye": {
+      "item": "minecraft:brown_dye"
+    }
+  },
+  "result": {
+    "amount": 8,
+    "colorIndex": "brown",
+    "item": "colored_blocks:colored_stone_bricks"
+  }
+}

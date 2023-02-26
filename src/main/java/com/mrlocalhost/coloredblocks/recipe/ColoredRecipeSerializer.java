@@ -42,7 +42,7 @@ public class ColoredRecipeSerializer implements RecipeSerializer<ShapedRecipe> {
         return new ShapedRecipe(
             id,
             "Colored Blocks",
-            CraftingRecipeCategory.MISC,
+            CraftingRecipeCategory.valueOf(recipeJson.category.getAsString().toUpperCase()),
             3, 3,
             DefaultedList.copyOf(Ingredient.EMPTY,
                 blockToColor,blockToColor,blockToColor,
