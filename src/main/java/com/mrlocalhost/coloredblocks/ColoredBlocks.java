@@ -1,6 +1,7 @@
 package com.mrlocalhost.coloredblocks;
 
 import com.mrlocalhost.coloredblocks.block.ModBlocks;
+import com.mrlocalhost.coloredblocks.block.entity.ModBlockEntities;
 import com.mrlocalhost.coloredblocks.color.ColorProviders;
 import com.mrlocalhost.coloredblocks.item.ModItems;
 import com.mrlocalhost.coloredblocks.networking.PacketHandler;
@@ -22,6 +23,7 @@ public class ColoredBlocks implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModPredicates.registerModPredicates();
 		PacketHandler.registerC2SPackets();
+		ModBlockEntities.registerBlockEntities();
 		ColorProviders.registerColorProviders();
 		Registry.register(Registries.RECIPE_SERIALIZER, ColoredRecipeSerializer.ID, ColoredRecipeSerializer.INSTANCE);
 	}

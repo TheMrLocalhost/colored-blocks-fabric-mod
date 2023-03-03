@@ -1,12 +1,9 @@
 package com.mrlocalhost.coloredblocks.utils;
 
 import com.mrlocalhost.coloredblocks.ColoredBlocks;
-import com.mrlocalhost.coloredblocks.block.custom.ColoredBlock;
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.StairsBlock;
+import com.mrlocalhost.coloredblocks.block.entity.ColoredBlockEntity;
+import net.minecraft.block.*;
 import net.minecraft.data.client.TextureKey;
 import net.minecraft.data.client.TextureMap;
 import net.minecraft.entity.player.PlayerEntity;
@@ -68,10 +65,10 @@ public class ColoredBlocksUtils {
             || blockState.isIn(CustomBlockTags.COLORABLE_CONCRETE)
             || blockState.isIn(CustomBlockTags.COLORABLE_STAINED_GLASS)
             || blockState.isIn(CustomBlockTags.COLORABLE_CARPET)
-//            || blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_STAIRS)
-//            || blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_STAIRS)
-//            || blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_SLAB)
-//            || blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_SLAB)
+            || blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_STAIRS)
+            || blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_STAIRS)
+            || blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_SLAB)
+            || blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_SLAB)
         );
     }
     public static boolean isSameColor(BlockState blockState, int color) {
@@ -89,17 +86,23 @@ public class ColoredBlocksUtils {
             .with(SlabBlock.TYPE, sourceBlockState.get(SlabBlock.TYPE))
             .with(StairsBlock.WATERLOGGED, sourceBlockState.get(StairsBlock.WATERLOGGED));
     }
-    public static TextureMap createStairsTextureMap(String colorPrefix, String sourceTextureSuffix) {
+    public static TextureMap createColoredBlockTextureMap(Block block, String blockName) {
+        TextureMap coloredBlockTextureMap = new TextureMap();
+        Identifier id = new Identifier(ColoredBlocks.MOD_ID, "block/"+blockName);
+        coloredBlockTextureMap.put(TextureKey.ALL, id);
+        return coloredBlockTextureMap;
+    }
+    public static TextureMap createStairsTextureMap(String sourceTextureSuffix) {
         TextureMap stairsTextureMap = new TextureMap();
-        Identifier id = new Identifier(ColoredBlocks.MOD_ID,"block/"+colorPrefix+"_"+sourceTextureSuffix);
+        Identifier id = new Identifier(ColoredBlocks.MOD_ID,"block/"+sourceTextureSuffix);
         stairsTextureMap.put(TextureKey.TOP, id);
         stairsTextureMap.put(TextureKey.SIDE, id);
         stairsTextureMap.put(TextureKey.BOTTOM, id);
         return stairsTextureMap;
     }
-    public static TextureMap createSlabTextureMap(String colorPrefix, String sourceTextureSuffix) {
+    public static TextureMap createSlabTextureMap(String sourceTextureSuffix) {
         TextureMap slabTextureMap = new TextureMap();
-        Identifier id = new Identifier(ColoredBlocks.MOD_ID,"block/"+colorPrefix+"_"+sourceTextureSuffix);
+        Identifier id = new Identifier(ColoredBlocks.MOD_ID,"block/"+sourceTextureSuffix);
         slabTextureMap.put(TextureKey.ALL, id);
         slabTextureMap.put(TextureKey.TOP, id);
         slabTextureMap.put(TextureKey.BOTTOM, id);
@@ -124,30 +127,24 @@ public class ColoredBlocksUtils {
         return (float)(ColoredBlocksConstants.HEX_COLOR_VALUES[hexIndex] & AND_B) / MAX_F;
     }
     public static BlockState changeBlockColor(Block baseBlock, int newColorValue) {
-        int redValue = (newColorValue & AND_R) >> SHF_R;
-        int greenValue = (newColorValue & AND_G) >> SHF_G;
-        int blueValue = newColorValue & AND_B;
-        return baseBlock.getDefaultState()
-            .with(ColoredBlock.RED, redValue)
-            .with(ColoredBlock.GREEN, greenValue)
-            .with(ColoredBlock.BLUE, blueValue);
+        return baseBlock.getDefaultState();
+    }
+
+    public static ItemStack colorEntityMaptoItem(ColoredBlockEntity entity, BlockState state) {
+        ItemStack itemStack = new ItemStack(state.getBlock(), 1);
+        NbtCompound nbt = itemStack.getOrCreateNbt();
+        entity.writeNbt(nbt);
+        return itemStack;
     }
     public static BlockState colorItemToBlock(Block blockToPlace, ItemStack itemstack) {
-        NbtCompound nbt = itemstack.getOrCreateNbt();
-        int red = nbt.getInt("red");
-        int green = nbt.getInt("green");
-        int blue = nbt.getInt("blue");
-        return blockToPlace.getDefaultState()
-                .with(ColoredBlock.RED, red)
-                .with(ColoredBlock.GREEN, green)
-                .with(ColoredBlock.BLUE, blue);
+        return blockToPlace.getDefaultState();
     }
     public static ItemStack colorBlockToItem(BlockState state) {
         ItemStack itemStack = new ItemStack(state.getBlock(), 1);
         NbtCompound nbt = itemStack.getOrCreateNbt();
-        nbt.putInt("red", state.get(ColoredBlock.RED));
-        nbt.putInt("green", state.get(ColoredBlock.GREEN));
-        nbt.putInt("blue", state.get(ColoredBlock.BLUE));
+        nbt.putInt("red", ColoredBlocksConstants.MAX_COLOR_VALUE);
+        nbt.putInt("green", ColoredBlocksConstants.MAX_COLOR_VALUE);
+        nbt.putInt("blue", ColoredBlocksConstants.MAX_COLOR_VALUE);
         return itemStack;
     }
     public static ItemStack createBlockItem(Block block, int colorIndex) {
@@ -158,5 +155,30 @@ public class ColoredBlocksUtils {
         nbt.putInt("green", rgb.g());
         nbt.putInt("blue", rgb.b());
         return stack;
+    }
+    public static NbtCompound colorItemToNbt(ItemStack stack) {
+        NbtCompound stackNbt = stack.getOrCreateNbt();
+        return ColoredBlocksUtils.rgbColorsToNbt(
+            stackNbt.getInt("red"),
+            stackNbt.getInt("green"),
+            stackNbt.getInt("blue")
+        );
+    }
+    public static NbtCompound rgbColorsToNbt(int red, int green, int blue) {
+        NbtCompound nbt = new NbtCompound();
+        nbt.putInt("red", red);
+        nbt.putInt("green", green);
+        nbt.putInt("blue", blue);
+        return nbt;
+    }
+
+    public static int getRedFromHex(int hexColorValue) {
+        return (hexColorValue & AND_R) >> SHF_R;
+    }
+    public static int getGreenFromHex(int hexColorValue) {
+        return (hexColorValue & AND_G) >> SHF_G;
+    }
+    public static int getBlueFromHex(int hexColorValue) {
+        return hexColorValue & AND_B;
     }
 }

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "colored_blocks:colored_stone_bricks"
+    "colored_blocks:colored_stone_bricks",
+    "colored_blocks:colored_stone_brick_stairs",
+    "colored_blocks:colored_stone_brick_slab"
   ]
 }

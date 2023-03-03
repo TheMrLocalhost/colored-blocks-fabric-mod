@@ -33,15 +33,15 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
     public static final TagKey<Block> COLORED_CARPET_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_carpet"));
     public static final TagKey<Block> COLORABLE_CARPET_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_carpet"));
 //    //Stair Blocks
-//    public static final TagKey<Block> COLORED_STONE_BRICK_STAIRS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_brick_stairs"));
-//    public static final TagKey<Block> COLORABLE_STONE_BRICK_STAIRS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_brick_stairs"));
-//    public static final TagKey<Block> COLORED_WOOD_PLANK_STAIRS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_plank_stairs"));
-//    public static final TagKey<Block> COLORABLE_WOOD_PLANK_STAIRS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_plank_stairs"));
+    public static final TagKey<Block> COLORED_STONE_BRICK_STAIRS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_brick_stairs"));
+    public static final TagKey<Block> COLORABLE_STONE_BRICK_STAIRS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_brick_stairs"));
+    public static final TagKey<Block> COLORED_WOOD_PLANK_STAIRS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_plank_stairs"));
+    public static final TagKey<Block> COLORABLE_WOOD_PLANK_STAIRS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_plank_stairs"));
 //    //Slab Blocks
-//    public static final TagKey<Block> COLORED_STONE_BRICK_SLAB_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_brick_slab"));
-//    public static final TagKey<Block> COLORABLE_STONE_BRICK_SLAB_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_brick_slab"));
-//    public static final TagKey<Block> COLORED_WOOD_PLANK_SLAB_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_plank_slab"));
-//    public static final TagKey<Block> COLORABLE_WOOD_PLANK_SLAB_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_plank_slab"));
+    public static final TagKey<Block> COLORED_STONE_BRICK_SLAB_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_brick_slab"));
+    public static final TagKey<Block> COLORABLE_STONE_BRICK_SLAB_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_brick_slab"));
+    public static final TagKey<Block> COLORED_WOOD_PLANK_SLAB_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_plank_slab"));
+    public static final TagKey<Block> COLORABLE_WOOD_PLANK_SLAB_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_plank_slab"));
     //Mineable
     public static final TagKey<Block> MINEABLE_BLOCKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:mineable/pickaxe"));
     public static final TagKey<Block> AXEABLE_BLOCKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:mineable/axe"));
@@ -53,11 +53,19 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         
         getOrCreateTagBuilder(COLORED_STONE_BRICKS_BLOCK).add(ModBlocks.COLORED_STONE_BRICKS);
+        getOrCreateTagBuilder(COLORED_STONE_BRICK_STAIRS_BLOCK).add(ModBlocks.COLORED_STONE_BRICK_STAIRS);
+        getOrCreateTagBuilder(COLORED_STONE_BRICK_SLAB_BLOCK).add(ModBlocks.COLORED_STONE_BRICK_SLAB);
         getOrCreateTagBuilder(MINEABLE_BLOCKS).add(ModBlocks.COLORED_STONE_BRICKS);
-        
+        getOrCreateTagBuilder(MINEABLE_BLOCKS).add(ModBlocks.COLORED_STONE_BRICK_STAIRS);
+        getOrCreateTagBuilder(MINEABLE_BLOCKS).add(ModBlocks.COLORED_STONE_BRICK_SLAB);
+
         getOrCreateTagBuilder(COLORED_WOOD_PLANKS_BLOCK).add(ModBlocks.COLORED_WOOD_PLANKS);
+        getOrCreateTagBuilder(COLORED_WOOD_PLANK_STAIRS_BLOCK).add(ModBlocks.COLORED_WOOD_PLANK_STAIRS);
+        getOrCreateTagBuilder(COLORED_WOOD_PLANK_SLAB_BLOCK).add(ModBlocks.COLORED_WOOD_PLANK_SLAB);
         getOrCreateTagBuilder(AXEABLE_BLOCKS).add(ModBlocks.COLORED_WOOD_PLANKS);
-            
+        getOrCreateTagBuilder(AXEABLE_BLOCKS).add(ModBlocks.COLORED_WOOD_PLANK_STAIRS);
+        getOrCreateTagBuilder(AXEABLE_BLOCKS).add(ModBlocks.COLORED_WOOD_PLANK_SLAB);
+
         for (Block block : COLORED_WOOL_BLOCKS) {
             getOrCreateTagBuilder(COLORED_WOOL_BLOCKS_BLOCK).add(block);
         }
@@ -76,22 +84,6 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
         for (Block block : COLORED_CARPET) {
             getOrCreateTagBuilder(COLORED_CARPET_BLOCK).add(block);
         }
-//        for (Block block : COLORED_STONE_BRICK_STAIRS) {
-//            getOrCreateTagBuilder(COLORED_STONE_BRICK_STAIRS_BLOCK).add(block);
-//            getOrCreateTagBuilder(MINEABLE_BLOCKS).add(block);
-//        }
-//        for (Block block : COLORED_WOOD_PLANK_STAIRS) {
-//            getOrCreateTagBuilder(COLORED_WOOD_PLANK_STAIRS_BLOCK).add(block);
-//            getOrCreateTagBuilder(AXEABLE_BLOCKS).add(block);
-//        }
-//        for (Block block : COLORED_STONE_BRICK_SLAB) {
-//            getOrCreateTagBuilder(COLORED_STONE_BRICK_SLAB_BLOCK).add(block);
-//            getOrCreateTagBuilder(MINEABLE_BLOCKS).add(block);
-//        }
-//        for (Block block : COLORED_WOOD_PLANK_SLAB) {
-//            getOrCreateTagBuilder(COLORED_WOOD_PLANK_SLAB_BLOCK).add(block);
-//            getOrCreateTagBuilder(AXEABLE_BLOCKS).add(block);
-//        }
         getOrCreateTagBuilder(COLORABLE_STONE_BRICKS_ITEM)
                 .add(Blocks.STONE_BRICKS)
                 .addTag(COLORED_STONE_BRICKS_BLOCK);
@@ -116,17 +108,17 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(COLORABLE_CARPET_ITEM)
                 .add(Blocks.WHITE_CARPET)
                 .addTag(COLORED_CARPET_BLOCK);
-//        getOrCreateTagBuilder(COLORABLE_STONE_BRICK_STAIRS_ITEM)
-//                .add(Blocks.STONE_BRICK_STAIRS)
-//                .addTag(COLORED_STONE_BRICK_STAIRS_BLOCK);
-//        getOrCreateTagBuilder(COLORABLE_WOOD_PLANK_STAIRS_ITEM)
-//                .add(Blocks.BIRCH_STAIRS)
-//                .addTag(COLORED_WOOD_PLANK_STAIRS_BLOCK);
-//        getOrCreateTagBuilder(COLORABLE_STONE_BRICK_SLAB_ITEM)
-//                .add(Blocks.STONE_BRICK_SLAB)
-//                .addTag(COLORED_STONE_BRICK_SLAB_BLOCK);
-//        getOrCreateTagBuilder(COLORABLE_WOOD_PLANK_SLAB_ITEM)
-//                .add(Blocks.BIRCH_SLAB)
-//                .addTag(COLORED_WOOD_PLANK_SLAB_BLOCK);
+        getOrCreateTagBuilder(COLORABLE_STONE_BRICK_STAIRS_ITEM)
+                .add(Blocks.STONE_BRICK_STAIRS)
+                .addTag(COLORED_STONE_BRICK_STAIRS_BLOCK);
+        getOrCreateTagBuilder(COLORABLE_WOOD_PLANK_STAIRS_ITEM)
+                .add(Blocks.BIRCH_STAIRS)
+                .addTag(COLORED_WOOD_PLANK_STAIRS_BLOCK);
+        getOrCreateTagBuilder(COLORABLE_STONE_BRICK_SLAB_ITEM)
+                .add(Blocks.STONE_BRICK_SLAB)
+                .addTag(COLORED_STONE_BRICK_SLAB_BLOCK);
+        getOrCreateTagBuilder(COLORABLE_WOOD_PLANK_SLAB_ITEM)
+                .add(Blocks.BIRCH_SLAB)
+                .addTag(COLORED_WOOD_PLANK_SLAB_BLOCK);
     }
 }

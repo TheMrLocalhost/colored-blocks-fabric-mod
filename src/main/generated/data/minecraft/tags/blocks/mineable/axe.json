@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "colored_blocks:colored_wood_planks"
+    "colored_blocks:colored_wood_planks",
+    "colored_blocks:colored_wood_planks_stairs",
+    "colored_blocks:colored_wood_planks_slab"
   ]
 }

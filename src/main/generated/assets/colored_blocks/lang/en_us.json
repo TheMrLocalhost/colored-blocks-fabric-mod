@@ -1,6 +1,8 @@
 {
+  "block.colored_blocks.colored_stone_brick_stairs": "Colored Stone Brick Stairs",
   "block.colored_blocks.colored_stone_bricks": "Colored Stone Bricks",
   "block.colored_blocks.colored_wood_planks": "Colored Wood Planks",
+  "block.colored_blocks.colored_wood_planks_stairs": "Colored Wood Plank Stairs",
   "item.colored_blocks.artist_palette": "Artist Palette",
   "item.colored_blocks.cleaning_cloth": "Cleaning Cloth",
   "item.colored_blocks.paintbrush": "Paintbrush",

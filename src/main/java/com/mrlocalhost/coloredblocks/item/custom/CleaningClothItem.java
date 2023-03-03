@@ -2,6 +2,7 @@ package com.mrlocalhost.coloredblocks.item.custom;
 
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
+import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
@@ -43,6 +44,14 @@ public class CleaningClothItem extends Item {
             newBlockState = Blocks.STONE_BRICKS.getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANKS)) {
             newBlockState = Blocks.BIRCH_PLANKS.getDefaultState();
+        } else if (blockState.isIn(CustomBlockTags.COLORED_STONE_BRICK_STAIRS)) {
+            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState, Blocks.STONE_BRICK_STAIRS.getDefaultState());
+        } else if (blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANK_STAIRS)) {
+            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState, Blocks.BIRCH_STAIRS.getDefaultState());
+        } else if (blockState.isIn(CustomBlockTags.COLORED_STONE_BRICK_SLAB)) {
+            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState, Blocks.STONE_BRICK_SLAB.getDefaultState());
+        } else if (blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANK_SLAB)) {
+            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState, Blocks.BIRCH_SLAB.getDefaultState());
         } else if (blockState.isIn(CustomBlockTags.COLORED_WOOL_BLOCKS)) {
             newBlockState = Blocks.WHITE_WOOL.getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORED_TERRACOTTA)) {

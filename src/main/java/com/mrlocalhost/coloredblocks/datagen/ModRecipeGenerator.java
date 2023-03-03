@@ -38,6 +38,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         generateCleanedBlocks(exporter, Blocks.STONE_BRICKS, "colored_stone_bricks", CustomItemTags.COLORED_STONE_BRICKS);
         generateColoredBlocksCustom(exporter, ModBlocks.COLORED_WOOD_PLANKS, "wood_planks", CustomItemTags.COLORABLE_WOOD_PLANKS);
         generateCleanedBlocks(exporter, Blocks.BIRCH_PLANKS, "colored_wood_planks", CustomItemTags.COLORED_WOOD_PLANKS);
+        //TODO add stairs and slabs recipes
 
         //Vanilla Blocks
         generateColoredBlocks(exporter, ColoredBlocksConstants.COLORED_WOOL_BLOCKS, "wool", CustomItemTags.COLORABLE_WOOL_BLOCKS);

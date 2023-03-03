@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:stone_brick_slab",
+    "#colored_blocks:colored_stone_brick_slab"
+  ]
+}

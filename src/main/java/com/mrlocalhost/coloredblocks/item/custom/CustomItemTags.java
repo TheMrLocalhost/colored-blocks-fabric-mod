@@ -13,6 +13,7 @@ public class CustomItemTags {
     public static final TagKey<Item> COLORABLE_STONE_BRICKS = of("colored_blocks:colorable_stone_bricks");
     public static final TagKey<Item> COLORED_WOOD_PLANKS = of("colored_blocks:colored_wood_planks");
     public static final TagKey<Item> COLORABLE_WOOD_PLANKS = of("colored_blocks:colorable_wood_planks");
+
     public static final TagKey<Item> COLORED_WOOL_BLOCKS = of("colored_blocks:colored_wool_blocks");
     public static final TagKey<Item> COLORABLE_WOOL_BLOCKS = of("colored_blocks:colorable_wool_blocks");
     public static final TagKey<Item> COLORED_TERRACOTTA = of("colored_blocks:colored_terracotta");
@@ -26,15 +27,15 @@ public class CustomItemTags {
     public static final TagKey<Item> COLORED_CARPET = of("colored_blocks:colored_carpet");
     public static final TagKey<Item> COLORABLE_CARPET = of("colored_blocks:colorable_carpet");
 //    //Stair BlockItems
-//    public static final TagKey<Item> COLORED_STONE_BRICK_STAIRS = of("colored_blocks:colored_stone_brick_stairs");
-//    public static final TagKey<Item> COLORABLE_STONE_BRICK_STAIRS = of("colored_blocks:colorable_stone_brick_stairs");
-//    public static final TagKey<Item> COLORED_WOOD_PLANK_STAIRS = of("colored_blocks:colored_wood_plank_stairs");
-//    public static final TagKey<Item> COLORABLE_WOOD_PLANK_STAIRS = of("colored_blocks:colorable_wood_plank_stairs");
+    public static final TagKey<Item> COLORED_STONE_BRICK_STAIRS = of("colored_blocks:colored_stone_brick_stairs");
+    public static final TagKey<Item> COLORABLE_STONE_BRICK_STAIRS = of("colored_blocks:colorable_stone_brick_stairs");
+    public static final TagKey<Item> COLORED_WOOD_PLANK_STAIRS = of("colored_blocks:colored_wood_plank_stairs");
+    public static final TagKey<Item> COLORABLE_WOOD_PLANK_STAIRS = of("colored_blocks:colorable_wood_plank_stairs");
 //    //Slab BlockItems
-//    public static final TagKey<Item> COLORED_STONE_BRICK_SLAB = of("colored_blocks:colored_stone_brick_slab");
-//    public static final TagKey<Item> COLORABLE_STONE_BRICK_SLAB = of("colored_blocks:colorable_stone_brick_slab");
-//    public static final TagKey<Item> COLORED_WOOD_PLANK_SLAB = of("colored_blocks:colored_wood_plank_slab");
-//    public static final TagKey<Item> COLORABLE_WOOD_PLANK_SLAB = of("colored_blocks:colorable_wood_plank_slab");
+    public static final TagKey<Item> COLORED_STONE_BRICK_SLAB = of("colored_blocks:colored_stone_brick_slab");
+    public static final TagKey<Item> COLORABLE_STONE_BRICK_SLAB = of("colored_blocks:colorable_stone_brick_slab");
+    public static final TagKey<Item> COLORED_WOOD_PLANK_SLAB = of("colored_blocks:colored_wood_plank_slab");
+    public static final TagKey<Item> COLORABLE_WOOD_PLANK_SLAB = of("colored_blocks:colorable_wood_plank_slab");
 
     private static TagKey<Item> of(String id) {
         return TagKey.of(RegistryKeys.ITEM, new Identifier(id));

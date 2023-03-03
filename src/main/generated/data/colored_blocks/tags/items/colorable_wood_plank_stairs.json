@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:birch_stairs",
+    "#colored_blocks:colored_wood_plank_stairs"
+  ]
+}
