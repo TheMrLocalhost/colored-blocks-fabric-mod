@@ -13,11 +13,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-
 import java.util.HashMap;
 
 public class ColorWheelScreen extends Screen {
@@ -26,8 +23,8 @@ public class ColorWheelScreen extends Screen {
     private ItemStack paintbrush;
     private HashMap<String, ButtonWidget> upgradeButtons = new HashMap<>();
     private final int buttonWidth = 60;
-    private final int buttonHeight = 20;
-    private final int buttonGap = 30;
+    private final int buttonHeight = 40;
+    private final int buttonGap = 5;
 
     public ColorWheelScreen(PlayerEntity player, ItemStack paintbrush) {
         super(ColoredBlocksUtils.stringToText("title"));
@@ -37,7 +34,7 @@ public class ColorWheelScreen extends Screen {
     @Override
     protected void init() {
         int baseX = (width / 2) - ((buttonGap * 3/2) + (buttonWidth * 4/2));
-        int baseY = (height / 2) - ((buttonGap * 7)/2);
+        int baseY = (height / 2) - ((buttonGap * 3/2) + (buttonHeight * 4/2));
         int colCount = 0;
         int rowCount = 0;
         for (int i = 0; i <= ColoredBlocksConstants.MAX_COLOR_VALUE; i++) {
@@ -46,12 +43,10 @@ public class ColorWheelScreen extends Screen {
             String color = ColoredBlocksConstants.COLOR_MAP.get(i);
             int colorIdx = ColoredBlocksUtils.getIndexOfColor(color);
             String prettyColorName = ColoredBlocksUtils.getColorName(colorIdx);
-            Text buttonTitle = ColoredBlocksUtils.stringToText("▓▓▓▓▓▓",
-                    Style.EMPTY.withColor(ColoredBlocksConstants.HEX_COLOR_VALUES[colorIdx])
-            );
+            ColoredBlocksConstants.RGB_SHADER_VALUES shader = ColoredBlocksConstants.RGB_SHADER_VALUES.byIndex(colorIdx);
             CustomButton button =
                 CustomButton.customBuilder(
-                    buttonTitle,
+                    Text.literal(""),
                     (buttonWidget) -> {
                         this.changePaintbrushColor(this.paintbrush, colorIdx);
                         PacketByteBuf bufData = PacketByteBufs.create();
@@ -61,8 +56,10 @@ public class ColorWheelScreen extends Screen {
                         this.close();
                     }
                 )
+                .setRgb(shader.r())
+                .setrGb(shader.g())
+                .setrgB(shader.b())
                 .dimensions((baseX+xOffset), (baseY+yOffset), buttonWidth, buttonHeight)
-                .tooltip(TooltipComponent.of(ColoredBlocksUtils.stringToText("Change color to "+prettyColorName).asOrderedText()))
             .build();
             addDrawableChild(button);
             upgradeButtons.put(color, button);
@@ -75,26 +72,17 @@ public class ColorWheelScreen extends Screen {
     }
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-
         this.renderBackground(matrices);
         super.render(matrices, mouseX, mouseY, delta);
-
-        int top = ((height / 2) - ((buttonGap * 7)/2)) - buttonHeight;
+        int top = ((height / 2) - ((buttonGap * 3/2) + (buttonHeight * 4/2))) - buttonHeight;
         drawCenteredText(matrices, Screens.getTextRenderer(this), ColoredBlocksUtils.stringToText("Color Wheel"), (width / 2), top, 0xFFFFFF);
-
-        //TODO may implement in the future for custom graphics color wheel dial
-//        this.children().forEach( (e) -> {
-//            if (!(e instanceof ButtonWidget)) { return; }
-//
-//            ButtonWidget button = ((ButtonWidget) e);
-//
-//            if (button.isHovered() && !hasShiftDown()) {
-//                this.changePaintbrushColor(this.paintbrush, 0);
-//                ColoredBlocksUtils.sendMessage(this.player, "New color: Red");
-//            }
-//
-//
-//        });
+        upgradeButtons.forEach( (name, button) -> {
+            if (button.isHovered()) {
+                this.renderTooltip(matrices,
+                        ColoredBlocksUtils.stringToText("Change color to "+name.replace("_"," ")),
+                        mouseX, mouseY);
+            }
+        });
         if (!hasShiftDown()) {
             this.close();
         }

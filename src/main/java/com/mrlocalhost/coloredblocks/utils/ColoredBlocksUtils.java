@@ -17,14 +17,18 @@ import net.minecraft.util.registry.Registry;
 
 public class ColoredBlocksUtils {
 
+    private static final int AND_R = 0xFF0000;
+    private static final int AND_G = 0x00FF00;
+    private static final int AND_B = 0x0000FF;
+    private static final int SHF_R = 16;
+    private static final int SHF_G = 8;
+    private static final float MAX_F = 255.0F;
+
     public static Text stringToText(String message) {
         return Text.literal(message);
     }
     public static Text stringToText(String message, Formatting format) {
         return Text.literal(message).formatted(format);
-    }
-    public static Text stringToText(String message, Style style) {
-        return Text.literal(message).setStyle(style);
     }
     public static void sendMessage(PlayerEntity player, String message) {
         player.sendMessage(Text.literal(message));
@@ -96,5 +100,14 @@ public class ColoredBlocksUtils {
         slabTextureMap.put(TextureKey.TOP, id);
         slabTextureMap.put(TextureKey.BOTTOM, id);
         return slabTextureMap;
+    }
+    public static float stripRedFloatFromHex(int hexIndex) {
+        return (float)((ColoredBlocksConstants.HEX_COLOR_VALUES[hexIndex] & AND_R) >> SHF_R ) / MAX_F;
+    }
+    public static float stripGreenFloatFromHex(int hexIndex) {
+        return (float)((ColoredBlocksConstants.HEX_COLOR_VALUES[hexIndex] & AND_G) >> SHF_G) / MAX_F;
+    }
+    public static float stripBlueFloatFromHex(int hexIndex) {
+        return (float)(ColoredBlocksConstants.HEX_COLOR_VALUES[hexIndex] & AND_B) / MAX_F;
     }
 }

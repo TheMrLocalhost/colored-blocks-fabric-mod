@@ -6,7 +6,10 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils.*;
 
 public class ColoredBlocksConstants {
     public static final int DYE_REPAIR_VALUE = 8;
@@ -37,6 +40,34 @@ public class ColoredBlocksConstants {
             0x4B5050, //Gray
             0x161616, //Black
     };
+    public enum RGB_SHADER_VALUES {
+        RED(0, stripRedFloatFromHex(0), stripGreenFloatFromHex(0), stripBlueFloatFromHex(0)),
+        ORANGE(1, stripRedFloatFromHex(1), stripGreenFloatFromHex(1), stripBlueFloatFromHex(1)),
+        YELLOW(2, stripRedFloatFromHex(2), stripGreenFloatFromHex(2), stripBlueFloatFromHex(2)),
+        LIME(3, stripRedFloatFromHex(3), stripGreenFloatFromHex(3), stripBlueFloatFromHex(3)),
+        GREEN(4, stripRedFloatFromHex(4), stripGreenFloatFromHex(4), stripBlueFloatFromHex(4)),
+        CYAN(5, stripRedFloatFromHex(5), stripGreenFloatFromHex(5), stripBlueFloatFromHex(5)),
+        LIGHT_BLUE(6, stripRedFloatFromHex(6), stripGreenFloatFromHex(6), stripBlueFloatFromHex(6)),
+        BLUE(7, stripRedFloatFromHex(7), stripGreenFloatFromHex(7), stripBlueFloatFromHex(7)),
+        PURPLE(8, stripRedFloatFromHex(8), stripGreenFloatFromHex(8), stripBlueFloatFromHex(8)),
+        MAGENTA(9, stripRedFloatFromHex(9), stripGreenFloatFromHex(9), stripBlueFloatFromHex(9)),
+        PINK(10, stripRedFloatFromHex(10), stripGreenFloatFromHex(10), stripBlueFloatFromHex(10)),
+        BROWN(11, stripRedFloatFromHex(11), stripGreenFloatFromHex(11), stripBlueFloatFromHex(11)),
+        WHITE(12, stripRedFloatFromHex(12), stripGreenFloatFromHex(12), stripBlueFloatFromHex(12)),
+        LIGHT_GRAY(13, stripRedFloatFromHex(13), stripGreenFloatFromHex(13), stripBlueFloatFromHex(13)),
+        GRAY(14, stripRedFloatFromHex(14), stripGreenFloatFromHex(14), stripBlueFloatFromHex(14)),
+        BLACK(15, stripRedFloatFromHex(15), stripGreenFloatFromHex(15), stripBlueFloatFromHex(15));
+        private final float r, g, b;
+        RGB_SHADER_VALUES(int index, float r, float g, float b) {
+            this.r=r;this.g=g;this.b=b;}
+        public float r() { return this.r;}
+        public float g() { return this.g;}
+        public float b() { return this.b;}
+        private static final List<RGB_SHADER_VALUES> BY_VALUE = Arrays.stream(values()).toList();
+        public static RGB_SHADER_VALUES byIndex(int index) {
+            return BY_VALUE.get(index);
+        }
+    }
     public static final Block[] COLORED_STONE_BRICKS = new Block[]{
         ModBlocks.RED_STONE_BRICKS,
         ModBlocks.ORANGE_STONE_BRICKS,
