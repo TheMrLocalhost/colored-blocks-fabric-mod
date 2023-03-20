@@ -37,7 +37,7 @@ public class ModBlocks {
         );
     public static final ColoredSlabBlock COLORED_WOOD_PLANK_SLAB =
         registerColoredSlabBlock(
-            "colored_wood_planks_slab",
+            "colored_wood_plank_slab",
             Material.WOOD
         );
     public static final ColoredStairsBlock COLORED_STONE_BRICK_STAIRS =
@@ -49,7 +49,7 @@ public class ModBlocks {
     public static final ColoredStairsBlock COLORED_WOOD_PLANK_STAIRS =
         registerColoredStairsBlock(
             COLORED_WOOD_PLANKS.getDefaultState(),
-            "colored_wood_planks_stairs",
+            "colored_wood_plank_stairs",
             Material.WOOD
         );
     private static ColoredBlock registerColoredBlock(String name, Material material) {

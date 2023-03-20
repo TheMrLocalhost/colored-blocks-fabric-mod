@@ -1,0 +1,8 @@
+{
+  "parent": "colored_blocks:block/colored_stairs_inner",
+  "textures": {
+    "bottom": "colored_blocks:block/colored_wood_planks",
+    "side": "colored_blocks:block/colored_wood_planks",
+    "top": "colored_blocks:block/colored_wood_planks"
+  }
+}

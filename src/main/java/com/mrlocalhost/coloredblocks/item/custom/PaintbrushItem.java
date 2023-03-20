@@ -1,13 +1,19 @@
 package com.mrlocalhost.coloredblocks.item.custom;
 
+import com.mrlocalhost.coloredblocks.ColoredBlocks;
 import com.mrlocalhost.coloredblocks.block.ModBlocks;
 import com.mrlocalhost.coloredblocks.block.custom.ColoredBlock;
+import com.mrlocalhost.coloredblocks.block.custom.ColoredStairsBlock;
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
 import com.mrlocalhost.coloredblocks.block.entity.ColoredBlockEntity;
 import com.mrlocalhost.coloredblocks.item.ModItems;
+import com.mrlocalhost.coloredblocks.networking.PacketHandler;
 import com.mrlocalhost.coloredblocks.screen.ModScreens;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
@@ -16,6 +22,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
@@ -46,19 +55,16 @@ public class PaintbrushItem extends Item {
     }
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
-        boolean isClient = false;
-        World world = context.getWorld();
+        World indestinctWorld = context.getWorld();
         PlayerEntity player = context.getPlayer();
         if (player == null) {
             return ActionResult.FAIL;
         }
-        if (world.isClient()) {
-            isClient = true;
-        }
-        //If sneaking, or use called with offHand
-        if (player.isSneaking() || context.getHand() != Hand.MAIN_HAND) {
+        //If client, sneaking, or use called with offHand
+        if (indestinctWorld.isClient() || player.isSneaking() || context.getHand() != Hand.MAIN_HAND) {
             return ActionResult.PASS;
         }
+        ServerWorld world = (ServerWorld) context.getWorld();
         ItemStack paintBrushStack = player.getMainHandStack();
         ItemStack paletteStack = player.getOffHandStack();
         //If one of the hand stacks gets nulled
@@ -67,14 +73,12 @@ public class PaintbrushItem extends Item {
         }
         //If not holding artist palette in offHand
         if (paletteStack.getItem() != ModItems.ARTIST_PALETTE) {
-            if (!isClient)
-                ColoredBlocksUtils.sendMessage(player, "Please hold an artist palette in your off-hand.");
+            ColoredBlocksUtils.sendMessage(player, "Please hold an artist palette in your off-hand.");
             return ActionResult.PASS;
         }
         //If out of dye
         if (paletteStack.getDamage() >= paletteStack.getMaxDamage() && !player.isCreative()) {
-            if (!isClient)
-                ColoredBlocksUtils.sendMessage(player, "Please add more dye to your palette.");
+            ColoredBlocksUtils.sendMessage(player, "Please add more dye to your palette.");
             return ActionResult.PASS;
         }
         int paintbrushColor = getPaintbrushColor(paintBrushStack);
@@ -87,14 +91,13 @@ public class PaintbrushItem extends Item {
         }
         //If colored block and same color as desired
         if (ColoredBlocksUtils.isColorable(blockState) && ColoredBlocksUtils.isSameColor(blockState, paintbrushColor)) {
-            if (!isClient)
-                ColoredBlocksUtils.sendMessage(player, "This block is already "+paintColorName);
+            ColoredBlocksUtils.sendMessage(player, "This block is already "+paintColorName);
             return ActionResult.PASS;
         }
         //Do coloring
         boolean didPaint = doPaintAction(world, player, blockLocation, blockState, paintbrushColor);
         //Do palette damage if not creative
-        if (!isClient && didPaint && !player.isCreative()) {
+        if (didPaint && !player.isCreative()) {
             doDamagePaletteAction(paletteStack);
         }
         return ActionResult.PASS;
@@ -117,35 +120,31 @@ public class PaintbrushItem extends Item {
     private void doDamagePaletteAction(ItemStack palette) {
         palette.setDamage(palette.getDamage() + 1);
     }
-    private boolean doPaintAction(World world, PlayerEntity player, BlockPos pos, BlockState blockState, int color) {
+    private boolean doPaintAction(ServerWorld world, PlayerEntity player, BlockPos pos, BlockState blockState, int color) {
         BlockState newBlockState;
         if (player.isSneaking()) {
             return false;
-        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS)) {
+        } else if (
+                   blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICKS)
+                || blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_STAIRS)
+                || blockState.isIn(CustomBlockTags.COLORED_STONE_BRICK_SLAB)
+
+                || blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANKS)
+                || blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANK_STAIRS)
+                || blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANK_SLAB)
+            ) {
             ColoredBlockEntity entity = (ColoredBlockEntity) world.getBlockEntity(pos);
             if (entity == null) return false;
-            entity.markRemoved();
-            ColoredBlock coloredBlock = (ColoredBlock) blockState.getBlock();
-            coloredBlock.updateRGB(
-                ColoredBlocksUtils.getRedFromHex(HEX_COLOR_VALUES[color]),
-                ColoredBlocksUtils.getGreenFromHex(HEX_COLOR_VALUES[color]),
-                ColoredBlocksUtils.getBlueFromHex(HEX_COLOR_VALUES[color])
-            );
-            BlockState newColorBlockState = coloredBlock.getDefaultState();
-            coloredBlock.createBlockEntity(pos, newColorBlockState);
-            world.removeBlock(pos, false);
-            world.setBlockState(pos, newColorBlockState);
+            entity.readRGB(color);
+            entity.markDirty();
+            PacketByteBuf bufData = PacketByteBufs.create();
+            bufData.writeIntArray(new int[]{color, pos.getX(), pos.getY(), pos.getZ()});
+            player.sendMessage(Text.literal("S: Attempting to sync entity data to client. new: "+color));
+            player.sendMessage(Text.literal("server entity pos: "+pos.toShortString()));
+            for (ServerPlayerEntity serverPlayerEntity : world.getPlayers()) {
+                ServerPlayNetworking.send(serverPlayerEntity, PacketHandler.COLORED_BLOCK_ENTITY_COLOR_CHANGER_ID, bufData);
+            }
             return true;
-        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANKS)) {
-            newBlockState = ColoredBlocksUtils.changeBlockColor(ModBlocks.COLORED_WOOD_PLANKS, HEX_COLOR_VALUES[color]);
-        } else if (blockState.isIn(CustomBlockTags.COLORED_STONE_BRICK_STAIRS)) {
-            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState, ModBlocks.COLORED_STONE_BRICK_STAIRS.getDefaultState());
-        } else if (blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANK_STAIRS)) {
-            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState, ModBlocks.COLORED_WOOD_PLANK_STAIRS.getDefaultState());
-        } else if (blockState.isIn(CustomBlockTags.COLORED_STONE_BRICK_SLAB)) {
-            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState, ModBlocks.COLORED_STONE_BRICK_SLAB.getDefaultState());
-        } else if (blockState.isIn(CustomBlockTags.COLORED_WOOD_PLANK_SLAB)) {
-            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState, ModBlocks.COLORED_WOOD_PLANK_SLAB.getDefaultState());
         } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOL_BLOCKS)) {
             newBlockState = ColoredBlocksConstants.COLORED_WOOL_BLOCKS[color].getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORABLE_TERRACOTTA)) {
@@ -158,25 +157,11 @@ public class PaintbrushItem extends Item {
             newBlockState = ColoredBlocksConstants.COLORED_STAINED_GLASS[color].getDefaultState();
         } else if (blockState.isIn(CustomBlockTags.COLORABLE_CARPET)) {
             newBlockState = ColoredBlocksConstants.COLORED_CARPET[color].getDefaultState();
-//        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_STAIRS)) {
-//            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
-//                ColoredBlocksConstants.COLORED_STONE_BRICK_STAIRS[color].getDefaultState());
-//        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_STAIRS)) {
-//            newBlockState = ColoredBlocksUtils.cloneStairBlockStateProperties(blockState,
-//                ColoredBlocksConstants.COLORED_WOOD_PLANK_STAIRS[color].getDefaultState());
-//        } else if (blockState.isIn(CustomBlockTags.COLORABLE_STONE_BRICK_SLAB)) {
-//            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
-//                ColoredBlocksConstants.COLORED_STONE_BRICK_SLAB[color].getDefaultState());
-//        } else if (blockState.isIn(CustomBlockTags.COLORABLE_WOOD_PLANK_SLAB)) {
-//            newBlockState = ColoredBlocksUtils.cloneSlabBlockStateProperties(blockState,
-//                ColoredBlocksConstants.COLORED_WOOD_PLANK_SLAB[color].getDefaultState());
         } else {
             return false;
         }
-        if (!world.isClient()) {
-            world.removeBlock(pos, false);
-            world.setBlockState(pos, newBlockState);
-        }
+        world.removeBlock(pos, false);
+        world.setBlockState(pos, newBlockState);
         return true;
     }
 }

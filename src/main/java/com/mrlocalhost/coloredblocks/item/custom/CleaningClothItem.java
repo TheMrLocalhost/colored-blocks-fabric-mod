@@ -1,6 +1,7 @@
 package com.mrlocalhost.coloredblocks.item.custom;
 
 import com.mrlocalhost.coloredblocks.block.custom.CustomBlockTags;
+import com.mrlocalhost.coloredblocks.block.entity.ColoredBlockEntity;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
 import net.minecraft.block.BlockState;
@@ -67,6 +68,8 @@ public class CleaningClothItem extends Item {
         } else {
             return ActionResult.PASS;
         }
+        ColoredBlockEntity entity = (ColoredBlockEntity) world.getBlockEntity(context.getBlockPos());
+        if (entity != null) entity.markRemoved();
         world.removeBlock(blockLocation, false);
         world.setBlockState(blockLocation, newBlockState);
         return ActionResult.PASS;

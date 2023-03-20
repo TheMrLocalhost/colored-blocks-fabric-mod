@@ -11,9 +11,9 @@ import net.minecraft.server.network.ServerPlayerEntity;
 
 public class PaintbrushC2SPacket {
 
-    //Serverside
     public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler,
                                PacketByteBuf buf, PacketSender responseSender) {
+        //Everything here happens only on the server
         ItemStack paintbrush = player.getInventory().getMainHandStack();
         if (paintbrush.getItem() == ModItems.PAINTBRUSH) {
             NbtCompound nbtCompound = paintbrush.getOrCreateNbt();

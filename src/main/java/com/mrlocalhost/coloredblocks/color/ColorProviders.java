@@ -5,6 +5,7 @@ import com.mrlocalhost.coloredblocks.block.custom.ColoredBlock;
 import com.mrlocalhost.coloredblocks.block.entity.ColoredBlockEntity;
 import com.mrlocalhost.coloredblocks.block.entity.ModBlockEntities;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.nbt.NbtCompound;
 import java.util.Optional;
 
@@ -13,8 +14,12 @@ public class ColorProviders {
     public static void registerColorProviders() {
         registerColorProviders(ModBlocks.COLORED_STONE_BRICKS);
         registerColorProviders(ModBlocks.COLORED_WOOD_PLANKS);
+        registerColorProviders(ModBlocks.COLORED_STONE_BRICK_STAIRS);
+        registerColorProviders(ModBlocks.COLORED_WOOD_PLANK_STAIRS);
+        registerColorProviders(ModBlocks.COLORED_STONE_BRICK_SLAB);
+        registerColorProviders(ModBlocks.COLORED_WOOD_PLANK_SLAB);
     }
-    private static void registerColorProviders(ColoredBlock block) {
+    private static void registerColorProviders(Block block) {
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
             if (!state.hasBlockEntity()) { return 0xFF0000; }
             if (view == null) { return 0x00FF00; }

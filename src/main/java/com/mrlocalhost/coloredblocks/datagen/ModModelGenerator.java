@@ -2,6 +2,7 @@ package com.mrlocalhost.coloredblocks.datagen;
 
 import com.mrlocalhost.coloredblocks.ColoredBlocks;
 import com.mrlocalhost.coloredblocks.block.ModBlocks;
+import com.mrlocalhost.coloredblocks.block.model.ColoredBlockModels;
 import com.mrlocalhost.coloredblocks.item.ModItems;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -18,10 +19,12 @@ public class ModModelGenerator extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         registerColoredBlock(blockStateModelGenerator, ModBlocks.COLORED_STONE_BRICKS, "colored_stone_bricks");
         registerColoredBlock(blockStateModelGenerator, ModBlocks.COLORED_WOOD_PLANKS, "colored_wood_planks");
-        registerColoredStairs(blockStateModelGenerator, ModBlocks.COLORED_STONE_BRICK_STAIRS, "colored_stone_brick_stairs");
-        registerColoredStairs(blockStateModelGenerator, ModBlocks.COLORED_WOOD_PLANK_STAIRS, "colored_wood_plank_stairs");
-        registerColoredSlabs(blockStateModelGenerator, ModBlocks.COLORED_STONE_BRICK_SLAB, "colored_stone_brick_slab");
-        registerColoredSlabs(blockStateModelGenerator, ModBlocks.COLORED_WOOD_PLANK_SLAB, "colored_wood_plank_slab");
+
+        registerColoredStairs(blockStateModelGenerator, ModBlocks.COLORED_STONE_BRICK_STAIRS, "colored_stone_bricks", "colored_stone_brick_stairs");
+        registerColoredStairs(blockStateModelGenerator, ModBlocks.COLORED_WOOD_PLANK_STAIRS, "colored_wood_planks", "colored_wood_plank_stairs");
+
+        registerColoredSlabs(blockStateModelGenerator, ModBlocks.COLORED_STONE_BRICK_SLAB, "colored_stone_bricks", "colored_stone_brick_slab");
+        registerColoredSlabs(blockStateModelGenerator, ModBlocks.COLORED_WOOD_PLANK_SLAB, "colored_wood_planks", "colored_wood_plank_slab");
     }
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
@@ -34,23 +37,23 @@ public class ModModelGenerator extends FabricModelProvider {
         );
         generator.blockStateCollector.accept(supplier);
         TextureMap textureMap = ColoredBlocksUtils.createColoredBlockTextureMap(block, blockName);
-        Models.LEAVES.upload(block, textureMap, generator.modelCollector);
+        ColoredBlockModels.COLORED_BLOCK.upload(block, textureMap, generator.modelCollector);
     }
-    private static void registerColoredSlabs(BlockStateModelGenerator generator, Block block,String slabNaming) {
+    private static void registerColoredSlabs(BlockStateModelGenerator generator, Block block, String sourceBlockNaming ,String slabNaming) {
         //Generate Block States
         BlockStateSupplier stoneBlockStairsSupplier = BlockStateModelGenerator.createSlabBlockState(
                 block,
                 new Identifier(ColoredBlocks.MOD_ID, "block/"+slabNaming),
                 new Identifier(ColoredBlocks.MOD_ID, "block/"+slabNaming+"_top"),
-                new Identifier(ColoredBlocks.MOD_ID, "block/"+slabNaming)
+                new Identifier(ColoredBlocks.MOD_ID, "block/"+sourceBlockNaming)
         );
         generator.blockStateCollector.accept(stoneBlockStairsSupplier);
         //Generate Models
-        TextureMap textureMap = ColoredBlocksUtils.createSlabTextureMap(slabNaming);
-        Models.SLAB.upload(block, textureMap, generator.modelCollector);
-        Models.SLAB_TOP.upload(block, textureMap, generator.modelCollector);
+        TextureMap textureMap = ColoredBlocksUtils.createSlabTextureMap(sourceBlockNaming);
+        ColoredBlockModels.COLORED_SLAB.upload(block, textureMap, generator.modelCollector);
+        ColoredBlockModels.COLORED_SLAB_TOP.upload(block, textureMap, generator.modelCollector);
     }
-    private static void registerColoredStairs(BlockStateModelGenerator generator, Block block, String stairsNaming) {
+    private static void registerColoredStairs(BlockStateModelGenerator generator, Block block, String sourceBlockNaming, String stairsNaming) {
         //Generate Block States
         BlockStateSupplier stoneBlockStairsSupplier = BlockStateModelGenerator.createStairsBlockState(
                 block,
@@ -60,9 +63,9 @@ public class ModModelGenerator extends FabricModelProvider {
         );
         generator.blockStateCollector.accept(stoneBlockStairsSupplier);
         //Generate Models
-        TextureMap textureMap = ColoredBlocksUtils.createStairsTextureMap(stairsNaming);
-        Models.STAIRS.upload(block, textureMap, generator.modelCollector);
-        Models.INNER_STAIRS.upload(block, textureMap, generator.modelCollector);
-        Models.OUTER_STAIRS.upload(block, textureMap, generator.modelCollector);
+        TextureMap textureMap = ColoredBlocksUtils.createStairsTextureMap(sourceBlockNaming);
+        ColoredBlockModels.COLORED_STAIRS.upload(block, textureMap, generator.modelCollector);
+        ColoredBlockModels.COLORED_STAIRS_INNER.upload(block, textureMap, generator.modelCollector);
+        ColoredBlockModels.COLORED_STAIRS_OUTER.upload(block, textureMap, generator.modelCollector);
     }
 }

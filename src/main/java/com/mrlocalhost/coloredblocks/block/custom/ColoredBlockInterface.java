@@ -1,5 +1,6 @@
 package com.mrlocalhost.coloredblocks.block.custom;
 
+import com.mrlocalhost.coloredblocks.block.entity.ColoredBlockEntity;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public interface ColoredBlockInterface extends BlockEntityProvider {
 
-    default void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+    static void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
         String langAppend = "";
         NbtCompound nbt = stack.getOrCreateNbt();
         if (!nbt.contains("red")) {
@@ -27,8 +28,16 @@ public interface ColoredBlockInterface extends BlockEntityProvider {
         }
         tooltip.add(Text.literal(langAppend));
     }
-    default ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-        return ColoredBlocksUtils.colorBlockToItem(state);
+    static ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+        ColoredBlockEntity entity = (ColoredBlockEntity) world.getBlockEntity(pos);
+        if (entity == null) return ColoredBlocksUtils.colorBlockToItem(state);
+        NbtCompound entityNbt = entity.createNbt();
+        ItemStack itemStack = new ItemStack(state.getBlock());
+        NbtCompound itemNbt = itemStack.getOrCreateNbt();
+        for (String nbtKey : entityNbt.getKeys()) {
+            itemNbt.putInt(nbtKey, entityNbt.getInt(nbtKey));
+        }
+        return itemStack;
     }
 
 }

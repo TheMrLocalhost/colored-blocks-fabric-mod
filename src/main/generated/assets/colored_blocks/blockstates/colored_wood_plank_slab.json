@@ -4,7 +4,7 @@
       "model": "colored_blocks:block/colored_wood_plank_slab"
     },
     "type=double": {
-      "model": "colored_blocks:block/colored_wood_plank_slab"
+      "model": "colored_blocks:block/colored_wood_planks"
     },
     "type=top": {
       "model": "colored_blocks:block/colored_wood_plank_slab_top"

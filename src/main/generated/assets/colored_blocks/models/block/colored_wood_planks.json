@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/leaves",
+  "parent": "colored_blocks:block/colored_block",
   "textures": {
     "all": "colored_blocks:block/colored_wood_planks"
   }
