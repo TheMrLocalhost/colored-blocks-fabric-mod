@@ -3,7 +3,7 @@ package com.mrlocalhost.coloredblocks.datagen;
 import com.mrlocalhost.coloredblocks.ColoredBlocks;
 import com.mrlocalhost.coloredblocks.item.ModItems;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 import static com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants.*;
 
 public class ModModelGenerator extends FabricModelProvider {
-    public ModModelGenerator(FabricDataOutput output) {
+    public ModModelGenerator(FabricDataGenerator output) {
         super(output);
     }
     @Override

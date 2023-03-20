@@ -1,16 +1,16 @@
 package com.mrlocalhost.coloredblocks.datagen;
 
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.block.Block;
 import com.mrlocalhost.coloredblocks.block.ModBlocks;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 
 public class ModLootTableGenerator extends FabricBlockLootTableProvider {
-    public ModLootTableGenerator(FabricDataOutput output) {
+    public ModLootTableGenerator(FabricDataGenerator output) {
         super(output);
     }
     @Override
-    public void generate() {
+    public void generateBlockLootTables() {
         addDrop(ModBlocks.RED_STONE_BRICKS);
         addDrop(ModBlocks.ORANGE_STONE_BRICKS);
         addDrop(ModBlocks.YELLOW_STONE_BRICKS);

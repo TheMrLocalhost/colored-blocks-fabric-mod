@@ -13,7 +13,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.client.gui.tooltip.Tooltip;
+import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -62,7 +62,7 @@ public class ColorWheelScreen extends Screen {
                     }
                 )
                 .dimensions((baseX+xOffset), (baseY+yOffset), buttonWidth, buttonHeight)
-                .tooltip(Tooltip.of(ColoredBlocksUtils.stringToText("Change color to "+prettyColorName)))
+                .tooltip(TooltipComponent.of(ColoredBlocksUtils.stringToText("Change color to "+prettyColorName).asOrderedText()))
             .build();
             addDrawableChild(button);
             upgradeButtons.put(color, button);

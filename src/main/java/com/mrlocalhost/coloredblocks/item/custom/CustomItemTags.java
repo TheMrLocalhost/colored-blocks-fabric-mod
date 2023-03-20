@@ -1,9 +1,9 @@
 package com.mrlocalhost.coloredblocks.item.custom;
 
 import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class CustomItemTags {
     //Items
@@ -37,7 +37,7 @@ public class CustomItemTags {
     public static final TagKey<Item> COLORABLE_WOOD_PLANK_SLAB = of("colored_blocks:colorable_wood_plank_slab");
 
     private static TagKey<Item> of(String id) {
-        return TagKey.of(RegistryKeys.ITEM, new Identifier(id));
+        return TagKey.of(Registry.ITEM_KEY, new Identifier(id));
     }
 
 }

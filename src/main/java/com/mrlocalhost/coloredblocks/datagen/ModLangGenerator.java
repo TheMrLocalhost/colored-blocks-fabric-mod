@@ -3,12 +3,12 @@ package com.mrlocalhost.coloredblocks.datagen;
 import com.mrlocalhost.coloredblocks.block.ModBlocks;
 import com.mrlocalhost.coloredblocks.item.ModItemGroup;
 import com.mrlocalhost.coloredblocks.item.ModItems;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 
 public class ModLangGenerator extends FabricLanguageProvider {
 
-    protected ModLangGenerator(FabricDataOutput dataOutput) {
+    protected ModLangGenerator(FabricDataGenerator dataOutput) {
         super(dataOutput, "en_us");
     }
 

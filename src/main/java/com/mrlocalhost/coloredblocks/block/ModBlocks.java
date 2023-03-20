@@ -5,13 +5,11 @@ import com.mrlocalhost.coloredblocks.block.custom.ColoredBlock;
 import com.mrlocalhost.coloredblocks.block.custom.ColoredSlabBlock;
 import com.mrlocalhost.coloredblocks.block.custom.ColoredStairsBlock;
 import com.mrlocalhost.coloredblocks.item.ModItemGroup;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.Identifier;
 
 @SuppressWarnings("unused")
@@ -129,7 +127,7 @@ public class ModBlocks {
                 .strength(1.5F)
                 .resistance(6.0F));
         registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, new Identifier(ColoredBlocks.MOD_ID, name), block);
+        return Registry.register(Registry.BLOCK, new Identifier(ColoredBlocks.MOD_ID, name), block);
     }
     private static Block registerStairsBlock(BlockState blockState, String name, Material material) {
         Block block = new ColoredStairsBlock(blockState, FabricBlockSettings
@@ -139,7 +137,7 @@ public class ModBlocks {
                 .strength(1.5F)
                 .resistance(6.0F));
         registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, new Identifier(ColoredBlocks.MOD_ID, name), block);
+        return Registry.register(Registry.BLOCK, new Identifier(ColoredBlocks.MOD_ID, name), block);
     }
     private static Block registerBlock(String name, Material material) {
         Block block = new ColoredBlock(FabricBlockSettings
@@ -149,10 +147,10 @@ public class ModBlocks {
                 .strength(1.5F)
                 .resistance(6.0F));
         registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, new Identifier(ColoredBlocks.MOD_ID, name), block);
+        return Registry.register(Registry.BLOCK, new Identifier(ColoredBlocks.MOD_ID, name), block);
     }
     private static void registerBlockItem(String name, Block block) {
-        ItemGroupEvents.modifyEntriesEvent(ModItemGroup.COLORED_BLOCKS_GROUP).register(entries -> entries.add(block));
-        Registry.register(Registries.ITEM, new Identifier(ColoredBlocks.MOD_ID, name), new BlockItem(block, new Item.Settings()));
+        Registry.register(Registry.ITEM, new Identifier(ColoredBlocks.MOD_ID, name),
+                new BlockItem(block, new FabricItemSettings().group(ModItemGroup.COLORED_BLOCKS_GROUP)));
     }
 }

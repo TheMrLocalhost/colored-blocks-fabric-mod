@@ -2,7 +2,7 @@ package com.mrlocalhost.coloredblocks.block.custom;
 
 import com.mrlocalhost.coloredblocks.datagen.ModBlockTagGenerator;
 import net.minecraft.block.Block;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.tag.TagKey;
 
 public class CustomBlockTags {
     //Regular Blocks

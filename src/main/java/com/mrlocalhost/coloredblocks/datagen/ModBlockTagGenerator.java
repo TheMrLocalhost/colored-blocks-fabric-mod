@@ -1,55 +1,54 @@
 package com.mrlocalhost.coloredblocks.datagen;
 
 import com.mrlocalhost.coloredblocks.ColoredBlocks;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
-import java.util.concurrent.CompletableFuture;
 import static com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants.*;
 
 public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 
     //Regular Blocks
-    public static final TagKey<Block> COLORED_STONE_BRICKS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_bricks"));
-    public static final TagKey<Block> COLORABLE_STONE_BRICKS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_bricks"));
-    public static final TagKey<Block> COLORED_WOOD_PLANKS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_planks"));
-    public static final TagKey<Block> COLORABLE_WOOD_PLANKS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_planks"));
-    public static final TagKey<Block> COLORED_WOOL_BLOCKS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_wool_blocks"));
-    public static final TagKey<Block> COLORABLE_WOOL_BLOCKS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_wool_blocks"));
-    public static final TagKey<Block> COLORED_TERRACOTTA_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_terracotta"));
-    public static final TagKey<Block> COLORABLE_TERRACOTTA_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_terracotta"));
-    public static final TagKey<Block> COLORED_GLAZED_TERRACOTTA_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_glazed_terracotta"));
-    public static final TagKey<Block> COLORABLE_GLAZED_TERRACOTTA_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_glazed_terracotta"));
-    public static final TagKey<Block> COLORED_CONCRETE_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_concrete"));
-    public static final TagKey<Block> COLORABLE_CONCRETE_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_concrete"));
-    public static final TagKey<Block> COLORED_STAINED_GLASS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_stained_glass"));
-    public static final TagKey<Block> COLORABLE_STAINED_GLASS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_stained_glass"));
-    public static final TagKey<Block> COLORED_CARPET_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_carpet"));
-    public static final TagKey<Block> COLORABLE_CARPET_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_carpet"));
+    public static final TagKey<Block> COLORED_STONE_BRICKS_BLOCK = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_bricks"));
+    public static final TagKey<Block> COLORABLE_STONE_BRICKS_ITEM = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_bricks"));
+    public static final TagKey<Block> COLORED_WOOD_PLANKS_BLOCK = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_planks"));
+    public static final TagKey<Block> COLORABLE_WOOD_PLANKS_ITEM = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_planks"));
+    public static final TagKey<Block> COLORED_WOOL_BLOCKS_BLOCK = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colored_wool_blocks"));
+    public static final TagKey<Block> COLORABLE_WOOL_BLOCKS_ITEM = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colorable_wool_blocks"));
+    public static final TagKey<Block> COLORED_TERRACOTTA_BLOCK = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colored_terracotta"));
+    public static final TagKey<Block> COLORABLE_TERRACOTTA_ITEM = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colorable_terracotta"));
+    public static final TagKey<Block> COLORED_GLAZED_TERRACOTTA_BLOCK = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colored_glazed_terracotta"));
+    public static final TagKey<Block> COLORABLE_GLAZED_TERRACOTTA_ITEM = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colorable_glazed_terracotta"));
+    public static final TagKey<Block> COLORED_CONCRETE_BLOCK = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colored_concrete"));
+    public static final TagKey<Block> COLORABLE_CONCRETE_ITEM = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colorable_concrete"));
+    public static final TagKey<Block> COLORED_STAINED_GLASS_BLOCK = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colored_stained_glass"));
+    public static final TagKey<Block> COLORABLE_STAINED_GLASS_ITEM = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colorable_stained_glass"));
+    public static final TagKey<Block> COLORED_CARPET_BLOCK = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colored_carpet"));
+    public static final TagKey<Block> COLORABLE_CARPET_ITEM = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colorable_carpet"));
     //Stair Blocks
-    public static final TagKey<Block> COLORED_STONE_BRICK_STAIRS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_brick_stairs"));
-    public static final TagKey<Block> COLORABLE_STONE_BRICK_STAIRS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_brick_stairs"));
-    public static final TagKey<Block> COLORED_WOOD_PLANK_STAIRS_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_plank_stairs"));
-    public static final TagKey<Block> COLORABLE_WOOD_PLANK_STAIRS_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_plank_stairs"));
+    public static final TagKey<Block> COLORED_STONE_BRICK_STAIRS_BLOCK = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_brick_stairs"));
+    public static final TagKey<Block> COLORABLE_STONE_BRICK_STAIRS_ITEM = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_brick_stairs"));
+    public static final TagKey<Block> COLORED_WOOD_PLANK_STAIRS_BLOCK = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_plank_stairs"));
+    public static final TagKey<Block> COLORABLE_WOOD_PLANK_STAIRS_ITEM = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_plank_stairs"));
     //Slab Blocks
-    public static final TagKey<Block> COLORED_STONE_BRICK_SLAB_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_brick_slab"));
-    public static final TagKey<Block> COLORABLE_STONE_BRICK_SLAB_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_brick_slab"));
-    public static final TagKey<Block> COLORED_WOOD_PLANK_SLAB_BLOCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_plank_slab"));
-    public static final TagKey<Block> COLORABLE_WOOD_PLANK_SLAB_ITEM = TagKey.of(RegistryKeys.BLOCK, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_plank_slab"));
+    public static final TagKey<Block> COLORED_STONE_BRICK_SLAB_BLOCK = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colored_stone_brick_slab"));
+    public static final TagKey<Block> COLORABLE_STONE_BRICK_SLAB_ITEM = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colorable_stone_brick_slab"));
+    public static final TagKey<Block> COLORED_WOOD_PLANK_SLAB_BLOCK = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colored_wood_plank_slab"));
+    public static final TagKey<Block> COLORABLE_WOOD_PLANK_SLAB_ITEM = TagKey.of(Registry.BLOCK_KEY, new Identifier(ColoredBlocks.MOD_ID+":colorable_wood_plank_slab"));
     //Mineable
-    public static final TagKey<Block> MINEABLE_BLOCKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:mineable/pickaxe"));
-    public static final TagKey<Block> AXEABLE_BLOCKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:mineable/axe"));
+    public static final TagKey<Block> MINEABLE_BLOCKS = TagKey.of(Registry.BLOCK_KEY, new Identifier("minecraft:mineable/pickaxe"));
+    public static final TagKey<Block> AXEABLE_BLOCKS = TagKey.of(Registry.BLOCK_KEY, new Identifier("minecraft:mineable/axe"));
 
-    public ModBlockTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookupFuture) {
-        super(output, RegistryKeys.BLOCK, registryLookupFuture);
+    public ModBlockTagGenerator(FabricDataGenerator dataGenerator) {
+        super(dataGenerator, Registry.BLOCK);
     }
+
     @Override
-    protected void configure(RegistryWrapper.WrapperLookup arg) {
+    protected void generateTags() {
         for (Block block : COLORED_STONE_BRICKS) {
             getOrCreateTagBuilder(COLORED_STONE_BRICKS_BLOCK).add(block);
             getOrCreateTagBuilder(MINEABLE_BLOCKS).add(block);

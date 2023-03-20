@@ -9,11 +9,11 @@ import net.minecraft.block.StairsBlock;
 import net.minecraft.data.client.TextureKey;
 import net.minecraft.data.client.TextureMap;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
 import net.minecraft.text.Style;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class ColoredBlocksUtils {
 
@@ -39,7 +39,7 @@ public class ColoredBlocksUtils {
         return getColorOfBlock(blockState.getBlock());
     }
     public static int getColorOfBlock(Block block) {
-        String blockName = Registries.BLOCK.getId(block).getPath();
+        String blockName = Registry.BLOCK.getId(block).getPath();
         String colorName = stripColorOffName(blockName);
         return ColoredBlocksConstants.COLOR_MAP.indexOf(colorName);
     }

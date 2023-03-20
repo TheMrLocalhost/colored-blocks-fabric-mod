@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "S": {
       "item": "colored_blocks:black_wood_planks"
