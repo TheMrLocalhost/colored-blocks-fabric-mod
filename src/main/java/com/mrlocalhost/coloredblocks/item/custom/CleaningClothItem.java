@@ -23,8 +23,8 @@ public class CleaningClothItem extends Item {
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
         PlayerEntity player = context.getPlayer();
-        //If not server, holding shift, or use called with offHand
-        if (Screen.hasShiftDown() || world.isClient() || context.getHand() != Hand.MAIN_HAND) {
+        //If not server, or use called with offHand
+        if (world.isClient() || context.getHand() != Hand.MAIN_HAND || (world.isClient() && Screen.hasShiftDown()) ) {
             return ActionResult.PASS;
         }
         ItemStack cleaningClothStack = player.getMainHandStack();

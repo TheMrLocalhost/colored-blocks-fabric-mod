@@ -45,13 +45,15 @@ public class PaintbrushItem extends Item {
         World world = context.getWorld();
         PlayerEntity player = context.getPlayer();
         //If not server, holding shift, or use called with offHand
-        if (Screen.hasShiftDown() || world.isClient() || context.getHand() != Hand.MAIN_HAND) {
+        if (world.isClient()
+                || context.getHand() != Hand.MAIN_HAND) {
             return ActionResult.PASS;
+
         }
         ItemStack paintBrushStack = player.getMainHandStack();
         ItemStack paletteStack = player.getOffHandStack();
         //If one of the hand stacks gets nulled
-        if (paintBrushStack == null || paletteStack == null) {
+        if (paintBrushStack == null || paletteStack == null || (world.isClient() && Screen.hasShiftDown())) {
             return ActionResult.PASS;
         }
         //If not holding artist palette in offHand

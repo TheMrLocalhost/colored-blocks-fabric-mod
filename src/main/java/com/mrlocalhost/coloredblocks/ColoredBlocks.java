@@ -17,7 +17,7 @@ public class ColoredBlocks implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
-		ModPredicates.registerModPredicates();
+
 		PacketHandler.registerC2SPackets();
 	}
 }
