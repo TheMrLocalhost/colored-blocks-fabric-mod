@@ -5,7 +5,6 @@ import com.mrlocalhost.coloredblocks.utils.ColoredBlocksConstants;
 import com.mrlocalhost.coloredblocks.utils.ColoredBlocksUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,8 +22,11 @@ public class CleaningClothItem extends Item {
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
         PlayerEntity player = context.getPlayer();
+        if (player == null) {
+            return ActionResult.PASS;
+        }
         //If not server, or use called with offHand
-        if (world.isClient() || context.getHand() != Hand.MAIN_HAND || (world.isClient() && Screen.hasShiftDown()) ) {
+        if (world.isClient() || context.getHand() != Hand.MAIN_HAND || player.isSneaking() ) {
             return ActionResult.PASS;
         }
         ItemStack cleaningClothStack = player.getMainHandStack();
